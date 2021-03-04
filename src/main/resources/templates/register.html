@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+    <main>
+          <div class="card bg-dark text-white m-5" style="width: 60rem;">
+            <img class="card-img" src="/register.jpg" alt="Card image">
+            <div class="card-img-overlay relative-bottom">
+              <h5 class="card-title font-weight-bold "> LETS GET STARTED</h5>
+              <p class="card-text text-sm-left ">Create an account to keep track of your products, tunes, vehicles, and more.</p>
+            </div>
+          </div>
+
+        <form class="mx-auto w-25 bg-blur" method="POST" id="register" action="/users/register">
+            <h1 class="text-center ">Register</span></h1>
+            <hr class="hr-3 bg-white" />
+            <div class="form-group">
+                <div class="label-holder textCol d-flex justify-content-center">
+                    <label for="firstName" class="h4 mb-2 text-dark">First name</label>
+                </div>
+                <input type="text" class="form-control" id="firstName" name="firstName" />
+                <small class="text-danger">First name error message</small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder textCol d-flex justify-content-center">
+                    <label for="lastName" class="h4 mb-2 text-dark">Last name</label>
+                </div>
+                <input type="text" class="form-control" id="lastName" name="lastName" />
+                <small class="text-danger">Last name error message</small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-dark textCol d-flex justify-content-center">
+                    <label for="email" class="h4 mb-2">Email</label>
+                </div>
+                <input type="email" class="form-control" id="email" name="email" />
+
+                <small class="text-danger">Email error message</small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-dark textCol d-flex justify-content-center">
+                    <label for="password" class="h4 mb-2">Password</label>
+                </div>
+                <input type="password" class="form-control" id="password" name="password" />
+                <small class="text-danger">Password error message</small>
+            </div>
+            <div class="form-group">
+                <div class="label-holder text-dark textCol d-flex justify-content-center">
+                    <label for="confirmPassword" class="h4 mb-2">Confirm Password</label>
+                </div>
+                <input type="password" class="form-control" id="confirmPassword" name="confirmPassword" />
+            </div>
+
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark " value="Register">Register</button>
+            </div>
+            <div class="signin-link text-center m-3">
+                <span class="text-secondary ">Already have an account?</span> <a href="/users/signIn" class="signin link-jet" title="Sign in"><span>Sign in</span></a>
+            </div>
+        </form>
+        </div>
+    </main>
+
+    <section class="" th:replace="fragments/footer::footer"></section>
+</body>
+
+</html>

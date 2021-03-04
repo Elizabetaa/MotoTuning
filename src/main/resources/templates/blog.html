@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+
+<h2 style="text-align: center; font-weight: bold; margin-top: 5%">RECENT POSTS</h2>
+
+
+<div style="margin-top: 3%" class="fyp-slider full-img carouse-wrap d-flex flex-wrap" id="recentPosts">
+    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
+        <img src="/road.jpg" class="card-img-top border-rounded" alt="...">
+        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
+            BETTING BIG ON ELECTRIC</a>
+        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
+    </div>
+
+    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
+        <img src="/motorcycle.jpg" class="card-img-top border-rounded" alt="...">
+        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
+            BETTING BIG ON ELECTRIC</a>
+        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
+    </div>
+
+    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
+        <img src="/road.jpg" class="card-img-top border-rounded" alt="...">
+        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
+            BETTING BIG ON ELECTRIC</a>
+        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
+    </div>
+
+    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
+        <img src="/motorcycle.jpg" class="card-img-top border-rounded" alt="...">
+        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
+            BETTING BIG ON ELECTRIC</a>
+        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
+    </div>
+
+    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
+        <img src="/road.jpg" class="card-img-top border-rounded" alt="...">
+        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
+            BETTING BIG ON ELECTRIC</a>
+        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
+    </div>
+</div>
+
+
+<h2 style="text-align: center; font-weight: bold; margin-top: 5%">PICK YOUR CATEGORY</h2>
+
+
+<div style="margin-top: 3%" class="row" id="categories">
+
+    <a href="/blog/categories/id">
+        <div class="card  text-white " style="width: 18rem;">
+            <figure><img class="card-img" src="/road.jpg" alt="Card image"></figure>
+            <div>
+                <a href="/blog/categories/id" style="text-align: center; color: white" class="card-title font-weight-bold ">
+                    ROADS</a>
+            </div>
+        </div>
+    </a>
+    <a href="/blog/categories/id">
+        <div class="card  text-white " style="width: 18rem;">
+            <figure><img class="card-img" src="/motorcycle.jpg" alt="Card image"></figure>
+            <div>
+                <a href="/blog/categories/id" style="text-align: center; color: white" class="card-title font-weight-bold ">
+                    MOTORCYCLE</a>
+            </div>
+        </div>
+    </a>
+    <a href="/blog/categories/id">
+        <div class="card  text-white " style="width: 18rem;">
+            <figure><img class="card-img" src="/tuning.jpg" alt="Card image"></figure>
+            <div>
+                <a href="/blog/categories/id" style="text-align: center; color: white" class="card-title font-weight-bold ">
+                    TUNING</a>
+            </div>
+        </div>
+    </a>
+    <a href="/blog/categories/id">
+    <div class="card  text-white " style="width: 18rem;">
+        <figure><img class="card-img" src="/brands.jpeg" alt="Card image"></figure>
+        <div>
+            <a href="/blog/categories/id" style="text-align: center; color: white" class="card-title font-weight-bold ">
+                BEST BRAND's</a>
+        </div>
+    </div>
+    </a>
+</div>
+
+<section class="" th:replace="fragments/footer::footer"></section>
+</body>
+
+</html>
