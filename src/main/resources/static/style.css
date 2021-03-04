@@ -63,6 +63,7 @@ figure:hover img {
     width: 100%;
 }
 
+
 #signIn {
     position: absolute;
     top: 200px;
@@ -86,7 +87,7 @@ figure:hover img {
     margin-top: 5%;
     margin-left: 10%;
     width: 30%;
-    height: 500px;
+    height: 300px;
 }
 .primary-btn {
     display: inline-block;
@@ -103,10 +104,5 @@ figure:hover img {
     border-radius: 20px;
     transition: all .2s ease;
 }
-#container{
-    margin-top: 20%;
-    color: white;
-    margin-left: 10%;
-    width: 90%;
-}
+
 
