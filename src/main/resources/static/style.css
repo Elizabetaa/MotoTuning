@@ -56,7 +56,7 @@ figure:hover img {
 }
 
 
-#footer{
+#footer {
     position: absolute;
     bottom: 0;
     height: 10px;
@@ -72,23 +72,24 @@ figure:hover img {
     width: 800px;
 }
 
-#recentPosts, #categories, #passions{
+#recentPosts, #categories, #passions {
     margin: auto;
     width: 80%;
 }
 
-#recentPosts div,  #passions div, #categories div{
+#recentPosts div, #passions div, #categories div {
     margin: auto;
     background-color: LightGray;
     border: none;
 }
 
-#contacts{
+#contacts {
     margin-top: 5%;
     margin-left: 10%;
     width: 30%;
     height: 300px;
 }
+
 .primary-btn {
     display: inline-block;
     padding: 6px 15px;
@@ -96,7 +97,7 @@ figure:hover img {
     font-size: 20px;
     color: black;
     text-align: center;
-    font-family: "LatoBlack","Arial","Helvetica",sans-serif;
+    font-family: "LatoBlack", "Arial", "Helvetica", sans-serif;
     border: 2px solid black;
     -webkit-border-radius: 20px;
     -moz-border-radius: 20px;

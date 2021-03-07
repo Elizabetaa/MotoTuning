@@ -7,25 +7,27 @@
 
 <main>
     <div class="card bg-dark text-white m-5" style="width: 60rem;">
-        <img class="card-img" src="/signIn.jpg" alt="Card image">
+        <img class="card-img" src="/images/signIn.jpg" alt="Card image">
         <div class="card-img-overlay relative-bottom">
             <h5 class="card-title font-weight-bold "> LETS GET STARTED</h5>
             <p class="card-text text-sm-left ">Sign back in to continue building your dream machine.</p>
         </div>
     </div>
 
-    <form class="mx-auto w-25 bg-blur" method="POST" id="signIn" action="/users/register">
+    <form class="mx-auto w-25 bg-blur" method="POST" id="signIn" th:action="@{/users/signIn}">
         <h1 class="text-center ">Sign in</span></h1>
         <hr class="hr-3 bg-white"/>
         <div class="form-group">
-
+            <div th:if="${filed}" class="alert alert-danger" role="alert">
+                This username and password combination does not exist.
+            </div>
             <div class="form-group">
                 <div class="label-holder text-dark textCol d-flex justify-content-center">
-                    <label for="email" class="h4 mb-2">Email</label>
+                    <label th:value="${email}" for="email" class="h4 mb-2">Email</label>
                 </div>
                 <input type="email" class="form-control" id="email" name="email"/>
 
-                <small class="text-danger">Email error message</small>
+                <small class="text-danger">Email is invalid</small>
             </div>
             <div class="form-group">
                 <div class="label-holder text-dark textCol d-flex justify-content-center">

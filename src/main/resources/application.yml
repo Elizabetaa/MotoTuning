@@ -2,7 +2,7 @@ spring:
     datasource:
         driverClassName: com.mysql.cj.jdbc.Driver
         password: 1234
-        url: jdbc:mysql://localhost:3306/lsss?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
+        url: jdbc:mysql://localhost:3306/motoTuning?allowPublicKeyRetrieval=true&useSSL=false&createDatabaseIfNotExist=true
         username: root
     jpa:
         database-platform: org.hibernate.dialect.MySQL8Dialect

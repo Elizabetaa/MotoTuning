@@ -12,6 +12,7 @@ public class ForUsController {
     public String contacts() {
         return "contacts";
     }
+
     @GetMapping("/aboutUs")
     public String aboutUs() {
         return "aboutUs";
