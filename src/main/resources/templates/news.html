@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+
+<div class="card mb-3" style="width: 80%;margin: auto; border-style: none; background-color: LightGray" >
+    <div class="row g-0">
+        <div class="col-md-5" style="margin: auto;">
+            <img src="/images/motorcycle.jpg" class="img-fluid" style="width: 100%;" alt="Responsive image">
+        </div>
+        <div class="col-md-7">
+            <div class="card-body">
+                <h1 class="card-title">NEWS TITLE</h1>
+                <p class="card-text" style="font-size: larger">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <div class="blue-link-outer"><a href="https://brentuningmoto.com/?news=m1000rr-flash" class="blue-link read-more">READ MORE</a></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<section class="" th:replace="fragments/footer::footer"></section>
+</body>
+
+</html>
