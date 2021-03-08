@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="es" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <nav th:fragment="navbar">
     <ul id="ulNavBar">
         <li style="float:left"><a href="/">Home</a></li>
-        <li><a href="/users/register">Register</a></li>
-        <li><a href="/users/signIn">Sign in</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/users/register">Register</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/users/signIn">Sign in</a></li>
         <li><a href="/blog">Blog</a></li>
     </ul>
 
