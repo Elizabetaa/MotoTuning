@@ -1,21 +1,49 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:color="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/head::head"></head>
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 
-<div class="card mb-3" style="width: 80%;margin: auto; border-style: none; background-color: LightGray" >
-    <div class="row g-0">
-        <div class="col-md-5" style="margin: auto;">
-            <img src="/images/motorcycle.jpg" class="img-fluid" style="width: 100%;" alt="Responsive image">
+<div class="card mb-4" style="width: 70%; background-color: LightGray; margin: 5% auto auto; border-style: none" >
+    <div class="row g-1"  style="margin-top: 3%">
+        <div class="col-md-4" style="margin: auto;width: 50%; height: 80%;">
+            <img src="/images/motorcycle.jpg"  class="card-img-top" alt="Responsive image">
         </div>
-        <div class="col-md-7">
-            <div class="card-body">
-                <h1 class="card-title">NEWS TITLE</h1>
+        <div class="col-md-8">
+            <div class="card-body" >
+                <h1 class="card-title" style="color: #0077b3">NEWS TITLE</h1>
                 <p class="card-text" style="font-size: larger">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                 <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                <div class="blue-link-outer"><a href="https://brentuningmoto.com/?news=m1000rr-flash" class="blue-link read-more">READ MORE</a></div>
+                <a href="/news/id" class="btn-lg active" style="margin-top: 10%; background-color: #0077b3;color: white" role="button" >READ MORE</a>
+            </div>
+        </div>
+    </div>
+    <hr size="30" color = "#0077b3" style="margin-top: 3%; "/>
+    <div class="row g-1"  style="margin-top: 3%">
+        <div class="col-md-4" style="margin: auto;width: 50%; height: 80%;">
+            <img src="/images/motorcycle.jpg"  class="card-img-top" alt="Responsive image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body" >
+                <h1 class="card-title" style="color: #0077b3">NEWS TITLE</h1>
+                <p class="card-text" style="font-size: larger">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="/news/id" class="btn-lg active" style="margin-top:5%; background-color: #0077b3;color: white" role="button" >READ MORE</a>
+            </div>
+        </div>
+    </div>
+    <hr size="30" color = "#0077b3" style="margin-top: 3%; "/>
+    <div class="row g-1"  style="margin-top: 3%">
+        <div class="col-md-4" style="margin: auto;width: 50%; height: 80%;">
+            <img src="/images/motorcycle.jpg"  class="card-img-top" alt="Responsive image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body" >
+                <h1 class="card-title" style="color: #0077b3">NEWS TITLE</h1>
+                <p class="card-text" style="font-size: larger">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+                <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                <a href="/news/id" class="btn-lg active" style="margin-top:5%; background-color: #0077b3;color: white" role="button" >READ MORE</a>
             </div>
         </div>
     </div>
