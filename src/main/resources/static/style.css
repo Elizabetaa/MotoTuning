@@ -25,6 +25,18 @@ body {
     background-color: LightGray;
 }
 
+#signOnt {
+    width: 80px;
+    height: 65px;
+    border-style: none;
+    background-color: rgb(60, 60, 60);
+    color: white;
+    text-align: center;
+}
+#signOnt:hover {
+    border-style: none;
+    background-color: #111;
+}
 
 #title {
     padding: 80px;

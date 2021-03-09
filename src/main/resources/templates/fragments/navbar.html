@@ -10,8 +10,7 @@
         <li><a sec:authorize="!isAuthenticated()" href="/users/signIn">Sign in</a></li>
         <li sec:authorize="isAuthenticated()">
             <form th:action="@{/signOut}" method="POST">
-                <button type="submit"> Sign out</button>
-
+                <button id="signOnt" type="submit"> Sign out</button>
             </form>
         </li>
         <li><a sec:authorize="isAuthenticated()" href="/users/account">My account</a></li>
