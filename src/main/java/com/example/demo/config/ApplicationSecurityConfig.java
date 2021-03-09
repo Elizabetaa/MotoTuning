@@ -44,7 +44,12 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 // on login success redirect here
                         defaultSuccessUrl("/home").
                 // on login failure redirect here
-                        failureForwardUrl("/users/signIn-error");
+                        failureForwardUrl("/users/signIn-error")
+                .and()
+                .logout()
+                .logoutUrl("/signOut")
+                .logoutSuccessUrl("/users/signIn")
+                .deleteCookies("JSESSIONID");
     }
 
     @Override

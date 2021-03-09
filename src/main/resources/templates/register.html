@@ -15,7 +15,7 @@
         </div>
     </div>
 
-    <form class="mx-auto w-25 bg-blur" method="POST" id="register" action="/users/register"
+    <form class="mx-auto w-25 bg-blur" method="POST" id="register" th:action="@{/users/register}"
           th:object="${userRegisterBindingModel}">
         <h1 class="text-center ">Register</span></h1>
         <hr class="hr-3 bg-white"/>

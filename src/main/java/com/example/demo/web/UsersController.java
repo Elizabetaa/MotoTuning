@@ -1,7 +1,9 @@
 package com.example.demo.web;
 
 import com.example.demo.model.binding.UserRegisterBindingModel;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import com.example.demo.model.service.UserRegisterServiceModel;
+import com.example.demo.service.UserService;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -17,7 +19,13 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/users")
 public class UsersController {
+    private final UserService userService;
+    private final ModelMapper modelMapper;
 
+    public UsersController(UserService userService, ModelMapper modelMapper) {
+        this.userService = userService;
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/register")
     public String register (Model model){
@@ -35,6 +43,8 @@ public class UsersController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel",bindingResult);
             return "redirect:register";
         }
+
+        this.userService.register(this.modelMapper.map(userRegisterBindingModel, UserRegisterServiceModel.class));
 
         return "redirect:signIn";
 
