@@ -6,8 +6,8 @@
 <nav th:fragment="navbar">
     <ul id="ulNavBar">
         <li style="float:left"><a href="/">Home</a></li>
-        <li><a sec:authorize="!isAuthenticated()" href="/users/register">Register</a></li>
-        <li><a sec:authorize="!isAuthenticated()" href="/users/signIn">Sign in</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/users/register">Register</a></li>
+        <li sec:authorize="!isAuthenticated()"><a href="/users/signIn">Sign in</a></li>
         <li sec:authorize="isAuthenticated()">
             <form th:action="@{/signOut}" method="POST">
                 <button id="signOnt" type="submit"> Sign out</button>
