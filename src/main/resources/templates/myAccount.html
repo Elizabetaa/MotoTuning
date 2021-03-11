@@ -5,15 +5,77 @@
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 <main>
-    <figure class="figure">
-        <img src="/images/home-atv.jpg" class="figure-img img-fluid rounded" alt="...">
-        <figcaption class="figure-caption">A caption for the above image.</figcaption>
-    </figure>
-    <div class="container-sm" style="border-style: dotted">100% wide until small breakpoint</div>
-    <div class="container-md" style="border-style: dotted">100% wide until medium breakpoint</div>
-    <div class="container-lg" style="border-style: dotted">100% wide until large breakpoint</div>
-    <div class="container-xl" style="border-style: dotted">100% wide until extra large breakpoint</div>
-    <div class="container-xxl" style="border-style: dotted">100% wide until extra extra large breakpoint</div>
+    <div class="mainContainerMyAccount" style="margin: auto;" >
+        <div class="row">
+            <div style="height: 400px; width: 15%;margin:auto; margin-top: 3%;">
+                <div class="block ac-info">
+                    <div class="block-content" style="margin: auto; text-align: center">
+                        <img src="/images/road.jpg" alt="..." class="rounded-circle" style="width:  250px; height: 250px;">
+                        <p style="text-align: center; margin-top: 4%; font-size:20px">
+                            <span class="text-dark wrap">Elizabeta</span>
+                        </p>
+                        <hr>
+                        <!--                    <div class="block-content" style="text-align: left; margin-left: 15%">-->
+                        <!--                        <p>-->
+                        <!--                            <strong>Full Name: </strong><span class="text-secondary wrap">Elizabeta Koleva</span>-->
+                        <!--                        </p>-->
+                        <!--                        <p>-->
+                        <!--                            <strong>Email: </strong><span class="text-secondary wrap">elizabetaa99@abv.bg</span>-->
+                        <!--                        </p>-->
+                        <!--                        <p>-->
+                        <!--                            <strong>Phone number: </strong><span class="text-secondary wrap">0888888888888</span>-->
+                        <!--                        </p>-->
+                        <!--                    </div>-->
+
+                        <button type="button" class="btn btn-white btn-lg btn-block ">Edit</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+<!--        <div style="height: 400px; width: 60%; margin-top: 5%;margin:auto; background-color: white">-->
+<!--            <div class="block ac-info">-->
+<!--                <div class="block-content" style="margin: auto; text-align: center">-->
+<!--                    <p style="text-align: center; margin-top: 4%; font-size:20px">-->
+<!--                        <span class="text-dark wrap">My orders</span>-->
+<!--                    </p>-->
+<!--                    <table class="table">-->
+<!--                        <thead>-->
+<!--                        <tr>-->
+<!--                            <th scope="col">#</th>-->
+<!--                            <th scope="col">First</th>-->
+<!--                            <th scope="col">Last</th>-->
+<!--                            <th scope="col">Handle</th>-->
+<!--                        </tr>-->
+<!--                        </thead>-->
+<!--                        <tbody>-->
+<!--                        <tr>-->
+<!--                            <th scope="row">1</th>-->
+<!--                            <td>Mark</td>-->
+<!--                            <td>Otto</td>-->
+<!--                            <td>@mdo</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th scope="row">2</th>-->
+<!--                            <td>Jacob</td>-->
+<!--                            <td>Thornton</td>-->
+<!--                            <td>@fat</td>-->
+<!--                        </tr>-->
+<!--                        <tr>-->
+<!--                            <th scope="row">3</th>-->
+<!--                            <td>Larry</td>-->
+<!--                            <td>the Bird</td>-->
+<!--                            <td>@twitter</td>-->
+<!--                        </tr>-->
+<!--                        </tbody>-->
+<!--                    </table>-->
+<!--                    <button type="button" class="btn btn-white btn-lg">Make order</button>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+
+    </div>
+
+
 </main>
 
 <section class="" th:replace="fragments/footer::footer"></section>
