@@ -48,15 +48,16 @@ body {
     font-weight: bold;
 }
 
-figure img {
+#linksWithImg figure img {
     width: 300px;
     height: auto;
     -webkit-transition: .3s ease-in-out;
     transition: .3s ease-in-out;
 }
 
-figure:hover img {
+#linksWithImg figure:hover img {
     width: 303px;
+    height: 203px;
 }
 
 #register {
@@ -68,14 +69,6 @@ figure:hover img {
 }
 
 
-/*#footer {*/
-/*    position: absolute;*/
-/*    bottom: 0;*/
-/*    height: 10px;*/
-/*    width: 100%;*/
-/*}*/
-
-
 #signIn {
     position: absolute;
     top: 200px;
@@ -84,15 +77,25 @@ figure:hover img {
     width: 800px;
 }
 
-#recentPosts, #categories, #passions {
+#recentPosts, #linksWithImg, #passions {
     margin: auto;
     width: 80%;
 }
 
-#recentPosts div, #passions div, #categories div {
+#recentPosts div, #passions div, #linksWithImg div {
     margin: auto;
     background-color: LightGray;
     border: none;
+}
+#recentPosts .card-img{
+    width:  290px;
+    height: 200px;
+}
+
+
+#linksWithImg .card-img{
+    width:  290px;
+    height: 200px;
 }
 
 #contacts {

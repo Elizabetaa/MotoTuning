@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+<main>
+    <figure class="figure">
+        <img src="/images/home-atv.jpg" class="figure-img img-fluid rounded" alt="...">
+        <figcaption class="figure-caption">A caption for the above image.</figcaption>
+    </figure>
+    <div class="container-sm" style="border-style: dotted">100% wide until small breakpoint</div>
+    <div class="container-md" style="border-style: dotted">100% wide until medium breakpoint</div>
+    <div class="container-lg" style="border-style: dotted">100% wide until large breakpoint</div>
+    <div class="container-xl" style="border-style: dotted">100% wide until extra large breakpoint</div>
+    <div class="container-xxl" style="border-style: dotted">100% wide until extra extra large breakpoint</div>
+</main>
+
+<section class="" th:replace="fragments/footer::footer"></section>
+
+</body>
+
+</html>

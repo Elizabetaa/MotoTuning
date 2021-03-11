@@ -71,4 +71,9 @@ public class UsersController {
         return modelAndView;
     }
 
+    @GetMapping("/account")
+    public String myAccount(){
+        return "myAccount";
+    }
+
 }
