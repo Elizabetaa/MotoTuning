@@ -58,13 +58,15 @@ public class UsersController {
 
     @PostMapping("/signIn-error")
     public ModelAndView failedLogin(@ModelAttribute("email")
-                                            String email) {
+                                            String email,
+                                    RedirectAttributes attributes) {
+
         ModelAndView modelAndView = new ModelAndView();
 
-        modelAndView.addObject("filed", true);
-        modelAndView.addObject("email", email);
+        attributes.addFlashAttribute("failure", true);
+        attributes.addFlashAttribute("email", email);
 
-        modelAndView.setViewName("/signIn");
+        modelAndView.setViewName("redirect:/users/signIn");
 
         return modelAndView;
     }

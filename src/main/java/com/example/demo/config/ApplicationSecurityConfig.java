@@ -13,8 +13,8 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 @EnableWebSecurity
 public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
-        private final PasswordEncoder passwordEncoder;
-        private final MotoTuningUserService motoTuningUserService;
+    private final PasswordEncoder passwordEncoder;
+    private final MotoTuningUserService motoTuningUserService;
 
     public ApplicationSecurityConfig(PasswordEncoder passwordEncoder, MotoTuningUserService motoTuningUserService) {
         this.passwordEncoder = passwordEncoder;
@@ -43,8 +43,9 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
                 // on login success redirect here
                         defaultSuccessUrl("/home").
-                // on login failure redirect here
+//                // on login failure redirect here
                         failureForwardUrl("/users/signIn-error")
+//                       failureUrl("/users/signIn-error")
                 .and()
                 .logout()
                 .logoutUrl("/signOut")
