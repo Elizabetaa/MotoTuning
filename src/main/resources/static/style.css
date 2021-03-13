@@ -2,6 +2,7 @@
 body {
     background-color: LightGray;
 }
+
 #ulNavBar {
     list-style-type: none;
     overflow: hidden;
@@ -34,6 +35,7 @@ li a:hover {
     color: white;
     text-align: center;
 }
+
 #signOnt:hover {
     border-style: none;
     background-color: #111;
@@ -88,14 +90,15 @@ li a:hover {
     background-color: LightGray;
     border: none;
 }
-#recentPosts .card-img{
-    width:  290px;
+
+#recentPosts .card-img {
+    width: 290px;
     height: 200px;
 }
 
 
-#linksWithImg .card-img{
-    width:  290px;
+#linksWithImg .card-img {
+    width: 290px;
     height: 200px;
 }
 
@@ -123,8 +126,29 @@ li a:hover {
 }
 
 
-.mainContainerMyAccount{
+.mainContainerMyAccount {
     margin: auto;
     width: 100%;
     height: 800px;
 }
+
+#makeOrder {
+    margin-top: 4%;
+    width: 30%;
+    height: 500px;
+    margin-left: 10%;
+}
+
+#makeOrder label {
+    font-weight: 600;
+}
+
+#makeOrderTuning{
+    margin-top: 4%;
+    width: 30%;
+    height: 500px;
+    margin-right: 10%;
+}
+ #makeOrderTuning label {
+     font-weight: 600;
+ }

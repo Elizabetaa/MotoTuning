@@ -1,11 +1,135 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head th:replace="fragments/head::head"></head>
 
+<head th:replace="fragments/head::head"></head>
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
+<h4 style="text-align: center;margin-top: 3%; text-transform: uppercase;font-weight: bold;">Place an order for vehicle
+    service or tuning your vehicle</h4>
 
+<div class="row">
+    <div id="makeOrder">
+        <h3 style="text-align: center;margin-top: 3%;font-weight: 400; text-transform: uppercase;">Place an order for
+            vehicle service</h3>
+        <hr>
+        <form>
+            <div class="row">
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Your email</label>
+                    <br>
+                    <input style="width: 100%;height: 40px " type="email" th:value="'test@mailbox.com'">
+                </div>
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Your phone number</label>
+                    <input style="width: 100%; height: 40px" type="text" th:value="|+359|">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Vehicle</label>
+                    <br>
+                    <select style="width: 100%; height: 40px;">
+                        <option value="">- Select vehicle type -</option>
+                        <option value="Option 1">Motorcycle</option>
+                        <option value="Option 2">ATV</option>
+                        <option value="Option 3">Dirt Bike</option>
+                        <option value="Option 3">UTV</option>
+                    </select>
+                </div>
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Vehicle service type</label>
+                    <select style="width: 100%; height: 40px;">
+                        <option value="">- Select vehicle service type -</option>
+                        <option value="Option 1">Full vehicle service</option>
+                        <option value="Option 2">Change oil</option>
+                        <option value="Option 3">Change tires</option>
+                        <option value="Option 3">...</option>
+                        <option value="Option 3">...</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <div class="label-holder text-dark textCol d-flex justify-content-center">
+                        <label>Model</label>
+                    </div>
+                    <input style="width: 100%; height: 40px" class="full-width" placeholder="Model" type="text">
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 2%">
+                <div class="label-holder text-dark textCol d-flex justify-content-center">
+                    <label>Description</label>
+                </div>
+                <textarea style="width: 100%" placeholder="Description"></textarea>
+            </div>
 
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+            </div>
+
+        </form>
+
+    </div>
+    <hr style="border: none;height: 80vh; width:1px; margin-left: 10%; margin-top:5% ;">
+    <div id="makeOrderTuning">
+        <h3 style="text-align: center;margin-top: 3%;font-weight: 400; text-transform: uppercase;">Place an order for
+            vehicle service</h3>
+        <hr>
+        <form>
+            <div class="row">
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Your email</label>
+                    <br>
+                    <input style="width: 100%;height: 40px " type="email" th:value="'test@mailbox.com'">
+                </div>
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Your phone number</label>
+                    <input style="width: 100%; height: 40px" type="text" th:value="|+359|">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Vehicle</label>
+                    <br>
+                    <select style="width: 100%; height: 40px;">
+                        <option value="">- Select vehicle type -</option>
+                        <option value="Option 1">Motorcycle</option>
+                        <option value="Option 2">ATV</option>
+                        <option value="Option 3">Dirt Bike</option>
+                        <option value="Option 3">UTV</option>
+                    </select>
+                </div>
+                <div class="col-sm-6" style="margin-top: 2%">
+                    <label>Vehicle service type</label>
+                    <select style="width: 100%; height: 40px;">
+                        <option value="">- Select vehicle service type -</option>
+                        <option value="Option 1">Full vehicle service</option>
+                        <option value="Option 2">Change oil</option>
+                        <option value="Option 3">Change tires</option>
+                        <option value="Option 3">...</option>
+                        <option value="Option 3">...</option>
+                    </select>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <div class="label-holder text-dark textCol d-flex justify-content-center">
+                        <label>Model</label>
+                    </div>
+                    <input style="width: 100%; height: 40px" class="full-width" placeholder="Model" type="text">
+                </div>
+            </div>
+            <div class="form-group" style="margin-top: 2%">
+                <div class="label-holder text-dark textCol d-flex justify-content-center">
+                    <label>Description</label>
+                </div>
+                <textarea style="width: 100%" placeholder="Description"></textarea>
+            </div>
+
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+            </div>
+
+        </form>
+
+    </div>
+</div>
 <section class="" th:replace="fragments/footer::footer"></section>
 
 </body>
