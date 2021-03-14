@@ -152,9 +152,9 @@ li a:hover {
     height: 500px;
     margin-right: 10%;
 }
- #makeOrderTuning label {
-     font-weight: 600;
- }
+#makeOrderTuning label {
+    font-weight: 600;
+}
 
 /* */
 #serviceContainer {
@@ -240,4 +240,39 @@ li a:hover {
     line-height: .99;
     margin: 10px 0;
 }
+/**/
 
+.imageContainer {
+    margin-left: 7%;
+
+    position: relative;
+    width: 15%;
+    height: 10%;
+}
+
+.imageContainer .image {
+    opacity: 1;
+    display: block;
+    width: 290px;
+    height: 200px;
+    transition: .5s ease;
+    backface-visibility: hidden;
+}
+
+.mid {
+    opacity: 1;
+    position: absolute;
+    top: 85%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+.imageContainer:hover .image {
+    opacity: 0.3;
+}
+
+.imageContainer:hover .middle {
+    opacity: 0.4;
+}
