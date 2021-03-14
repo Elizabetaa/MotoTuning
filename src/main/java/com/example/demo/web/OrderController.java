@@ -10,6 +10,6 @@ public class OrderController {
 
     @GetMapping("/add")
     public String addOrder(){
-        return "order";
+        return "makeOrder";
     }
 }
