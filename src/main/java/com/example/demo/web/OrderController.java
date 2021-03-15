@@ -12,4 +12,9 @@ public class OrderController {
     public String addOrder(){
         return "makeOrder";
     }
+
+    @GetMapping("/vehicleService")
+    public String vehicleServiceOrder(){
+        return "orderVehicleService";
+    }
 }

@@ -2,6 +2,9 @@
 body {
     /*background-color: LightGray;*/
     background-image: url("/images/background.jpg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: 100% 100%;
 
 }
 
@@ -134,12 +137,34 @@ li a:hover {
     width: 100%;
     height: 800px;
 }
+/*#serviceContainerBG{*/
+/*    background-image: url("https://media.giphy.com/media/xT9IgqjmZ870vakg4E/giphy.gif");*/
+/*    background-repeat: no-repeat;*/
+/*    background-attachment: fixed;*/
+/*    background-size: 100% 100%;*/
+/*}*/
 
 #makeOrder {
     margin-top: 4%;
     width: 30%;
     height: 500px;
-    margin-left: 10%;
+    margin-left: 15%;
+}
+
+#service{
+    border-radius: 0;
+    border-style: none;
+    margin-top: 7%;
+    width: 40%;
+    height: 396px;
+    margin-left: 7%;
+}
+#service p{
+    /*font-weight: bold;*/
+    margin-top: 38%;
+}
+#service .img{
+    opacity: 0.4;
 }
 
 #makeOrder label {
@@ -230,7 +255,7 @@ li a:hover {
 }
 
 .title h1 {
-    position: absolute;
+    margin-top: 3%;
     background-image: url(https://media.giphy.com/media/l1J9E0SXgz6uESSgU/giphy.gif);
     background-size: cover;
     color: transparent;
@@ -238,13 +263,11 @@ li a:hover {
     text-transform: uppercase;
     font-size: 60px;
     line-height: .99;
-    margin: 10px 0;
 }
 /**/
 
 .imageContainer {
     margin-left: 7%;
-
     position: relative;
     width: 15%;
     height: 10%;
