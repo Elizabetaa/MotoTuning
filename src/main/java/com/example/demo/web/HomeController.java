@@ -17,4 +17,23 @@ public class HomeController {
         return "home";
     }
 
+    @GetMapping("/home/motorcycle")
+    public String motorcycle() {
+        return "motorcyclePassion";
+    }
+
+    @GetMapping("/home/utv")
+    public String utv() {
+        return "utvPassion";
+    }
+
+    @GetMapping("/home/dirtBike")
+    public String dirtBike() {
+        return "dirtBikePassion";
+    }
+    @GetMapping("/home/atv")
+    public String atv() {
+        return "atvPassion";
+    }
+
 }

@@ -17,4 +17,9 @@ public class OrderController {
     public String vehicleServiceOrder(){
         return "orderVehicleService";
     }
+
+    @GetMapping("/vehicleTuning")
+    public String vehicleTuningOrder(){
+        return "orderVehicleTuning";
+    }
 }
