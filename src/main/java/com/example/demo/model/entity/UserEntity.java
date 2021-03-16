@@ -1,4 +1,4 @@
-package com.example.demo.model.entiry;
+package com.example.demo.model.entity;
 
 import javax.persistence.*;
 import java.util.List;
@@ -59,7 +59,7 @@ public class UserEntity extends BaseEntity {
     }
 
 
-    @OneToMany(fetch = FetchType.EAGER)
+    @ManyToMany(fetch = FetchType.EAGER)
     public List<RoleEntity> getRoles() {
         return roles;
     }

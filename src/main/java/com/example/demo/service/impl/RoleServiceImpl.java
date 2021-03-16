@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.entiry.RoleEntity;
-import com.example.demo.model.entiry.enums.RoleNameEnum;
+import com.example.demo.model.entity.RoleEntity;
+import com.example.demo.model.entity.enums.RoleNameEnum;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.service.RoleService;
 import org.springframework.stereotype.Service;

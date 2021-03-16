@@ -1,7 +1,7 @@
 package com.example.demo.service.impl;
 
-import com.example.demo.model.entiry.UserEntity;
-import com.example.demo.model.entiry.enums.RoleNameEnum;
+import com.example.demo.model.entity.UserEntity;
+import com.example.demo.model.entity.enums.RoleNameEnum;
 import com.example.demo.model.service.UserRegisterServiceModel;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.RoleService;

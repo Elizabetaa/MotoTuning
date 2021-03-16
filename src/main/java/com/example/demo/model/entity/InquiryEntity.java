@@ -1,14 +1,10 @@
-package com.example.demo.model.entiry;
+package com.example.demo.model.entity;
 
-import com.example.demo.model.entiry.enums.InquiryTypeNameEnum;
-import com.example.demo.model.entiry.enums.ServiceTypeNameEnum;
-import com.example.demo.model.entiry.enums.VehicleTypeNameEnum;
+import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
+import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
+import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import java.util.List;
 
 @Entity
 @Table(name = "inquiries")

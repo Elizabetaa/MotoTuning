@@ -1,6 +1,6 @@
-package com.example.demo.model.entiry;
+package com.example.demo.model.entity;
 
-import com.example.demo.model.entiry.enums.RoleNameEnum;
+import com.example.demo.model.entity.enums.RoleNameEnum;
 
 import javax.persistence.*;
 

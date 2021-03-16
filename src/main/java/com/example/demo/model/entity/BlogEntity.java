@@ -1,43 +1,47 @@
-package com.example.demo.model.entiry;
+package com.example.demo.model.entity;
+
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "news")
-public class NewsEntity extends BaseEntity{
+@Table(name = "blogs")
+public class BlogEntity extends BaseEntity {
     private String title;
     private String imageUrl;
     private String description;
     private UserEntity author;
     private LocalDateTime addedOn;
 
-    public NewsEntity() {
+    public BlogEntity() {
     }
+
     @Column(nullable = false)
     public String getTitle() {
         return title;
     }
 
-    public NewsEntity setTitle(String title) {
+    public BlogEntity setTitle(String title) {
         this.title = title;
         return this;
     }
+
     @Column(nullable = false)
     public String getImageUrl() {
         return imageUrl;
     }
 
-    public NewsEntity setImageUrl(String imageUrl) {
+    public BlogEntity setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
     }
+
     @Column(nullable = false,columnDefinition = "TEXT")
     public String getDescription() {
         return description;
     }
 
-    public NewsEntity setDescription(String description) {
+    public BlogEntity setDescription(String description) {
         this.description = description;
         return this;
     }
@@ -47,7 +51,7 @@ public class NewsEntity extends BaseEntity{
         return author;
     }
 
-    public NewsEntity setAuthor(UserEntity author) {
+    public BlogEntity setAuthor(UserEntity author) {
         this.author = author;
         return this;
     }
@@ -57,7 +61,7 @@ public class NewsEntity extends BaseEntity{
         return addedOn;
     }
 
-    public NewsEntity setAddedOn(LocalDateTime addedOn) {
+    public BlogEntity setAddedOn(LocalDateTime addedOn) {
         this.addedOn = addedOn;
         return this;
     }

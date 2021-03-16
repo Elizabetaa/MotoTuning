@@ -1,4 +1,4 @@
-package com.example.demo.model.entiry.enums;
+package com.example.demo.model.entity.enums;
 
 public enum InquiryTypeNameEnum {
     SERVICE, TUNING

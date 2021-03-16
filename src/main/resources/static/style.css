@@ -9,6 +9,7 @@ body {
 }
 
 #ulNavBar {
+    height: 60px;
     list-style-type: none;
     overflow: hidden;
     background-color: rgb(60, 60, 60);
@@ -25,7 +26,7 @@ body {
     text-align: center;
     padding: 20px;
     text-decoration: none;
-    font-size: 100%;
+    font-size: 80%;
 }
 
 li a:hover {
@@ -35,11 +36,12 @@ li a:hover {
 
 #signOnt {
     width: 80px;
-    height: 65px;
+    height: 59px;
     border-style: none;
     background-color: rgb(60, 60, 60);
     color: white;
     text-align: center;
+    font-size: 80%;
 }
 
 #signOnt:hover {
