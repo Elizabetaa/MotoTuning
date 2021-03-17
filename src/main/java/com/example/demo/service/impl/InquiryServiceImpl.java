@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.binding.InquiryTuningBindingModel;
 import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
@@ -26,6 +27,15 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     public void addInquiryVehicleService(InquiryVehicleServiceServiceModel inquiry) {
         InquiryEntity inquiryEntity = this.modelMapper.map(inquiry, InquiryEntity.class);
+        String authentication = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserEntity byEmail = userService.findByEmail(authentication);
+        inquiryEntity.setAuthor(byEmail);
+        this.inquiryRepository.save(inquiryEntity);
+    }
+
+    @Override
+    public void addInquiryVehicleTuning(InquiryTuningBindingModel map) {
+        InquiryEntity inquiryEntity = this.modelMapper.map(map,InquiryEntity.class);
         String authentication = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity byEmail = userService.findByEmail(authentication);
         inquiryEntity.setAuthor(byEmail);

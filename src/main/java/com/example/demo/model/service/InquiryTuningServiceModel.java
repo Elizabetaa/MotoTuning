@@ -1,16 +1,10 @@
-package com.example.demo.model.binding;
+package com.example.demo.model.service;
 
 import com.example.demo.model.entity.enums.BrandsNameEnum;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
-import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
-
-public class InquiryTuningBindingModel {
+public class InquiryTuningServiceModel {
     private String email;
     private String phoneNumber;
     private InquiryTypeNameEnum inquiry;
@@ -19,27 +13,23 @@ public class InquiryTuningBindingModel {
     private String model;
     private String description;
 
-    public InquiryTuningBindingModel() {
+    public InquiryTuningServiceModel() {
     }
 
-    @NotBlank
-    @Email
     public String getEmail() {
         return email;
     }
 
-    public InquiryTuningBindingModel setEmail(String email) {
+    public InquiryTuningServiceModel setEmail(String email) {
         this.email = email;
         return this;
     }
 
-    @NotBlank
-    @Size(min = 10,max = 10,message = "Invalid phone Number")
     public String getPhoneNumber() {
         return phoneNumber;
     }
 
-    public InquiryTuningBindingModel setPhoneNumber(String phoneNumber) {
+    public InquiryTuningServiceModel setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
         return this;
     }
@@ -48,47 +38,43 @@ public class InquiryTuningBindingModel {
         return inquiry;
     }
 
-    public InquiryTuningBindingModel setInquiry(InquiryTypeNameEnum inquiry) {
+    public InquiryTuningServiceModel setInquiry(InquiryTypeNameEnum inquiry) {
         this.inquiry = inquiry;
         return this;
     }
 
-    @NotNull(message = "Select vehicle type")
     public VehicleTypeNameEnum getVehicle() {
         return vehicle;
     }
 
-    public InquiryTuningBindingModel setVehicle(VehicleTypeNameEnum vehicle) {
+    public InquiryTuningServiceModel setVehicle(VehicleTypeNameEnum vehicle) {
         this.vehicle = vehicle;
         return this;
     }
 
-    @NotNull(message = "Select brand")
     public BrandsNameEnum getBrand() {
         return brand;
     }
 
-    public InquiryTuningBindingModel setBrand(BrandsNameEnum brand) {
+    public InquiryTuningServiceModel setBrand(BrandsNameEnum brand) {
         this.brand = brand;
         return this;
     }
 
-    @NotNull(message = "Model can not be empty")
     public String getModel() {
         return model;
     }
 
-    public InquiryTuningBindingModel setModel(String model) {
+    public InquiryTuningServiceModel setModel(String model) {
         this.model = model;
         return this;
     }
 
-    @NotBlank(message = "You must write tuning details")
     public String getDescription() {
         return description;
     }
 
-    public InquiryTuningBindingModel setDescription(String description) {
+    public InquiryTuningServiceModel setDescription(String description) {
         this.description = description;
         return this;
     }

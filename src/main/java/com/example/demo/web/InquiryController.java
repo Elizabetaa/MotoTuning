@@ -1,5 +1,6 @@
 package com.example.demo.web;
 
+import com.example.demo.model.binding.InquiryTuningBindingModel;
 import com.example.demo.model.binding.InquiryVehicleServiceBindingModel;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
@@ -29,13 +30,13 @@ public class InquiryController {
     }
 
     @GetMapping("/add")
-    public String addOrder(){
+    public String addOrder() {
         return "makeOrder";
     }
 
     @GetMapping("/vehicleService")
-    public String vehicleServiceOrder(Model model){
-        if (!model.containsAttribute("inquiryVehicleServiceBindingModel")){
+    public String vehicleServiceOrder(Model model) {
+        if (!model.containsAttribute("inquiryVehicleServiceBindingModel")) {
             model.addAttribute("inquiryVehicleServiceBindingModel", new InquiryVehicleServiceBindingModel());
         }
         return "orderVehicleService";
@@ -43,9 +44,9 @@ public class InquiryController {
 
     @PostMapping("/vehicleService")
     public String vehicleServiceConfirm(@Valid InquiryVehicleServiceBindingModel inquiryVehicleServiceBindingModel,
-                                        BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if (bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("inquiryVehicleServiceBindingModel",inquiryVehicleServiceBindingModel);
+                                        BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("inquiryVehicleServiceBindingModel", inquiryVehicleServiceBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.inquiryVehicleServiceBindingModel", bindingResult);
 
             return "redirect:vehicleService";
@@ -57,7 +58,25 @@ public class InquiryController {
     }
 
     @GetMapping("/vehicleTuning")
-    public String vehicleTuningOrder(){
+    public String vehicleTuningOrder(Model model) {
+        if (!model.containsAttribute("inquiryTuningBindingModel")) {
+            model.addAttribute("inquiryTuningBindingModel", new InquiryTuningBindingModel());
+        }
         return "orderVehicleTuning";
+    }
+
+    @PostMapping("/vehicleTuning")
+    public String vehicleTuningConfirm(@Valid InquiryTuningBindingModel inquiryTuningBindingModel,
+                                       BindingResult bindingResult,
+                                       RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("inquiryTuningBindingModel", inquiryTuningBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.inquiryTuningBindingModel", bindingResult);
+
+            return "redirect:vehicleTuning";
+        }
+        inquiryTuningBindingModel.setInquiry(InquiryTypeNameEnum.TUNING);
+        inquiryService.addInquiryVehicleTuning(this.modelMapper.map(inquiryTuningBindingModel,InquiryTuningBindingModel.class));
+        return "redirect:/users/account";
     }
 }
