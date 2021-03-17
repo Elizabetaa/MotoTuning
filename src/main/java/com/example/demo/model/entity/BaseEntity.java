@@ -3,7 +3,7 @@ package com.example.demo.model.entity;
 import javax.persistence.*;
 
 @MappedSuperclass
-public class BaseEntity {
+public abstract class BaseEntity {
     private Long id;
 
     @Id

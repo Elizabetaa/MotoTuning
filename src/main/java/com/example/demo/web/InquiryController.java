@@ -1,6 +1,7 @@
 package com.example.demo.web;
 
 import com.example.demo.model.binding.InquiryVehicleServiceBindingModel;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -14,6 +15,11 @@ import javax.validation.Valid;
 @Controller
 @RequestMapping("/inquiries")
 public class InquiryController {
+    private final ModelMapper modelMapper;
+
+    public InquiryController(ModelMapper modelMapper) {
+        this.modelMapper = modelMapper;
+    }
 
     @GetMapping("/add")
     public String addOrder(){
@@ -37,6 +43,7 @@ public class InquiryController {
 
             return "redirect:vehicleService";
         }
+
 
         return "redirect:/users/account";
     }
