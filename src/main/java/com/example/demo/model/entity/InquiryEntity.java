@@ -35,7 +35,7 @@ public class InquiryEntity extends BaseEntity{
     }
 
 
-    @Column(name = "email",nullable = false,unique = true)
+    @Column(name = "email",nullable = false)
     public String getEmail() {
         return email;
     }

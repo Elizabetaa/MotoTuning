@@ -1,5 +1,6 @@
 package com.example.demo.model.binding;
 
+import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
 
@@ -11,6 +12,7 @@ import javax.validation.constraints.Size;
 public class InquiryVehicleServiceBindingModel {
     private String email;
     private String phoneNumber;
+    private InquiryTypeNameEnum inquiry;
     private VehicleTypeNameEnum vehicle;
     private ServiceTypeNameEnum vehicleService;
     private String model;
@@ -74,6 +76,14 @@ public class InquiryVehicleServiceBindingModel {
         return this;
     }
 
+    public InquiryTypeNameEnum getInquiry() {
+        return inquiry;
+    }
+
+    public InquiryVehicleServiceBindingModel setInquiry(InquiryTypeNameEnum inquiry) {
+        this.inquiry = inquiry;
+        return this;
+    }
 
     public String getDescription() {
         return description;

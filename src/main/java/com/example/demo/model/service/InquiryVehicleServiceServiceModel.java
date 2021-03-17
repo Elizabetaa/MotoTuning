@@ -1,11 +1,13 @@
 package com.example.demo.model.service;
 
+import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
 
 public class InquiryVehicleServiceServiceModel {
     private String email;
     private String phoneNumber;
+    private InquiryTypeNameEnum inquiry;
     private VehicleTypeNameEnum vehicle;
     private ServiceTypeNameEnum vehicleService;
     private String model;
@@ -25,6 +27,15 @@ public class InquiryVehicleServiceServiceModel {
 
     public String getPhoneNumber() {
         return phoneNumber;
+    }
+
+    public InquiryTypeNameEnum getInquiry() {
+        return inquiry;
+    }
+
+    public InquiryVehicleServiceServiceModel setInquiry(InquiryTypeNameEnum inquiry) {
+        this.inquiry = inquiry;
+        return this;
     }
 
     public InquiryVehicleServiceServiceModel setPhoneNumber(String phoneNumber) {

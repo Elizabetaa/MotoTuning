@@ -26,19 +26,7 @@ public class UserServiceImpl implements UserService {
         this.passwordEncoder = passwordEncoder;
     }
 
-    @Override
-    public void initUsers() {
-        if (userRepository.count() == 0) {
-            UserEntity userEntity = new UserEntity()
-                    .setEmail("elizabeta@abv.bg")
-                    .setFirstName("Elizabeta")
-                    .setLastName("Koleva")
-                    .setPassword("123456")
-                    .setRoles(List.of(this.roleService.findByName(RoleNameEnum.ADMIN), this.roleService.findByName(RoleNameEnum.USER)));
-            userRepository.save(userEntity);
-        }
 
-    }
 
     @Override
     public void register(UserRegisterServiceModel map) {
@@ -47,6 +35,12 @@ public class UserServiceImpl implements UserService {
                 .setPassword(this.passwordEncoder.encode(map.getPassword()));
 
         this.userRepository.save(user);
+    }
+
+    @Override
+    public UserEntity findByEmail(String authentication) {
+
+        return this.userRepository.findByEmail(authentication).orElse(null);
     }
 
 

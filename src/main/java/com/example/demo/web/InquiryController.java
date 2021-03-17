@@ -1,6 +1,9 @@
 package com.example.demo.web;
 
 import com.example.demo.model.binding.InquiryVehicleServiceBindingModel;
+import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
+import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
+import com.example.demo.service.InquiryService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,14 +14,18 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/inquiries")
 public class InquiryController {
     private final ModelMapper modelMapper;
+    private final InquiryService inquiryService;
 
-    public InquiryController(ModelMapper modelMapper) {
+
+    public InquiryController(ModelMapper modelMapper, InquiryService inquiryService) {
         this.modelMapper = modelMapper;
+        this.inquiryService = inquiryService;
     }
 
     @GetMapping("/add")
@@ -43,7 +50,8 @@ public class InquiryController {
 
             return "redirect:vehicleService";
         }
-
+        inquiryVehicleServiceBindingModel.setInquiry(InquiryTypeNameEnum.SERVICE);
+        inquiryService.addInquiryVehicleService(this.modelMapper.map(inquiryVehicleServiceBindingModel, InquiryVehicleServiceServiceModel.class));
 
         return "redirect:/users/account";
     }
