@@ -27,13 +27,13 @@
                     <input style="width: 100%;height: 40px " th:field="*{email}" type="email"  name="email" id="email" placeholder="demo@abv.bg">
                 </div>
                 <div class="col-sm-6" style="margin-top: 2%">
-                    <label>Your phone number</label>
-                    <input style="width: 100%; height: 40px"th:field="*{phoneNumber}" type="text" placeholder="+359 00 0000000">
+                    <label for="phoneNumber">Your phone number</label>
+                    <input style="width: 100%; height: 40px" th:field="*{phoneNumber}" name="phoneNumber" id="phoneNumber" type="text" placeholder="+359 00 0000000">
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6" style="margin-top: 2%">
-                    <label>Vehicle</label>
+                    <label for="vehicle">Vehicle</label>
                     <br>
                     <select style="width: 100%; height: 40px;" id="vehicle" name="vehicle">
                         <option value="">- Select vehicle type -</option>
@@ -42,8 +42,8 @@
                     </select>
                 </div>
                 <div class="col-sm-6" style="margin-top: 2%">
-                    <label>Vehicle service type</label>
-                    <select style="width: 100%; height: 40px;"id="vehicleService" name="vehicleService" >
+                    <label for="vehicleService">Vehicle service type</label>
+                    <select style="width: 100%; height: 40px;" id="vehicleService" name="vehicleService" >
                         <option value="">- Select vehicle service type -</option>
                         <option th:each="s : ${T(com.example.demo.model.entity.enums.ServiceTypeNameEnum).values()}"
                         th:value="${s}" th:text="${s}"></option>
@@ -51,16 +51,26 @@
                 </div>
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
-                        <label>Model</label>
+                        <label for="brand">Brand</label>
                     </div>
-                    <input style="width: 100%; height: 40px" th:field="*{model}" class="full-width" placeholder="Model" type="text">
+                    <select style="width: 100%; height: 40px;" id="brand" name="brand" >
+                        <option value="">- Select Brand -</option>
+                        <option th:each="b : ${T(com.example.demo.model.entity.enums.BrandsNameEnum).values()}"
+                                th:value="${b}" th:text="${b}"></option>
+                    </select>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <div class="label-holder text-dark textCol d-flex justify-content-center">
+                        <label for="model">Model</label>
+                    </div>
+                    <input style="width: 100%; height: 40px" th:field="*{model}" name="model" id="model" class="full-width" placeholder="Model" type="text">
                 </div>
             </div>
             <div class="form-group" style="margin-top: 2%">
                 <div class="label-holder text-dark textCol d-flex justify-content-center">
-                    <label>Description</label>
+                    <label for="description">Description</label>
                 </div>
-                <textarea th:field="*{description}" style="width: 100%" placeholder="Description"></textarea>
+                <textarea th:field="*{description}" name="description" id="description" style="width: 100%" placeholder="Description"></textarea>
             </div>
 
             <div class="button-holder d-flex justify-content-center">

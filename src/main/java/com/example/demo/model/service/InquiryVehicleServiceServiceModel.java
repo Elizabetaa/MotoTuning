@@ -1,5 +1,6 @@
 package com.example.demo.model.service;
 
+import com.example.demo.model.entity.enums.BrandsNameEnum;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
@@ -10,6 +11,7 @@ public class InquiryVehicleServiceServiceModel {
     private InquiryTypeNameEnum inquiry;
     private VehicleTypeNameEnum vehicle;
     private ServiceTypeNameEnum vehicleService;
+    private BrandsNameEnum brand;
     private String model;
     private String description;
 
@@ -58,6 +60,15 @@ public class InquiryVehicleServiceServiceModel {
 
     public InquiryVehicleServiceServiceModel setVehicleService(ServiceTypeNameEnum vehicleService) {
         this.vehicleService = vehicleService;
+        return this;
+    }
+
+    public BrandsNameEnum getBrand() {
+        return brand;
+    }
+
+    public InquiryVehicleServiceServiceModel setBrand(BrandsNameEnum brand) {
+        this.brand = brand;
         return this;
     }
 
