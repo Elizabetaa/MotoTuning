@@ -12,7 +12,7 @@
     </div>
     <hr class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
 
-    <div style="margin: 4%">
+    <div style="margin: 4%" th:each="s : ${service}" th:object="${s}">
         <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
             <div class="card-footer"
                  style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;">
@@ -20,65 +20,35 @@
             </div>
             <ul class="list-group list-group-flush" style="margin-left: 2%;">
                 <br>
-                <p>Email: elizabeta@ebv.bg</p>
-                <p>Vehicle type: motorcycle</p>
-                <p>Model: motorcycle</p>
+                <p th:text="|Email: *{email}|">Email: elizabeta@ebv.bg</p>
+                <p th:text="|Vehicle type: *{vehicle}|">Vehicle type: motorcycle</p>
+                <p th:text="|Model: *{model}|">Model: motorcycle</p>
             </ul>
             <a class="link-details" href="/inquiries/details">Details </a>
         </div>
     </div>
-    <div style="margin: 4%">
-        <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
-            <div class="card-footer"
-                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;">
-                Inquiry
-            </div>
-            <ul class="list-group list-group-flush" style="margin-left: 2%;">
-                <br>
-                <p>Email: elizabeta@ebv.bg</p>
-                <p>Vehicle type: motorcycle</p>
-                <p>Model: motorcycle</p>
-            </ul>
-            <button class="btn-details" type="submit" value="Submit">Details
-            </button>
-        </div>
-    </div>
+
     <div class="col-12" style="text-align: center">
         <h2 class="tm-block-title d-inline-block">Vehicle Tuning</h2>
     </div>
     <hr class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
-    <div style="margin: 4%">
+
+    <div style="margin: 4%" th:each="t : ${tuning}" th:object="${t}">
         <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
             <div class="card-footer"
-                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;">
                 Inquiry
             </div>
             <ul class="list-group list-group-flush" style="margin-left: 2%;">
                 <br>
-                <p>Email: elizabeta@ebv.bg</p>
-                <p>Vehicle type: motorcycle</p>
-                <p>Model: motorcycle</p>
+                <p th:text="|Email: *{email}|">Email: elizabeta@ebv.bg</p>
+                <p th:text="|Vehicle type: *{vehicle}|">Vehicle type: motorcycle</p>
+                <p th:text="|Model: *{model}|">Model: motorcycle</p>
             </ul>
-            <button class="btn-details" type="submit" value="Submit">Details
-            </button>
+            <a class="link-details" href="/inquiries/details">Details </a>
         </div>
     </div>
-    <div style="margin: 4%">
-        <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
-            <div class="card-footer"
-                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;">
-                Inquiry
-            </div>
-            <ul class="list-group list-group-flush" style="margin-left: 2%;">
-                <br>
-                <p>Email: elizabeta@ebv.bg</p>
-                <p>Vehicle type: motorcycle</p>
-                <p>Model: motorcycle</p>
-            </ul>
-            <button class="btn-details" type="submit" value="Submit">Details
-            </button>
-        </div>
-    </div>
+
 </div>
 
 

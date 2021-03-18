@@ -117,7 +117,7 @@ public class InquiryEntity extends BaseEntity{
         return this;
     }
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.EAGER)
     public UserEntity getAuthor() {
         return author;
     }
