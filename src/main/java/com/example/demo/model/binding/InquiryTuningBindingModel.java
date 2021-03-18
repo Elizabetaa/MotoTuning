@@ -73,7 +73,7 @@ public class InquiryTuningBindingModel {
         return this;
     }
 
-    @NotNull(message = "Model can not be empty")
+    @NotBlank(message = "Model can not be empty")
     public String getModel() {
         return model;
     }

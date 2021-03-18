@@ -139,6 +139,7 @@ li a:hover {
     width: 100%;
     height: 800px;
 }
+
 /*#serviceContainerBG{*/
 /*    background-image: url("https://media.giphy.com/media/xT9IgqjmZ870vakg4E/giphy.gif");*/
 /*    background-repeat: no-repeat;*/
@@ -153,7 +154,7 @@ li a:hover {
     margin-left: 15%;
 }
 
-#service{
+#service {
     border-radius: 0;
     border-style: none;
     margin-top: 7%;
@@ -161,11 +162,13 @@ li a:hover {
     height: 396px;
     margin-left: 7%;
 }
-#service p{
+
+#service p {
     /*font-weight: bold;*/
     margin-top: 38%;
 }
-#service .img{
+
+#service .img {
     opacity: 0.4;
 }
 
@@ -173,12 +176,13 @@ li a:hover {
     font-weight: 600;
 }
 
-#makeOrderTuning{
+#makeOrderTuning {
     margin-top: 4%;
     width: 20%;
     height: 500px;
     margin-right: 10%;
 }
+
 #makeOrderTuning label {
     font-weight: 600;
 }
@@ -216,6 +220,7 @@ li a:hover {
 #serviceContainer:hover .middle {
     opacity: 1;
 }
+
 #tuningContainer {
     margin-top: 5%;
     position: relative;
@@ -230,7 +235,6 @@ li a:hover {
     transition: .5s ease;
     backface-visibility: hidden;
 }
-
 
 
 #tuningContainer:hover .image {
@@ -266,6 +270,7 @@ li a:hover {
     font-size: 60px;
     line-height: .99;
 }
+
 /**/
 
 .imageContainer {
@@ -302,3 +307,23 @@ li a:hover {
     opacity: 0.4;
 }
 
+.link-details:hover {
+    box-shadow: 0 12px 16px 0 rgba(0, 0, 0, 0.24), 0 17px 50px 0 rgba(0, 0, 0, 0.19);
+    font-size: 22px;
+}
+
+.link-details {
+    border: none;
+    background-color: Gainsboro;
+    color: darkslateblue;
+    height: 40px;
+    font-size: 20px;
+    text-align: center;
+    /*display: block;*/
+    /*color: darkslateblue;*/
+    /*text-align: center;*/
+    /*height: 40px;*/
+    /*text-decoration: none;*/
+    /*font-size: 20%;*/
+    /*font-weight: bold;*/
+}

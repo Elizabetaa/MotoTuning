@@ -4,32 +4,79 @@
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
-<div style="border-style: ridge; width: 80%;margin-top: 5%;margin-left: 10%; background-color: white">
-    <div>
-        <div class="card" style="width: 40rem; margin-left: 3%;margin-top: 3%;margin-bottom: 3%">
-            <ul class="list-group list-group-flush" style="margin-left: 2%">
-                <div class="card-footer" style="text-align: center">
-                    Inquiry
-                </div>
+
+<div style="border-style: ridge; width: 80%;margin-top: 5%;margin-left: 10%; background-color: white" class="row">
+
+    <div class="col-12" style="margin-top: 3%;text-align: center">
+        <h2 class="tm-block-title d-inline-block">Vehicle Service</h2>
+    </div>
+    <hr class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+
+    <div style="margin: 4%">
+        <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
+            <div class="card-footer"
+                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;">
+                Inquiry
+            </div>
+            <ul class="list-group list-group-flush" style="margin-left: 2%;">
                 <br>
                 <p>Email: elizabeta@ebv.bg</p>
-                <p>Phone Number: 012 12345678</p>
-                <p>Inquiry type: tuning</p>
                 <p>Vehicle type: motorcycle</p>
                 <p>Model: motorcycle</p>
-                <p>Vehicle type: motorcycle</p>
-                <p>Vehicle service type: none</p>
-                <p>Description: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo sem, ultricies ac
-                    lacus nec, aliquam porta tortor. Praesent interdum posuere rutrum. Aenean tempor mattis tristique.
-                    Mauris iaculis auctor nulla, in finibus massa feugiat rhoncus. Ut lacinia pellentesque libero ut
-                    vehicula. Nulla nec laoreet augue. Nullam sit amet suscipit erat. Cras quis justo id orci elementum
-                    pretium. Fusce in metus convallis, pharetra felis blandit, dignissim justo. Nam pharetra ut felis
-                    nec finibus. Curabitur dapibus lorem nec molestie lobortis. Fusce dolor tortor, iaculis eu
-                    consectetur eget, rutrum id lacus. Aliquam ut vehicula dolor, non scelerisque odio. Nunc scelerisque
-                    pharetra pulvinar. Fusce eu ex quam.</p>
-
             </ul>
-
+            <a class="link-details" href="/inquiries/details">Details </a>
+        </div>
+    </div>
+    <div style="margin: 4%">
+        <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
+            <div class="card-footer"
+                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                Inquiry
+            </div>
+            <ul class="list-group list-group-flush" style="margin-left: 2%;">
+                <br>
+                <p>Email: elizabeta@ebv.bg</p>
+                <p>Vehicle type: motorcycle</p>
+                <p>Model: motorcycle</p>
+            </ul>
+            <button class="btn-details" type="submit" value="Submit">Details
+            </button>
+        </div>
+    </div>
+    <div class="col-12" style="text-align: center">
+        <h2 class="tm-block-title d-inline-block">Vehicle Tuning</h2>
+    </div>
+    <hr class="col-xl-8 col-lg-10 col-md-12 col-sm-12">
+    <div style="margin: 4%">
+        <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
+            <div class="card-footer"
+                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                Inquiry
+            </div>
+            <ul class="list-group list-group-flush" style="margin-left: 2%;">
+                <br>
+                <p>Email: elizabeta@ebv.bg</p>
+                <p>Vehicle type: motorcycle</p>
+                <p>Model: motorcycle</p>
+            </ul>
+            <button class="btn-details" type="submit" value="Submit">Details
+            </button>
+        </div>
+    </div>
+    <div style="margin: 4%">
+        <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
+            <div class="card-footer"
+                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;">
+                Inquiry
+            </div>
+            <ul class="list-group list-group-flush" style="margin-left: 2%;">
+                <br>
+                <p>Email: elizabeta@ebv.bg</p>
+                <p>Vehicle type: motorcycle</p>
+                <p>Model: motorcycle</p>
+            </ul>
+            <button class="btn-details" type="submit" value="Submit">Details
+            </button>
         </div>
     </div>
 </div>
@@ -40,7 +87,7 @@
         <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="margin: auto">
             <div class="tm-block " style="margin-left: 2%">
                 <div class="row">
-                    <div class="col-12" style="text-align: center">
+                    <div class="col-12" style="margin-top: 3%;text-align: center">
                         <h2 class="tm-block-title d-inline-block">Add new role to user</h2>
                     </div>
                 </div>
@@ -89,7 +136,7 @@
         <div class="col-xl-8 col-lg-10 col-md-12 col-sm-12" style="margin: auto">
             <div class="tm-block " style="margin-left: 2%">
                 <div class="row">
-                    <div class="col-12" style="text-align: center">
+                    <div class="col-12" style="margin-top: 3%;text-align: center">
                         <h2 class="tm-block-title d-inline-block">Add news</h2>
                     </div>
                 </div>
@@ -111,7 +158,7 @@
                         </div>
                         <div class="button-holder d-flex justify-content-center"
                              style="margin-bottom: 3%;margin-top: 3%">
-                            <button type="submit" class="btn btn-dark btn-block" value="Sign in">Sign in</button>
+                            <button type="submit" class="btn btn-dark btn-block" value="Submit">Submit</button>
                         </div>
                     </form>
                     <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">

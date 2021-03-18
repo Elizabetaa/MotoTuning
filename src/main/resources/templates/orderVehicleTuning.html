@@ -58,7 +58,7 @@
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
                         <label for="model">Model</label>
                     </div>
-                    <input style="width: 100%; height: 40px" th:field="*{model}" name="model" id="model" th:errorclass=" border-danger"  class="full-width" placeholder="Model" type="text">
+                    <input style="width: 100%; height: 40px" th:field="*{model}" th:errorclass=" border-danger" name="model" id="model" class="full-width" placeholder="Model" type="text">
                     <small  th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></small>
                 </div>
             </div>

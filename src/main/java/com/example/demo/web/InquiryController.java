@@ -79,4 +79,10 @@ public class InquiryController {
         inquiryService.addInquiryVehicleTuning(this.modelMapper.map(inquiryTuningBindingModel,InquiryTuningBindingModel.class));
         return "redirect:/users/account";
     }
+
+
+    @GetMapping("/details")
+    public String details(){
+        return "inquiryDetails";
+    }
 }
