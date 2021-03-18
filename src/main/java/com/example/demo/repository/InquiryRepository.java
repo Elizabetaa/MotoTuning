@@ -10,5 +10,5 @@ import java.util.Optional;
 
 @RequestMapping
 public interface InquiryRepository extends JpaRepository<InquiryEntity, Long> {
-    Optional<List<InquiryEntity>> findByInquiry(InquiryTypeNameEnum inquiry);
+    Optional<List<InquiryEntity>> findByInquiryAndResponse(InquiryTypeNameEnum inquiry, String response);
 }

@@ -1,9 +1,11 @@
 package com.example.demo.web;
 
+import com.example.demo.model.binding.AddResponseBindingModel;
 import com.example.demo.model.binding.InquiryTuningBindingModel;
 import com.example.demo.model.binding.InquiryVehicleServiceBindingModel;
 import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
+import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import com.example.demo.service.InquiryService;
 import org.modelmapper.ModelMapper;
@@ -84,9 +86,24 @@ public class InquiryController {
 
 
     @GetMapping("/details/{id}")
-    public String details(@PathVariable Long id, Model model){
+    public String details(Model model, @PathVariable Long id){
+        if (!model.containsAttribute("addResponseBindingModel")){
+            model.addAttribute("addResponseBindingModel", new AddResponseBindingModel());
+        }
         //TODO must have inquiry view
         model.addAttribute("inquiryEntity",this.inquiryService.findById(id));
         return "inquiryDetails";
+    }
+
+    @PostMapping("/details/{id}")
+    public String addResponse(@Valid AddResponseBindingModel addResponseBindingModel,BindingResult bindingResult, RedirectAttributes redirectAttributes, @PathVariable Long id){
+        //TODO must have inquiry view
+        if (bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("addResponseBindingModel",addResponseBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addResponseBindingModel",bindingResult);
+            return "redirect:{id}";
+        }
+        this.inquiryService.addRequest(this.modelMapper.map(addResponseBindingModel, AddResponseServiceModel.class));
+        return "redirect:/admin/actions";
     }
 }

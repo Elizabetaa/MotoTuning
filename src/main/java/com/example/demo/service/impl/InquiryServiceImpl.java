@@ -4,6 +4,7 @@ import com.example.demo.model.binding.InquiryTuningBindingModel;
 import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
+import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import com.example.demo.repository.InquiryRepository;
 import com.example.demo.service.InquiryService;
@@ -49,18 +50,25 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     public List<InquiryEntity> findAllInquiriesForService() {
         //TODO make InquiryServiceViewModel
-        return this.inquiryRepository.findByInquiry(InquiryTypeNameEnum.SERVICE).orElse(null);
+        return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).orElse(null);
     }
 
     @Override
     public List<InquiryEntity> findAllInquiriesForTuning() {
         //TODO make InquiryServiceViewModel
-        return this.inquiryRepository.findByInquiry(InquiryTypeNameEnum.TUNING).orElse(null);
+        return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.TUNING,null).orElse(null);
     }
 
     @Override
     public InquiryEntity findById(Long id) {
         return this.inquiryRepository.findById(id).orElse(null);
+    }
+
+    @Override
+    public void addRequest(AddResponseServiceModel map) {
+        InquiryEntity inquiryEntity = this.inquiryRepository.findById(map.getId()).orElse(null);
+        inquiryEntity.setResponse(map.getResponse());
+        this.inquiryRepository.save(inquiryEntity);
     }
 
 
