@@ -5,21 +5,20 @@
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 <div style="margin: 4%">
-    <div class="card" style="width: 45rem;border-top-left-radius: 10px;border-top-right-radius: 10px;margin: auto">
+    <div class="card" style="width: 45rem;border-top-left-radius: 10px;border-top-right-radius: 10px;margin: auto" th:object="${inquiryEntity}">
         <div class="card-footer"
              style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;">
             Inquiry
         </div>
         <ul class="list-group list-group-flush" style="margin-left: 2%">
             <br>
-            <p> <b>Email: </b> elizabeta@ebv.bg</p>
-            <p> <b>Phone Number: </b> 012 12345678</p>
-            <p> <b>Inquiry type: </b> tuning</p>
-            <p> <b>Vehicle type: </b> motorcycle</p>
-            <p> <b>Model: </b> motorcycle</p>
-            <p> <b>Vehicle type: </b> motorcycle</p>
-            <p> <b>Vehicle service type:</b> none</p>
-            <p> <b>Description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo sem, ultricies ac
+            <p th:text="|Email: *{email}|"> <b>Email: </b> elizabeta@ebv.bg</p>
+            <p th:text="|Phone Number: *{phoneNumber}|"> <b>Phone Number: </b> 012 12345678</p>
+            <p th:text="|Inquiry type: *{inquiry}|" > <b>Inquiry type: </b> tuning</p>
+            <p th:text="|Vehicle type: *{vehicle}|" > <b>Vehicle type: </b> motorcycle</p>
+            <p th:text="|Model: *{model}|" > <b>Model: </b> motorcycle</p>
+            <p th:text="|Vehicle service type: *{service}|" > <b>Vehicle service type:</b> none</p>
+            <p th:text="|Description: *{description}|" > <b>Description: </b>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo sem, ultricies ac
                 lacus nec, aliquam porta tortor. Praesent interdum posuere rutrum. Aenean tempor mattis tristique.
                 Mauris iaculis auctor nulla, in finibus massa feugiat rhoncus. Ut lacinia pellentesque libero ut
                 vehicula. Nulla nec laoreet augue. Nullam sit amet suscipit erat. Cras quis justo id orci elementum

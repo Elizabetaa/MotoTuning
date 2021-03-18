@@ -14,4 +14,6 @@ public interface InquiryService {
     List<InquiryEntity> findAllInquiriesForService();
 
     List<InquiryEntity> findAllInquiriesForTuning();
+
+    InquiryEntity findById(Long id);
 }

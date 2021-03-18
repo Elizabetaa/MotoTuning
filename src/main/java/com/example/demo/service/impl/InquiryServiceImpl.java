@@ -58,5 +58,10 @@ public class InquiryServiceImpl implements InquiryService {
         return this.inquiryRepository.findByInquiry(InquiryTypeNameEnum.TUNING).orElse(null);
     }
 
+    @Override
+    public InquiryEntity findById(Long id) {
+        return this.inquiryRepository.findById(id).orElse(null);
+    }
+
 
 }

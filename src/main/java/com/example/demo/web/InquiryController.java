@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 import com.example.demo.model.binding.InquiryTuningBindingModel;
 import com.example.demo.model.binding.InquiryVehicleServiceBindingModel;
+import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import com.example.demo.service.InquiryService;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -81,8 +83,10 @@ public class InquiryController {
     }
 
 
-    @GetMapping("/details")
-    public String details(){
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable Long id, Model model){
+        //TODO must have inquiry view
+        model.addAttribute("inquiryEntity",this.inquiryService.findById(id));
         return "inquiryDetails";
     }
 }
