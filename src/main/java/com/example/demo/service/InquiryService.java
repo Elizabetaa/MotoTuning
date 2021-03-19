@@ -8,9 +8,9 @@ import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import java.util.List;
 
 public interface InquiryService {
-    void addInquiryVehicleService(InquiryVehicleServiceServiceModel map);
+    List<InquiryEntity> addInquiryVehicleService(InquiryVehicleServiceServiceModel map);
 
-    void addInquiryVehicleTuning(InquiryTuningBindingModel map);
+    List<InquiryEntity> addInquiryVehicleTuning(InquiryTuningBindingModel map);
 
     List<InquiryEntity> findAllInquiriesForService();
 
