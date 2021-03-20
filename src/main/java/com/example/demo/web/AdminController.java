@@ -1,6 +1,7 @@
 package com.example.demo.web;
 
 import com.example.demo.model.entity.InquiryEntity;
+import com.example.demo.model.view.InquiryViewModel;
 import com.example.demo.service.InquiryService;
 import com.example.demo.service.impl.InquiryServiceImpl;
 import org.springframework.stereotype.Controller;
@@ -24,8 +25,17 @@ public class AdminController {
 
     @GetMapping("/actions")
     public String adminActions(Model model){
-        model.addAttribute("service", inquiryService.findAllInquiriesForService());
-        model.addAttribute("tuning", inquiryService.findAllInquiriesForTuning());
+
+        List<InquiryViewModel> allInquiriesForService = inquiryService.findAllInquiriesForService();
+        model.addAttribute("service", allInquiriesForService);
+        if (allInquiriesForService.size()==0){
+            model.addAttribute("emptyServiceInquiries",true);
+        }
+        List<InquiryViewModel> allInquiriesForTuning = inquiryService.findAllInquiriesForTuning();
+        model.addAttribute("tuning", allInquiriesForTuning);
+        if (allInquiriesForTuning.size()==0){
+            model.addAttribute("emptyTuningInquiries",true);
+        }
         return "adminActions";
     }
 

@@ -90,14 +90,13 @@ public class InquiryController {
         if (!model.containsAttribute("addResponseBindingModel")){
             model.addAttribute("addResponseBindingModel", new AddResponseBindingModel());
         }
-        //TODO must have inquiry view
         model.addAttribute("inquiryEntity",this.inquiryService.findById(id));
         return "inquiryDetails";
     }
 
     @PostMapping("/details/{id}")
     public String addResponse(@Valid AddResponseBindingModel addResponseBindingModel,BindingResult bindingResult, RedirectAttributes redirectAttributes, @PathVariable Long id){
-        //TODO must have inquiry view
+
         if (bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("addResponseBindingModel",addResponseBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addResponseBindingModel",bindingResult);

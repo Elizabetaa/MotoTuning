@@ -27,6 +27,10 @@
             <a class="link-details" th:href="@{/inquiries/details/{id}(id = *{id})}">Details</a>
         </div>
     </div>
+    <div th:if="${emptyServiceInquiries}" style="margin: auto; width: 50%;text-align: center; border-style: double;
+    background-color: Gainsboro;border-radius: 15px;border-color: white; margin-bottom: 3%;margin-top: 3%">
+        <br><h4>Don't have inquiries for vehicle service</h4><br>
+    </div>
 
     <div class="col-12" style="text-align: center">
         <h2 class="tm-block-title d-inline-block">Vehicle Tuning</h2>

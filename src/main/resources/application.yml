@@ -12,3 +12,12 @@ spring:
         properties:
             hibernate:
                 format_sql: true
+    servlet:
+        multipart:
+            max-file-size: 10MB
+            max-request-size: 10MB
+
+cloudinary:
+    cloud-name: elizabetak
+    api-key: 561528376342884
+    api-secret: "${CLOUDINARY_SECRET}"

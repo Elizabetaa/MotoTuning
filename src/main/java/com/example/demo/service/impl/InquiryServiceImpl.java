@@ -6,6 +6,8 @@ import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
+import com.example.demo.model.view.InquiryDetailsViewModel;
+import com.example.demo.model.view.InquiryViewModel;
 import com.example.demo.repository.InquiryRepository;
 import com.example.demo.service.InquiryService;
 import com.example.demo.service.UserService;
@@ -16,6 +18,7 @@ import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -56,25 +59,36 @@ public class InquiryServiceImpl implements InquiryService {
 
     @Override
     @Cacheable("inquiriesService")
-    public List<InquiryEntity> findAllInquiriesForService() {
+    public List <InquiryViewModel> findAllInquiriesForService() {
         //TODO make InquiryServiceViewModel
-
-        return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).orElse(null);
+        List<InquiryViewModel> inquiryViewModels = new ArrayList<>();
+        this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).get()
+                .forEach(i -> {
+                    InquiryViewModel inquiry = this.modelMapper.map(i, InquiryViewModel.class);
+                    inquiryViewModels.add(inquiry);
+                });
+        return inquiryViewModels;
     }
 
     @Override
     @Cacheable("inquiriesTuning")
-    public List<InquiryEntity> findAllInquiriesForTuning() {
-        //TODO make InquiryServiceViewModel
-        return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.TUNING,null).orElse(null);
+    public List<InquiryViewModel> findAllInquiriesForTuning() {
+        List<InquiryViewModel> inquiryViewModels = new ArrayList<>();
+        this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.TUNING,null).get()
+                .forEach(i -> {
+                    InquiryViewModel inquiry = this.modelMapper.map(i, InquiryViewModel.class);
+                    inquiryViewModels.add(inquiry);
+                });
+        return inquiryViewModels;
     }
 
     @Override
-    public InquiryEntity findById(Long id) {
-        return this.inquiryRepository.findById(id).orElse(null);
+    public InquiryDetailsViewModel findById(Long id) {
+       return this.modelMapper.map(this.inquiryRepository.findById(id).get(), InquiryDetailsViewModel.class);
     }
 
     @Override
+    @CacheEvict(value = "inquiriesService", allEntries = true)
     public void addRequest(AddResponseServiceModel map) {
         InquiryEntity inquiryEntity = this.inquiryRepository.findById(map.getId()).orElse(null);
         inquiryEntity.setResponse(map.getResponse());

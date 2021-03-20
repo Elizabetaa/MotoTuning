@@ -11,10 +11,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
 
 @Controller
 @RequestMapping("/users")
@@ -28,8 +30,8 @@ public class UsersController {
     }
 
     @GetMapping("/register")
-    public String register (Model model){
-        if (!model.containsAttribute("userRegisterBindingModel")){
+    public String register(Model model) {
+        if (!model.containsAttribute("userRegisterBindingModel")) {
             model.addAttribute("userRegisterBindingModel", new UserRegisterBindingModel());
         }
         return "register";
@@ -37,10 +39,10 @@ public class UsersController {
 
     @PostMapping("/register")
     public String registerConfirm(@Valid UserRegisterBindingModel userRegisterBindingModel,
-                                  BindingResult bindingResult, RedirectAttributes redirectAttributes){
-        if (bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("userRegisterBindingModel",userRegisterBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel",bindingResult);
+                                  BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+        if (bindingResult.hasErrors()) {
+            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
             return "redirect:register";
         }
 
@@ -49,7 +51,6 @@ public class UsersController {
         return "redirect:signIn";
 
     }
-
 
     @GetMapping("/signIn")
     public String signIn() {
@@ -72,7 +73,14 @@ public class UsersController {
     }
 
     @GetMapping("/account")
-    public String myAccount(){
+    public String myAccount() {
+        return "myAccount";
+    }
+
+    @PostMapping("/addImg")
+    public String add(@ModelAttribute("imageUrl")  MultipartFile imageUrl) throws IOException {
+
+        this.userService.addImage(imageUrl);
         return "myAccount";
     }
 

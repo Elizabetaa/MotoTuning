@@ -1,5 +1,7 @@
 package com.example.demo.model.binding;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -10,6 +12,7 @@ public class UserRegisterBindingModel {
     private String email;
     private String password;
     private String confirmPassword;
+
 
     public UserRegisterBindingModel() {
     }
@@ -68,4 +71,5 @@ public class UserRegisterBindingModel {
         this.confirmPassword = confirmPassword;
         return this;
     }
+
 }

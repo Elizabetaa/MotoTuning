@@ -4,6 +4,8 @@ import com.example.demo.model.binding.InquiryTuningBindingModel;
 import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
+import com.example.demo.model.view.InquiryDetailsViewModel;
+import com.example.demo.model.view.InquiryViewModel;
 
 import java.util.List;
 
@@ -12,11 +14,11 @@ public interface InquiryService {
 
     List<InquiryEntity> addInquiryVehicleTuning(InquiryTuningBindingModel map);
 
-    List<InquiryEntity> findAllInquiriesForService();
+    List<InquiryViewModel> findAllInquiriesForService();
 
-    List<InquiryEntity> findAllInquiriesForTuning();
+    List<InquiryViewModel> findAllInquiriesForTuning();
 
-    InquiryEntity findById(Long id);
+    InquiryDetailsViewModel findById(Long id);
 
     void addRequest(AddResponseServiceModel map);
 }

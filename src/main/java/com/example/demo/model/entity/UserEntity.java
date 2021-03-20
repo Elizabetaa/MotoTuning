@@ -1,5 +1,7 @@
 package com.example.demo.model.entity;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.persistence.*;
 import java.util.List;
 
@@ -10,6 +12,7 @@ public class UserEntity extends BaseEntity {
     private String lastName;
     private String email;
     private String password;
+    private String imageUrl;
     private List<RoleEntity> roles;
     private List<BlogEntity> blogs;
     private List<NewsEntity> news;
@@ -58,6 +61,14 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public UserEntity setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+        return this;
+    }
 
     @ManyToMany(fetch = FetchType.EAGER)
     public List<RoleEntity> getRoles() {
@@ -98,4 +109,6 @@ public class UserEntity extends BaseEntity {
         this.inquiries = inquiries;
         return this;
     }
+
+
 }
