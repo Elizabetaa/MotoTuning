@@ -52,6 +52,10 @@
             <a class="link-details" href="/inquiries/details">Details </a>
         </div>
     </div>
+    <div th:if="${emptyTuningInquiries}" style="margin: auto; width: 50%;text-align: center; border-style: double;
+    background-color: Gainsboro;border-radius: 15px;border-color: white; margin-bottom: 3%;margin-top: 3%">
+        <br><h4>Don't have inquiries for vehicle tuning</h4><br>
+    </div>
 
 </div>
 
@@ -116,19 +120,20 @@
                 </div>
                 <hr>
                 <div class="row" style="width:100%;">
-                    <form style="width: 50%">
+                    <form method="post" th:action="@{/admin/addNews}" style="width: 50%">
                         <div class="label-holder text-dark textCol d-flex">
                             <label for="name" class="h6 mb-2">Title</label>
                         </div>
-                        <input type="text" class="form-control" id="name" name="name"/>
+                        <input type="text" class="form-control" id="name" name="title"/>
 
                         <div class="label-holder text-dark textCol  ">
                             <label for="description" class="h6 mb-2">Description</label>
                         </div>
                         <textarea type="text" class="form-control" id="description" name="description"></textarea>
 
-                        <div class="button-holder d-flex" style="margin-top: 3%">
-                            <button type="submit" class="btn ">Select image</button>
+                        <div class="fileUpload">
+                            <input type="file" id="imageUrl" name="imageUrl" class="upload" />
+                            <span>Add image</span>
                         </div>
                         <div class="button-holder d-flex justify-content-center"
                              style="margin-bottom: 3%;margin-top: 3%">

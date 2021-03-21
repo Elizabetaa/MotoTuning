@@ -1,6 +1,7 @@
 package com.example.demo.web;
 
 import com.example.demo.model.binding.UserRegisterBindingModel;
+import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.service.UserRegisterServiceModel;
 import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -17,6 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 
 @Controller
 @RequestMapping("/users")
@@ -73,7 +75,8 @@ public class UsersController {
     }
 
     @GetMapping("/account")
-    public String myAccount() {
+    public String myAccount(Model model,Principal principal) {
+        model.addAttribute("currentUser", this.userService.findByEmail(principal.getName()));
         return "myAccount";
     }
 
@@ -81,7 +84,7 @@ public class UsersController {
     public String add(@ModelAttribute("imageUrl")  MultipartFile imageUrl) throws IOException {
 
         this.userService.addImage(imageUrl);
-        return "myAccount";
+        return "home";
     }
 
 }

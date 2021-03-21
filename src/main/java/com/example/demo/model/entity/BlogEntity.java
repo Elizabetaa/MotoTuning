@@ -1,6 +1,8 @@
 package com.example.demo.model.entity;
 
 
+import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
@@ -8,6 +10,7 @@ import java.time.LocalDateTime;
 @Table(name = "blogs")
 public class BlogEntity extends BaseEntity {
     private String title;
+    private BlogCategoryNameEnum blogCategory;
     private String imageUrl;
     private String description;
     private UserEntity author;
@@ -24,6 +27,15 @@ public class BlogEntity extends BaseEntity {
     public BlogEntity setTitle(String title) {
         this.title = title;
         return this;
+    }
+
+    @Column(nullable = false)
+    public BlogCategoryNameEnum getBlogCategory() {
+        return blogCategory;
+    }
+
+    public void setBlogCategory(BlogCategoryNameEnum blogCategory) {
+        this.blogCategory = blogCategory;
     }
 
     @Column(nullable = false)

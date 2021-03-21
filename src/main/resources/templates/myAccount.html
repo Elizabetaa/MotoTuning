@@ -6,28 +6,16 @@
 <nav th:replace="fragments/navbar::navbar"></nav>
 <main>
     <div class="mainContainerMyAccount" style="margin: auto;">
-        <div class="row">
+        <div class="row" th:object="${currentUser}">
             <div style="height: 400px; width: 15%;margin:auto; margin-top: 3%;">
                 <div class="block ac-info">
                     <div class="block-content" style="margin: auto; text-align: center">
-                        <img src="/images/road.jpg" alt="..." class="rounded-circle"
+                        <img  th:src="*{imageUrl}" alt="..." class="rounded-circle"
                              style="width:  250px; height: 250px;">
                         <p style="text-align: center; margin-top: 4%; font-size:20px">
-                            <span class="text-dark wrap">Elizabeta</span>
+                            <span th:text="|*{firstName} *{lastName}|" class="text-dark wrap">Elizabeta</span>
                         </p>
                         <hr>
-                        <!--                    <div class="block-content" style="text-align: left; margin-left: 15%">-->
-                        <!--                        <p>-->
-                        <!--                            <strong>Full Name: </strong><span class="text-secondary wrap">Elizabeta Koleva</span>-->
-                        <!--                        </p>-->
-                        <!--                        <p>-->
-                        <!--                            <strong>Email: </strong><span class="text-secondary wrap">elizabetaa99@abv.bg</span>-->
-                        <!--                        </p>-->
-                        <!--                        <p>-->
-                        <!--                            <strong>Phone number: </strong><span class="text-secondary wrap">0888888888888</span>-->
-                        <!--                        </p>-->
-                        <!--                    </div>-->
-
                         <button type="button" class="btn btn-white btn-lg btn-block ">Edit</button>
                     </div>
                 </div>
@@ -81,9 +69,11 @@
 <!--            </form>-->
             <form id="add-article-form" class="form w-25 mx-auto" th:action="@{/users/addImg}" th:method="post"
                   enctype="multipart/form-data">
-                <div class="form-group">
-                    <label for="imageUrl" class="font-weight-bold">Picture</label>
-                    <input type="file" class="form-control-file" id="imageUrl" name="imageUrl" required="required">
+
+                <div class="fileUpload btn btn-primary" style="margin-top: 2%;">
+                    <label class="upload">
+                        <input name='imageUrl'  id="imageUrl" type="file"/> Upload Image
+                    </label>
                 </div>
                 <hr class="hr-2 bg-dark w-25">
                 <div class="button-holder d-flex justify-content-center">
