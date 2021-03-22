@@ -1,8 +1,9 @@
 package com.example.demo.web;
 
 import com.example.demo.model.binding.UserRegisterBindingModel;
-import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.service.UserRegisterServiceModel;
+import com.example.demo.model.view.MyInquiriesViewModel;
+import com.example.demo.service.InquiryService;
 import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
@@ -19,16 +20,19 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
+import java.util.List;
 
 @Controller
 @RequestMapping("/users")
 public class UsersController {
     private final UserService userService;
     private final ModelMapper modelMapper;
+    private final InquiryService inquiryService;
 
-    public UsersController(UserService userService, ModelMapper modelMapper) {
+    public UsersController(UserService userService, ModelMapper modelMapper, InquiryService inquiryService) {
         this.userService = userService;
         this.modelMapper = modelMapper;
+        this.inquiryService = inquiryService;
     }
 
     @GetMapping("/register")
@@ -77,6 +81,8 @@ public class UsersController {
     @GetMapping("/account")
     public String myAccount(Model model,Principal principal) {
         model.addAttribute("currentUser", this.userService.findByEmail(principal.getName()));
+        List<MyInquiriesViewModel> myInquiries = this.inquiryService.getMyInquiries(principal.getName());
+        model.addAttribute("myInquiries",this.inquiryService.getMyInquiries(principal.getName()));
         return "myAccount";
     }
 

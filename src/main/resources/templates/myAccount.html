@@ -5,13 +5,13 @@
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 <main>
-    <div class="mainContainerMyAccount" style="margin: auto;">
-        <div class="row" th:object="${currentUser}">
-            <div style="height: 400px; width: 15%;margin:auto; margin-top: 3%;">
+    <div class="row" style="margin-top: 5%">
+        <div th:object="${currentUser}" style="margin-left: 5%">
+            <div style="margin: auto">
                 <div class="block ac-info">
                     <div class="block-content" style="margin: auto; text-align: center">
-                        <img  th:src="*{imageUrl}" alt="..." class="rounded-circle"
-                             style="width:  250px; height: 250px;">
+                        <img th:src="*{imageUrl}" alt="..." class="rounded-circle"
+                             style="margin-left: 5%;width:  250px; height: 250px;">
                         <p style="text-align: center; margin-top: 4%; font-size:20px">
                             <span th:text="|*{firstName} *{lastName}|" class="text-dark wrap">Elizabeta</span>
                         </p>
@@ -21,68 +21,49 @@
                 </div>
             </div>
         </div>
-        <!--        <div style="height: 400px; width: 60%; margin-top: 5%;margin:auto; background-color: white">-->
-        <!--            <div class="block ac-info">-->
-        <!--                <div class="block-content" style="margin: auto; text-align: center">-->
-        <!--                    <p style="text-align: center; margin-top: 4%; font-size:20px">-->
-        <!--                        <span class="text-dark wrap">My orders</span>-->
-        <!--                    </p>-->
-        <!--                    <table class="table">-->
-        <!--                        <thead>-->
-        <!--                        <tr>-->
-        <!--                            <th scope="col">#</th>-->
-        <!--                            <th scope="col">First</th>-->
-        <!--                            <th scope="col">Last</th>-->
-        <!--                            <th scope="col">Handle</th>-->
-        <!--                        </tr>-->
-        <!--                        </thead>-->
-        <!--                        <tbody>-->
-        <!--                        <tr>-->
-        <!--                            <th scope="row">1</th>-->
-        <!--                            <td>Mark</td>-->
-        <!--                            <td>Otto</td>-->
-        <!--                            <td>@mdo</td>-->
-        <!--                        </tr>-->
-        <!--                        <tr>-->
-        <!--                            <th scope="row">2</th>-->
-        <!--                            <td>Jacob</td>-->
-        <!--                            <td>Thornton</td>-->
-        <!--                            <td>@fat</td>-->
-        <!--                        </tr>-->
-        <!--                        <tr>-->
-        <!--                            <th scope="row">3</th>-->
-        <!--                            <td>Larry</td>-->
-        <!--                            <td>the Bird</td>-->
-        <!--                            <td>@twitter</td>-->
-        <!--                        </tr>-->
-        <!--                        </tbody>-->
-        <!--                    </table>-->
-        <!--                    <button type="button" class="btn btn-white btn-lg">Make order</button>-->
-        <!--                </div>-->
-        <!--            </div>-->
-        <!--        </div>-->
-        <div>
-<!--            <form action="/users/addImg" method="post">-->
-<!--                <label for="imageUrl"> Select a file to upload</label>-->
-<!--                <input type="file" name="imageUrl" value="imageUrl" id="imageUrl">-->
-<!--                <input type="submit" value="submit">-->
-<!--            </form>-->
-            <form id="add-article-form" class="form w-25 mx-auto" th:action="@{/users/addImg}" th:method="post"
-                  enctype="multipart/form-data">
+        <!--        <form id="add-article-form" class="form w-25 mx-auto" th:action="@{/users/addImg}" th:method="post"-->
+        <!--              enctype="multipart/form-data">-->
 
-                <div class="fileUpload btn btn-primary" style="margin-top: 2%;">
-                    <label class="upload">
-                        <input name='imageUrl'  id="imageUrl" type="file"/> Upload Image
-                    </label>
+        <!--            <div class="fileUpload btn btn-primary" style="margin-top: 2%;">-->
+        <!--                <label class="upload">-->
+        <!--                    <input name='imageUrl' id="imageUrl" type="file"/> Upload Image-->
+        <!--                </label>-->
+        <!--            </div>-->
+        <!--            <hr class="hr-2 bg-dark w-25">-->
+        <!--            <div class="button-holder d-flex justify-content-center">-->
+        <!--                <button type="submit" class="btn btn-success">Add</button>-->
+        <!--            </div>-->
+        <!--        </form>-->
+
+
+        <div style="margin-left: 5%;width: 65%; " class="row">
+            <div class="col-12" style="text-align: center">
+                <h2 class="tm-block-title d-inline-block">My inquiries</h2>
+            </div>
+            <hr class="col-xl-12 col-lg-10 col-md-12 col-sm-12">
+            <div th:each="inquiry : ${myInquiries}" th:object="${inquiry}">
+                <div style="margin: 4%">
+                    <div class="card" style="width: 70rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
+                        <div class="card-footer" style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;"
+                        th:text="|*{vehicle} *{model}|">
+                        </div>
+                        <ul class="list-group list-group-flush" style="margin-left: 2%;" >
+                            <br>
+                            <p th:if="*{response == null}" style="text-align: center">It is being processed...</p>
+                            <p th:unless="*{response == null}" th:text="*{response}"></p>
+                        </ul>
+                        <form th:action="@{/inquiries/delete/{id} (id= *{id})}">
+                            <div class="btn-group" role="group" aria-label="Basic example">
+                                <button type="submit" class="btn btn-danger" style="font-size: 16px;width: 100%">Denial</button>
+                            </div>
+                        </form>
+
+
+                    </div>
                 </div>
-                <hr class="hr-2 bg-dark w-25">
-                <div class="button-holder d-flex justify-content-center">
-                    <button type="submit" class="btn btn-success">Add</button>
-                </div>
-            </form>
+            </div>
         </div>
     </div>
-
 
 </main>
 

@@ -105,4 +105,9 @@ public class InquiryController {
         this.inquiryService.addRequest(this.modelMapper.map(addResponseBindingModel, AddResponseServiceModel.class));
         return "redirect:/admin/actions";
     }
+    @GetMapping("/delete/{id}")
+    public String deleteInquiry(@PathVariable Long id){
+        this.inquiryService.deleteById(id);
+        return "redirect:/users/account";
+    }
 }

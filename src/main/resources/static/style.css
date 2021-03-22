@@ -134,18 +134,13 @@ li a:hover {
 }
 
 
-.mainContainerMyAccount {
-    margin: auto;
-    width: 100%;
-    height: 800px;
-}
 
 
 #makeOrder {
     margin-top: 4%;
     width: 30%;
     height: 500px;
-    margin-left: 15%;
+    margin-left: 5%;
 }
 
 #service {
@@ -365,3 +360,42 @@ input[type="file"] {
     padding: 6px 12px;
     cursor: pointer;
 }
+.btn-group{
+    width: 100%;
+    height: 30px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

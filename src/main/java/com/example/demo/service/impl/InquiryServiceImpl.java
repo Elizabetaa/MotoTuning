@@ -8,12 +8,12 @@ import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import com.example.demo.model.view.InquiryDetailsViewModel;
 import com.example.demo.model.view.InquiryViewModel;
+import com.example.demo.model.view.MyInquiriesViewModel;
 import com.example.demo.repository.InquiryRepository;
 import com.example.demo.service.InquiryService;
 import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
-import org.springframework.cache.annotation.CachePut;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
@@ -93,6 +93,20 @@ public class InquiryServiceImpl implements InquiryService {
         InquiryEntity inquiryEntity = this.inquiryRepository.findById(map.getId()).orElse(null);
         inquiryEntity.setResponse(map.getResponse());
         this.inquiryRepository.save(inquiryEntity);
+    }
+
+    @Override
+    public List<MyInquiriesViewModel> getMyInquiries(String email) {
+        List<MyInquiriesViewModel> inquiryViewModels = new ArrayList<>();
+        this.inquiryRepository.findByEmailOrderByResponseDesc(email).forEach(i -> {
+            inquiryViewModels.add(this.modelMapper.map(i,MyInquiriesViewModel.class));
+        });
+        return inquiryViewModels;
+    }
+
+    @Override
+    public void deleteById(Long id) {
+        this.inquiryRepository.deleteById(id);
     }
 
 
