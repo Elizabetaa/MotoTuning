@@ -62,7 +62,7 @@ public class AdminController {
             redirectAttributes.addFlashAttribute("addNewsBindingModel", addNewsBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addNewsBindingModel",bindingResult);
 
-            return "redirect:actions";
+            return "redirect:/addNews";
         }
         AddNewsServiceModel addNewsServiceModel = this.modelMapper.map(addNewsBindingModel, AddNewsServiceModel.class);
         addNewsServiceModel.setAuthor(this.userService.findByEmail(principal.getName()));
