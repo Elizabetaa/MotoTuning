@@ -1,17 +1,15 @@
-package com.example.demo.model.service;
+package com.example.demo.model.view;
 
 import com.example.demo.model.entity.UserEntity;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 
-public class AddNewsServiceModel {
+public class NewsVieModel {
     private String title;
-    private MultipartFile imageUrl;
-    private String description;
+    private String imageUrl;
     private LocalDateTime addedOn;
 
-    public AddNewsServiceModel() {
+    public NewsVieModel() {
     }
 
     public String getTitle() {
@@ -22,20 +20,12 @@ public class AddNewsServiceModel {
         this.title = title;
     }
 
-    public MultipartFile getImageUrl() {
+    public String getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(MultipartFile imageUrl) {
+    public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
     }
 
     public LocalDateTime getAddedOn() {

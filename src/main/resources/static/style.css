@@ -140,12 +140,6 @@ li a:hover {
     height: 800px;
 }
 
-/*#serviceContainerBG{*/
-/*    background-image: url("https://media.giphy.com/media/xT9IgqjmZ870vakg4E/giphy.gif");*/
-/*    background-repeat: no-repeat;*/
-/*    background-attachment: fixed;*/
-/*    background-size: 100% 100%;*/
-/*}*/
 
 #makeOrder {
     margin-top: 4%;
@@ -334,11 +328,9 @@ li a:hover {
     -moz-border-radius: 5px;
     border-radius: 5px;
     color: #fff;
-    /*font-size: 1em;*/
-    /*font-weight: bold;*/
-    margin: 1.25em auto;/*20px/16px 0*/
+    margin: 1.25em auto;
     overflow: hidden;
-    padding: 10px;/*14px/16px*/
+    padding: 10px;
     position: relative;
     text-align: center;
     width: 100px;
@@ -359,7 +351,7 @@ li a:hover {
     opacity: 0;
     filter: alpha(opacity=0);
     width: 80px;
-    height: 15px;
+    height: 50px;
 }
 
 input[type="file"] {

@@ -43,6 +43,7 @@ public class UserServiceImpl implements UserService {
         user.setRoles(List.of(this.roleService.findByName(RoleNameEnum.USER)))
                 .setPassword(this.passwordEncoder.encode(map.getPassword()));
 
+        user.setImageUrl("https://res.cloudinary.com/elizabetak/image/upload/v1616422750/default-user-Img_dpqzkv.png");
         this.userRepository.save(user);
     }
 

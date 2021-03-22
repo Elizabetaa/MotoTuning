@@ -1,11 +1,14 @@
 package com.example.demo.model.binding;
 
+import org.springframework.web.multipart.MultipartFile;
+
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class AddNewsBindingModel {
     private String title;
-    private String imageUrl;
+    private MultipartFile imageUrl;
     private String description;
 
     public AddNewsBindingModel() {
@@ -21,14 +24,17 @@ public class AddNewsBindingModel {
         this.title = title;
     }
 
-    @NotBlank(message = "You must select image")
-    public String getImageUrl() {
+    @NotNull(message = "You must select image")
+    public MultipartFile getImageUrl() {
         return imageUrl;
     }
 
-    public void setImageUrl(String imageUrl) {
+    public void setImageUrl(MultipartFile imageUrl) {
         this.imageUrl = imageUrl;
     }
+
+
+
 
     @Size(min = 10, message = "Description must be more than 10 symbols")
     public String getDescription() {

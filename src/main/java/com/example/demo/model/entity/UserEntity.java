@@ -15,7 +15,6 @@ public class UserEntity extends BaseEntity {
     private String imageUrl;
     private List<RoleEntity> roles;
     private List<BlogEntity> blogs;
-    private List<NewsEntity> news;
     private List<InquiryEntity> inquiries;
 
     public UserEntity() {
@@ -90,15 +89,7 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
-    @OneToMany(mappedBy = "author")
-    public List<NewsEntity> getNews() {
-        return news;
-    }
 
-    public UserEntity setNews(List<NewsEntity> news) {
-        this.news = news;
-        return this;
-    }
 
     @OneToMany(mappedBy = "author")
     public List<InquiryEntity> getInquiries() {

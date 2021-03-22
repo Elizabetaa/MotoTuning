@@ -9,7 +9,6 @@ public class NewsEntity extends BaseEntity{
     private String title;
     private String imageUrl;
     private String description;
-    private UserEntity author;
     private LocalDateTime addedOn;
 
     public NewsEntity() {
@@ -39,16 +38,6 @@ public class NewsEntity extends BaseEntity{
 
     public NewsEntity setDescription(String description) {
         this.description = description;
-        return this;
-    }
-
-    @ManyToOne
-    public UserEntity getAuthor() {
-        return author;
-    }
-
-    public NewsEntity setAuthor(UserEntity author) {
-        this.author = author;
         return this;
     }
 

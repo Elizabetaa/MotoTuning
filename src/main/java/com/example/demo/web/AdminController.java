@@ -11,11 +11,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
+import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -39,6 +42,9 @@ public class AdminController {
 
     @GetMapping("/actions")
     public String adminActions(Model model){
+        if (!model.containsAttribute("addNewsBindingModel")){
+            model.addAttribute("addNewsBindingModel",new AddNewsBindingModel());
+        }
 
         List<InquiryViewModel> allInquiriesForService = inquiryService.findAllInquiriesForService();
         model.addAttribute("service", allInquiriesForService);
@@ -56,20 +62,21 @@ public class AdminController {
 
     @PostMapping("/addNews")
     public String addNews(@Valid AddNewsBindingModel addNewsBindingModel,
-                          BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal){
+                          BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
 
         if (bindingResult.hasErrors()){
             redirectAttributes.addFlashAttribute("addNewsBindingModel", addNewsBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addNewsBindingModel",bindingResult);
 
-            return "redirect:/addNews";
+            return "redirect:actions#my-form1";
         }
         AddNewsServiceModel addNewsServiceModel = this.modelMapper.map(addNewsBindingModel, AddNewsServiceModel.class);
-        addNewsServiceModel.setAuthor(this.userService.findByEmail(principal.getName()));
         addNewsServiceModel.setAddedOn(LocalDateTime.now());
+
 
         this.newsService.addNews(addNewsServiceModel);
 
         return  "redirect:/news/all";
     }
+
 }
