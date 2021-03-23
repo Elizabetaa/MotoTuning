@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.entity.NewsEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.service.AddNewsServiceModel;
+import com.example.demo.model.view.NewsDetailsViewModel;
 import com.example.demo.model.view.NewsVieModel;
 import com.example.demo.repository.NewsRepository;
 import com.example.demo.service.CloudinaryService;
@@ -19,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class NewsServiceImpl implements NewsService {
@@ -36,10 +38,10 @@ public class NewsServiceImpl implements NewsService {
     @CacheEvict(value = "news", allEntries = true)
     public void addNews(AddNewsServiceModel addNewsServiceModel) throws IOException {
         NewsEntity newsEntity = this.modelMapper.map(addNewsServiceModel, NewsEntity.class);
-        if (addNewsServiceModel.getImageUrl().isEmpty()){
+        if (addNewsServiceModel.getImageUrl().isEmpty()) {
             newsEntity.setImageUrl("https://res.cloudinary.com/elizabetak/image/upload/v1616422823/mmn2ueedpftlieb6plbs.jpg");
             this.newsRepository.save(newsEntity);
-        }else {
+        } else {
             MultipartFile img = addNewsServiceModel.getImageUrl();
             String url = cloudinaryService.uploadImage(img);
             newsEntity.setImageUrl(url);
@@ -53,8 +55,14 @@ public class NewsServiceImpl implements NewsService {
     public List<NewsVieModel> findAllNews() {
         List<NewsVieModel> newsVieModels = new ArrayList<>();
         this.newsRepository.findAll().forEach(n -> {
-            newsVieModels.add(this.modelMapper.map(n,NewsVieModel.class));
+            newsVieModels.add(this.modelMapper.map(n, NewsVieModel.class));
         });
         return newsVieModels;
+    }
+
+    @Override
+    public NewsDetailsViewModel findById(Long id) {
+        NewsEntity newsEntity = this.newsRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Don't existing news with id " + id));
+        return this.modelMapper.map(newsEntity,NewsDetailsViewModel.class);
     }
 }

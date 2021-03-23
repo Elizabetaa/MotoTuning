@@ -1,24 +1,14 @@
 package com.example.demo.model.view;
 
-import com.example.demo.model.entity.UserEntity;
-
 import java.time.LocalDateTime;
 
-public class NewsVieModel {
-    private Long id;
+public class NewsDetailsViewModel {
     private String title;
     private String imageUrl;
+    private String description;
     private LocalDateTime addedOn;
 
-    public NewsVieModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public NewsDetailsViewModel() {
     }
 
     public String getTitle() {
@@ -35,6 +25,14 @@ public class NewsVieModel {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public LocalDateTime getAddedOn() {

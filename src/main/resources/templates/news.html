@@ -16,7 +16,7 @@
                 <div class="card-body">
                     <h1 th:text="*{title}" class="card-title" style="color: #0077b3">NEWS TITLE</h1>
                     <p th:text="*{addedOn}" class="card-text"></p>
-                    <a href="/news/id" class="btn-lg active" style="margin-top: 10%; background-color: #0077b3;color: white"
+                    <a th:href="@{/news/details/{id} (id = *{id})}" class="btn-lg active" style="margin-top: 10%; background-color: #0077b3;color: white"
                        role="button">READ MORE</a>
                 </div>
             </div>
