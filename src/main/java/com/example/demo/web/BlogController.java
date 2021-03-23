@@ -65,7 +65,7 @@ public class BlogController {
     @GetMapping("/categories/road")
     public String postsRoad(Model model){
         model.addAttribute("categoryPage", "ROAD POSTS");
-        model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.MOTORCYCLE));
+        model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.ROADS));
         return "by-category";
     }
     @GetMapping("/categories/motorcycle")
