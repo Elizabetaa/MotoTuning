@@ -5,39 +5,20 @@
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 <div style="margin-top: 5%">
-    <button id="addPost" sec:authorize="isAuthenticated()" onclick="window.location.href='/blog/add'" >Add Post</button>
+    <button id="addPost"  onclick="window.location.href='/blog/add'">Add Post</button>
 </div>
 
 <h2 style="text-align: center; font-weight: bold; margin-top: 5%">RECENT POSTS</h2>
 
 
-<div style="margin-top: 3%" class="fyp-slider full-img carouse-wrap d-flex flex-wrap" id="recentPosts">
-    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
-        <img src="/images/road.jpg" class="card-img border-rounded" alt="...">
-        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
+<div style="margin-top: 3%;" class="fyp-slider full-img carouse-wrap d-flex flex-wrap" id="recentPosts">
+    <div class="card" style="width: 18rem; background-color: LightGray;border: none "th:each="b : ${blogs}" th:object="${b}">
+        <img th:src="*{imageUrl}" class="card-img border-rounded" alt="...">
+        <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S
+            HARDWIRE:
             BETTING BIG ON ELECTRIC</a>
-        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
-    </div>
-
-    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
-        <img src="/images/motorcycle.jpg" class="card-img border-rounded" alt="...">
-        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
-            BETTING BIG ON ELECTRIC</a>
-        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
-    </div>
-
-    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
-        <img src="/images/road.jpg" class="card-img border-rounded" alt="...">
-        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
-            BETTING BIG ON ELECTRIC</a>
-        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
-    </div>
-
-    <div class="card" style="width: 18rem; background-color: LightGray;border: none ">
-        <img src="/images/motorcycle.jpg" class="card-img border-rounded" alt="...">
-        <a class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S HARDWIRE:
-            BETTING BIG ON ELECTRIC</a>
-        <p style="font-size: 10px;" class="card-text">POSTED BY Anna RESEARCH ON FEB 10, 2021</p>
+        <p style="font-size: 10px;" class="card-text"
+           th:text="|POSTED BY *{author.firstName} RESEARCH ON *{addedOn}|"></p>
     </div>
 </div>
 
@@ -47,12 +28,12 @@
 
 <div class="row" style="margin: auto; margin-top: 5% ">
     <div class="imageContainer">
-        <a href="/blog/categories/id">
+        <a href="/blog/categories/road">
             <img src="/images/road.jpg" alt="Card image"
                  class="image">
             <div class="mid">
                 <div class="text">
-                    <p href="/blog/categories/id"
+                    <p href="/blog/categories/road"
                        style="text-align: center; color: white;text-transform: uppercase;font-size: 25px "
                        class="card-title font-weight-bold ">
                         ROADS</p>
@@ -62,12 +43,12 @@
     </div>
 
     <div class="imageContainer">
-        <a href="/blog/categories/id">
+        <a href="/blog/categories/motorcycle">
             <img src="/images/motorcycle.jpg" alt="Card image"
                  class="image">
             <div class="mid">
                 <div class="text">
-                    <p href="/blog/categories/id"
+                    <p href="/blog/categories/motorcycle"
                        style="text-align: center; color: white;text-transform: uppercase;font-size: 25px "
                        class="card-title font-weight-bold ">
                         MOTORCYCLE</p>
@@ -77,12 +58,12 @@
     </div>
 
     <div class="imageContainer">
-        <a href="/blog/categories/id">
+        <a href="/blog/categories/tuning">
             <img src="/images/tuning.jpg" alt="Card image"
                  class="image">
             <div class="mid">
                 <div class="text">
-                    <p href="/blog/categories/id"
+                    <p href="/blog/categories/tuning"
                        style="text-align: center; color: white;text-transform: uppercase;font-size: 25px "
                        class="card-title font-weight-bold ">
                         TUNING</p>
@@ -91,12 +72,12 @@
         </a>
     </div>
     <div class="imageContainer">
-        <a href="/blog/categories/id">
+        <a href="/blog/categories/brands">
             <img src="/images/brands.jpeg" alt="Card image"
                  class="image">
             <div class="mid">
                 <div class="text">
-                    <p href="/blog/categories/id"
+                    <p href="/blog/categories/brands"
                        style="text-align: center; color: white;text-transform: uppercase;font-size: 25px "
                        class="card-title font-weight-bold ">
                         BEST BRAND's</p>
