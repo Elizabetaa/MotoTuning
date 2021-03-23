@@ -308,13 +308,7 @@ li a:hover {
     text-align: center;
 }
 
-/*input[type="file"] {*/
-/*    display: none;*/
-/*}*/
 
-/*.fileUpload input.upload {*/
-/*    display: inline-block;*/
-/*}*/
 .fileUpload {
     background: darkgrey;
     -webkit-border-radius: 5px;
@@ -387,10 +381,16 @@ input[type="file"] {
 
 
 
+#add {
+    margin-top: 4%;
+    width: 30%;
+    height: 500px;
+    margin-left: 40%;
+}
 
-
-
-
+#add label {
+    font-weight: 600;
+}
 
 
 

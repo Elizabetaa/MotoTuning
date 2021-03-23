@@ -5,7 +5,7 @@
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 <div style="margin-top: 5%">
-    <button id="addPost" sec:authorize="isAuthenticated()" onclick="window.location.href='/blogs/add'" >Add Post</button>
+    <button id="addPost" sec:authorize="isAuthenticated()" onclick="window.location.href='/blog/add'" >Add Post</button>
 </div>
 
 <h2 style="text-align: center; font-weight: bold; margin-top: 5%">RECENT POSTS</h2>

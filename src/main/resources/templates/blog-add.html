@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+
+<head th:replace="fragments/head::head"></head>
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+
+<div class="row" style="height: 800px" >
+
+    <div id="add">
+        <h3 style="text-align: center;margin-top: 3%;font-weight: 400; text-transform: uppercase;">Add new post</h3>
+        <hr>
+        <form method="POST" th:action="@{/blog/add}" th:object="${addBlogBindingModel}" enctype="multipart/form-data">
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <label for="email">Your name</label>
+                    <br>
+                    <input style="width: 100%;height: 40px " th:field="*{email}" th:errorclass="border-danger"  name="email" id="email" placeholder="demo@abv.bg">
+                    <div class="small">
+                        <div style="margin-left: 10px; ">
+                            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
+                            <small th:if="${userNotFound}">User with this email don't found!</small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <label for="name">Title</label>
+                    <input style="width: 100%; height: 40px" th:field="*{title}" th:errorclass="border-danger" name="title" id="name" type="text" placeholder="title">
+                    <div class="small">
+                        <div style="margin-left: 10px; ">
+                            <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <label for="vehicle">Blog Category</label>
+                    <br>
+                    <select style="width: 100%; height: 40px;" th:field="*{blogCategory}" th:errorclass="border-danger"  id="vehicle" name="vehicle">
+                        <option  value="">- Select blog category -</option>
+                        <option th:each="s : ${T(com.example.demo.model.entity.enums.BlogCategoryNameEnum).values()}"
+                                th:value="${s}" th:text="${s}"></option>
+                    </select>
+                    <div class="small">
+                        <div style="margin-left: 10px; ">
+                            <small th:if="${#fields.hasErrors('blogCategory')}" th:errors="*{blogCategory}"></small>
+                        </div>
+                    </div>
+                </div>
+            <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                <label for="name">Description</label>
+                <textarea  th:field="*{description}" th:errorclass="border-danger"  name="description" id="description" style="width: 100%" placeholder="Description"></textarea>
+                <div class="small">
+                    <div style="margin-left: 10px; ">
+                        <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
+                    </div>
+                </div>
+            </div>
+            <div class="fileUpload" >
+                <input type="file" id="imageUrl" name="imageUrl" class="upload"/>
+                <span>Add image</span>
+            </div>
+            <div class="button-holder d-flex justify-content-center">
+                <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+            </div>
+
+
+        </form>
+
+    </div>
+</div>
+
+<section class="" th:replace="fragments/footer::footer"></section>
+
+</body>
+
+</html>

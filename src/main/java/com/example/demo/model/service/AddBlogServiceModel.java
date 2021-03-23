@@ -1,35 +1,30 @@
-package com.example.demo.model.entity;
+package com.example.demo.model.service;
 
-
+import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
+import org.springframework.web.multipart.MultipartFile;
 
-import javax.persistence.*;
 import java.time.LocalDateTime;
 
-@Entity
-@Table(name = "blogs")
-public class BlogEntity extends BaseEntity {
+public class AddBlogServiceModel {
     private String title;
     private BlogCategoryNameEnum blogCategory;
-    private String imageUrl;
+    private MultipartFile imageUrl;
     private String description;
     private UserEntity author;
     private String addedOn;
 
-    public BlogEntity() {
+    public AddBlogServiceModel() {
     }
 
-    @Column(nullable = false)
     public String getTitle() {
         return title;
     }
 
-    public BlogEntity setTitle(String title) {
+    public void setTitle(String title) {
         this.title = title;
-        return this;
     }
 
-    @Column(nullable = false)
     public BlogCategoryNameEnum getBlogCategory() {
         return blogCategory;
     }
@@ -38,43 +33,35 @@ public class BlogEntity extends BaseEntity {
         this.blogCategory = blogCategory;
     }
 
-    @Column(nullable = false)
-    public String getImageUrl() {
+    public MultipartFile getImageUrl() {
         return imageUrl;
     }
 
-    public BlogEntity setImageUrl(String imageUrl) {
+    public void setImageUrl(MultipartFile imageUrl) {
         this.imageUrl = imageUrl;
-        return this;
     }
 
-    @Column(nullable = false,columnDefinition = "TEXT")
     public String getDescription() {
         return description;
     }
 
-    public BlogEntity setDescription(String description) {
+    public void setDescription(String description) {
         this.description = description;
-        return this;
     }
 
-    @ManyToOne
     public UserEntity getAuthor() {
         return author;
     }
 
-    public BlogEntity setAuthor(UserEntity author) {
+    public void setAuthor(UserEntity author) {
         this.author = author;
-        return this;
     }
 
-    @Column(nullable = false)
     public String getAddedOn() {
         return addedOn;
     }
 
-    public BlogEntity setAddedOn(String addedOn) {
+    public void setAddedOn(String addedOn) {
         this.addedOn = addedOn;
-        return this;
     }
 }

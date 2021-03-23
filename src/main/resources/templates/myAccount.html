@@ -41,6 +41,16 @@
                 <h2 class="tm-block-title d-inline-block">My inquiries</h2>
             </div>
             <hr class="col-xl-12 col-lg-10 col-md-12 col-sm-12">
+            <div  th:if="${myInquiries.isEmpty()}">
+                <div style="margin: 4%">
+                    <div class="card" style="width: 70rem; height: 13rem;border-radius: 10px;background-color: #e5e5e5">
+                        <h4 style="text-align: center;margin-top: 3%">You don't have any inquiries yet!</h4>
+                        <div style="margin-top: 3%">
+                            <button id="addPost" style="margin-left: 20rem" onclick="window.location.href='/inquiries/add'" >Add Post</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <div th:each="inquiry : ${myInquiries}" th:object="${inquiry}">
                 <div style="margin: 4%">
                     <div class="card" style="width: 70rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
