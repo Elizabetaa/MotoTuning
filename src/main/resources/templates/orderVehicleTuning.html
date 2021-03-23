@@ -9,7 +9,8 @@
     <div class="card bg-dark text-white" id="service">
         <img class="img" src="/images/tuningMotoOrder.jpg" alt="Card image">
         <div class="card-img-overlay relative-bottom">
-            <p class="card-text text-sm-left ">Here you can make your vehicle awesome. We can make tuning it. Just say what you want and we will make it.</p>
+            <p class="card-text text-sm-left ">Here you can make your vehicle awesome. We can make tuning it. Just say
+                what you want and we will make it.</p>
         </div>
     </div>
 
@@ -23,57 +24,85 @@
                     <label for="email">Your email</label>
                     <br>
 
-                    <input style="width: 100%;height: 40px " th:field="*{email}" type="email"  th:errorclass=" border-danger" name="email" id="email" placeholder="demo@abv.bg">
-                    <small  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></small>
+                    <input style="width: 100%;height: 40px " th:field="*{email}" type="email"
+                           th:errorclass=" border-danger" name="email" id="email" placeholder="demo@abv.bg">
+                    <div class="small" th:if="${#fields.hasErrors('email')}">
+                        <div style="margin-left: 10px; ">
+                            <small th:errors="*{email}"></small>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-6" style="margin-top: 2%">
                     <label for="phoneNumber">Your phone number</label>
-                    <input style="width: 100%; height: 40px" th:field="*{phoneNumber}" th:errorclass=" border-danger" name="phoneNumber" id="phoneNumber" type="text" placeholder="+359 00 0000000">
-                    <small  th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger"></small>
+                    <input style="width: 100%; height: 40px" th:field="*{phoneNumber}" th:errorclass=" border-danger"
+                           name="phoneNumber" id="phoneNumber" type="text" placeholder="+359 00 0000000">
+                    <div class="small" th:if="${#fields.hasErrors('phoneNumber')}">
+                        <div style="margin-left: 10px; ">
+                            <small th:errors="*{phoneNumber}"></small>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-6" style="margin-top: 2%">
                     <label for="vehicle">Vehicle</label>
                     <br>
-                    <select style="width: 100%; height: 40px;" id="vehicle" name="vehicle" th:errorclass=" border-danger" >
+                    <select style="width: 100%; height: 40px;" id="vehicle" name="vehicle"
+                            th:errorclass=" border-danger">
                         <option value="">- Select vehicle type -</option>
                         <option th:each="s : ${T(com.example.demo.model.entity.enums.VehicleTypeNameEnum).values()}"
                                 th:value="${s}" th:text="${s}"></option>
                     </select>
-                    <small  th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}" class="text-danger"></small>
+                    <div class="small" th:if="${#fields.hasErrors('vehicle')}">
+                        <div style="margin-left: 10px; ">
+                            <small th:errors="*{vehicle}"></small>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-6" style="margin-top: 2%">
-                    <div class="label-holder text-dark textCol d-flex justify-content-center">
+                    <div class="label-holder text-dark textCol d-flex ">
                         <label for="brand">Brand</label>
                     </div>
-                    <select style="width: 100%; height: 40px;" id="brand" name="brand" th:errorclass=" border-danger" >
+                    <select style="width: 100%; height: 40px;" id="brand" name="brand" th:errorclass=" border-danger">
                         <option value="">- Select Brand -</option>
                         <option th:each="b : ${T(com.example.demo.model.entity.enums.BrandsNameEnum).values()}"
                                 th:value="${b}" th:text="${b}"></option>
                     </select>
-                    <small  th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></small>
+                    <div class="small" th:if="${#fields.hasErrors('brand')}">
+                        <div style="margin-left: 10px; ">
+                            <small th:errors="*{brand}"></small>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
                         <label for="model">Model</label>
                     </div>
-                    <input style="width: 100%; height: 40px" th:field="*{model}" th:errorclass=" border-danger" name="model" id="model" class="full-width" placeholder="Model" type="text">
-                    <small  th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></small>
+                    <input style="width: 100%; height: 40px" th:field="*{model}" th:errorclass=" border-danger"
+                           name="model" id="model" class="full-width" placeholder="Model" type="text">
+                    <div class="small" th:if="${#fields.hasErrors('model')}">
+                        <div style="margin-left: 10px; ">
+                            <small th:errors="*{model}"></small>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group" style="margin-top: 2%">
                 <div class="label-holder text-dark textCol d-flex justify-content-center">
                     <label for="description">Description</label>
                 </div>
-                <textarea th:field="*{description}" th:errorclass=" border-danger"  name="description" id="description" style="width: 100%" placeholder="Description"></textarea>
-                <small  th:if="${#fields.hasErrors('description')}" th:errors="*{description}" class="text-danger"></small>
-            </div>
+                <textarea th:field="*{description}" th:errorclass=" border-danger" name="description" id="description"
+                          style="width: 100%" placeholder="Description"></textarea>
+                <div class="small" th:if="${#fields.hasErrors('description')}">
+                    <div style="margin-left: 10px; ">
+                        <small th:errors="*{description}"></small>
+                    </div>
+                </div>
 
-            <div class="button-holder d-flex  justify-content-center">
-                <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+                <div class="button-holder d-flex  justify-content-center">
+                    <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+                </div>
             </div>
-
         </form>
 
     </div>

@@ -1,9 +1,12 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head th:replace="fragments/head::head"></head>
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
+<div style="margin-top: 5%">
+    <button id="addPost" sec:authorize="isAuthenticated()" onclick="window.location.href='/blogs/add'" >Add Post</button>
+</div>
 
 <h2 style="text-align: center; font-weight: bold; margin-top: 5%">RECENT POSTS</h2>
 
@@ -40,7 +43,6 @@
 
 
 <h2 style="text-align: center; font-weight: bold; margin-top: 5%">PICK YOUR CATEGORY</h2>
-
 
 
 <div class="row" style="margin: auto; margin-top: 5% ">

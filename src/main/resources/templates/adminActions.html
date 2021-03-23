@@ -124,15 +124,22 @@
                             <label class="h6 mb-2">Title</label>
                         </div>
                         <input th:field="*{title}" th:errorclass=" border-danger" class="form-control" type="text" id="name" name="title"/>
-                        <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}" class="text-danger"></small>
+                        <div class="small" th:if="${#fields.hasErrors('title')}">
+                            <div style="margin-left: 10px; ">
+                                <small  th:errors="*{title}"></small>
+                            </div>
+                        </div>
 
                         <div class="label-holder text-dark textCol  ">
                             <label for="description" class="h6 mb-2">Description</label>
                         </div>
                         <textarea th:field="*{description}" th:errorclass=" border-danger" class="form-control" id="description"
                                   name="description"></textarea>
-                        <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
-                               class="text-danger"></small>
+                        <div class="small" th:if="${#fields.hasErrors('description')}">
+                            <div style="margin-left: 10px; ">
+                                <small  th:errors="*{description}"></small>
+                            </div>
+                        </div>
 
 
                         <div class="fileUpload" >

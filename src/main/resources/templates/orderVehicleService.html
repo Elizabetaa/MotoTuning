@@ -25,12 +25,20 @@
                     <label for="email">Your email</label>
                     <br>
                     <input style="width: 100%;height: 40px " th:field="*{email}" th:errorclass=" border-danger" type="email"  name="email" id="email" placeholder="demo@abv.bg">
-                    <small  th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger"></small>
+                    <div class="small" th:if="${#fields.hasErrors('email')}">
+                        <div style="margin-left: 10px; ">
+                            <small  th:errors="*{email}"></small>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-6" style="margin-top: 2%">
                     <label for="phoneNumber">Your phone number</label>
                     <input style="width: 100%; height: 40px" th:field="*{phoneNumber}" th:errorclass=" border-danger"name="phoneNumber" id="phoneNumber" type="text" placeholder="+359 00 0000000">
-                    <small  th:if="${#fields.hasErrors('phoneNumber')}" th:errors="*{phoneNumber}" class="text-danger"></small>
+                   <div class="small" th:if="${#fields.hasErrors('phoneNumber')}">
+                        <div style="margin-left: 10px; ">
+                            <small  th:errors="*{phoneNumber}"></small>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="row">
@@ -42,7 +50,11 @@
                         <option th:each="s : ${T(com.example.demo.model.entity.enums.VehicleTypeNameEnum).values()}"
                                 th:value="${s}" th:text="${s}"></option>
                     </select>
-                    <small  th:if="${#fields.hasErrors('vehicle')}" th:errors="*{vehicle}" class="text-danger"></small>
+                    <div class="small" th:if="${#fields.hasErrors('vehicle')}">
+                        <div style="margin-left: 10px; ">
+                            <small  th:errors="*{vehicle}"></small>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-6" style="margin-top: 2%">
                     <label for="vehicleService">Vehicle service type</label>
@@ -51,7 +63,11 @@
                         <option th:each="s : ${T(com.example.demo.model.entity.enums.ServiceTypeNameEnum).values()}"
                         th:value="${s}" th:text="${s}"></option>
                     </select>
-                    <small  th:if="${#fields.hasErrors('vehicleService')}" th:errors="*{vehicleService}" class="text-danger"></small>
+                    <div class="small" th:if="${#fields.hasErrors('vehicleService')}">
+                        <div style="margin-left: 10px; ">
+                            <small  th:errors="*{vehicleService}"></small>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
@@ -62,14 +78,22 @@
                         <option th:each="b : ${T(com.example.demo.model.entity.enums.BrandsNameEnum).values()}"
                                 th:value="${b}" th:text="${b}"></option>
                     </select>
-                    <small  th:if="${#fields.hasErrors('brand')}" th:errors="*{brand}" class="text-danger"></small>
+                     <div class="small" th:if="${#fields.hasErrors('brand')}">
+                        <div style="margin-left: 10px; ">
+                            <small  th:errors="*{brand}"></small>
+                        </div>
+                    </div>
                 </div>
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
                         <label for="model">Model</label>
                     </div>
                     <input style="width: 100%; height: 40px" th:field="*{model}" th:errorclass=" border-danger" name="model" id="model" class="full-width" placeholder="Model" type="text">
-                    <small  th:if="${#fields.hasErrors('model')}" th:errors="*{model}" class="text-danger"></small>
+                    <div class="small" th:if="${#fields.hasErrors('model')}">
+                        <div style="margin-left: 10px; ">
+                            <small  th:errors="*{model}"></small>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="form-group" style="margin-top: 2%">

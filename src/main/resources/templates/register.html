@@ -23,37 +23,58 @@
             <div class="label-holder textCol d-flex justify-content-center">
                 <label for="firstName" class="h4 mb-2 text-dark">First name</label>
             </div>
-            <input th:field="*{firstName}" th:errorclass=" border-danger" type="text" class="form-control" id="firstName" name="firstName"/>
-            <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}" class="text-danger">First name error
-                message</small>
+            <input th:field="*{firstName}" th:errorclass=" border-danger" type="text" class="form-control"
+                   id="firstName" name="firstName"/>
+
+            <div class="small" th:if="${#fields.hasErrors('firstName')}">
+                <div style="margin-left: 10px; ">
+                    <small  th:errors="*{firstName}"></small>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="label-holder textCol d-flex justify-content-center">
                 <label for="lastName" class="h4 mb-2 text-dark">Last name</label>
             </div>
-            <input th:field="*{lastName}" th:errorclass=" border-danger" type="text" class="form-control" id="lastName" name="lastName"/>
-            <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}" class="text-danger">Last name error message</small>
+            <input th:field="*{lastName}" th:errorclass=" border-danger" type="text" class="form-control" id="lastName"
+                   name="lastName"/>
+
+            <div class="small" th:if="${#fields.hasErrors('lastName')}">
+                <div style="margin-left: 10px; ">
+                    <small  th:errors="*{lastName}"></small>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="label-holder text-dark textCol d-flex justify-content-center">
                 <label for="email" class="h4 mb-2">Email</label>
             </div>
-            <input th:field="*{email}" th:errorclass=" border-danger" type="email" class="form-control" id="email" name="email"/>
-
-            <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}" class="text-danger">Email error message</small>
+            <input th:field="*{email}" th:errorclass=" border-danger" type="email" class="form-control" id="email"
+                   name="email"/>
+            <div class="small" th:if="${#fields.hasErrors('email')}">
+                <div style="margin-left: 10px;margin-bottom: 3px ">
+                    <small  th:errors="*{email}"></small>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="label-holder text-dark textCol d-flex justify-content-center">
                 <label for="password" class="h4 mb-2">Password</label>
             </div>
-            <input th:field="*{password}" th:errorclass=" border-danger" type="password" class="form-control" id="password" name="password"/>
-            <small th:if="${#fields.hasErrors('password')}" th:errors="*{password}" class="text-danger">Password error message</small>
+            <input th:field="*{password}" th:errorclass=" border-danger" type="password" class="form-control"
+                   id="password" name="password"/>
+            <div class="small" th:if="${#fields.hasErrors('password')}">
+                <div style="margin-left: 10px; ">
+                    <small  th:errors="*{password}"></small>
+                </div>
+            </div>
         </div>
         <div class="form-group">
             <div class="label-holder text-dark textCol d-flex justify-content-center">
                 <label for="confirmPassword" class="h4 mb-2">Confirm Password</label>
             </div>
-            <input th:field="*{confirmPassword}" th:errorclass=" border-danger" type="password" class="form-control" id="confirmPassword"
+            <input th:field="*{confirmPassword}" th:errorclass=" border-danger" type="password" class="form-control"
+                   id="confirmPassword"
                    name="confirmPassword"/>
         </div>
 
