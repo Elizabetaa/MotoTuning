@@ -9,7 +9,7 @@ public class NewsEntity extends BaseEntity{
     private String title;
     private String imageUrl;
     private String description;
-    private LocalDateTime addedOn;
+    private String addedOn;
 
     public NewsEntity() {
     }
@@ -42,12 +42,11 @@ public class NewsEntity extends BaseEntity{
     }
 
     @Column(nullable = false)
-    public LocalDateTime getAddedOn() {
+    public String getAddedOn() {
         return addedOn;
     }
 
-    public NewsEntity setAddedOn(LocalDateTime addedOn) {
+    public void setAddedOn(String addedOn) {
         this.addedOn = addedOn;
-        return this;
     }
 }

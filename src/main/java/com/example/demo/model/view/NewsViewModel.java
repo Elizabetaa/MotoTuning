@@ -4,13 +4,13 @@ import com.example.demo.model.entity.UserEntity;
 
 import java.time.LocalDateTime;
 
-public class NewsVieModel {
+public class NewsViewModel {
     private Long id;
     private String title;
     private String imageUrl;
-    private LocalDateTime addedOn;
+    private String addedOn;
 
-    public NewsVieModel() {
+    public NewsViewModel() {
     }
 
     public Long getId() {
@@ -37,11 +37,11 @@ public class NewsVieModel {
         this.imageUrl = imageUrl;
     }
 
-    public LocalDateTime getAddedOn() {
+    public String getAddedOn() {
         return addedOn;
     }
 
-    public void setAddedOn(LocalDateTime addedOn) {
+    public void setAddedOn(String addedOn) {
         this.addedOn = addedOn;
     }
 }

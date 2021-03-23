@@ -7,31 +7,14 @@
 
 <div style="background-color: white; width: 60%; margin: auto;border-style: groove; text-align: center" th:object="${news}">
 
-    <h1 th:text="*{title}" style="margin-top: 2%">2021 Honda CBR1000RR-R Fireblade SP:</h1>
+    <h1 th:text="*{title}" style="margin-top: 2%"></h1>
     <img th:src="*{imageUrl}" alt="News Image" style="width: 50%;margin-top: 2%; margin-bottom: 2%">
-
     <div style="width: 80%; text-align: left; margin: auto; margin-bottom: 5%">
-        <p th:text="*{description}">
-            As previously reported, there are rumors of a limited edition 1290 Super Duke RR. Now the model has been spotted testing on the road.
-
-
-
-            As suspected, KTM put the biggest focus on weight reduction, which was achieved by using a lot of carbon, but also titanium and magnesium. Nine kilos are said to have been saved.
-
-            Virtually all fairing parts are made of carbon. The pillion seat has been removed and a carbon cover fitted in its place. An Akrapovic titanium exhaust can be found on the side.
-
-
-
-            The engine and the performance of the KTM 1290 Super Duke RR have not changed much or at all. When the special model is to come on the market is not yet known. However, only 500 units are to be offered. Allegedly, there will be official information towards the end of the month.
-
-
-        </p>
+        <p th:text="*{description}">  </p>
         <p th:text="*{addedOn}" class="card-text"></p>
     </div>
 
-
 </div>
-
 
 <section class="" th:replace="fragments/footer::footer"></section>
 </body>

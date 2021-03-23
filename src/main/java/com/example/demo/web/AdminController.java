@@ -21,6 +21,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 
 
@@ -71,7 +72,7 @@ public class AdminController {
             return "redirect:actions#my-form1";
         }
         AddNewsServiceModel addNewsServiceModel = this.modelMapper.map(addNewsBindingModel, AddNewsServiceModel.class);
-        addNewsServiceModel.setAddedOn(LocalDateTime.now());
+        addNewsServiceModel.setAddedOn(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
 
 
         this.newsService.addNews(addNewsServiceModel);

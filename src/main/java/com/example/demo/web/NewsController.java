@@ -1,7 +1,6 @@
 package com.example.demo.web;
 
-import com.example.demo.model.view.NewsDetailsViewModel;
-import com.example.demo.model.view.NewsVieModel;
+import com.example.demo.model.view.NewsViewModel;
 import com.example.demo.service.NewsService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -22,7 +21,7 @@ public class NewsController {
 
     @GetMapping("/all")
     public String all(Model model) {
-       List<NewsVieModel> newsVieModel =  this.newsService.findAllNews();
+       List<NewsViewModel> newsViewModel =  this.newsService.findAllNews();
         model.addAttribute("news",this.newsService.findAllNews());
         return "news";
     }

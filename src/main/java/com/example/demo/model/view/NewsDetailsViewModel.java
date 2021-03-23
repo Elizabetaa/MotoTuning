@@ -6,7 +6,7 @@ public class NewsDetailsViewModel {
     private String title;
     private String imageUrl;
     private String description;
-    private LocalDateTime addedOn;
+    private String addedOn;
 
     public NewsDetailsViewModel() {
     }
@@ -35,11 +35,11 @@ public class NewsDetailsViewModel {
         this.description = description;
     }
 
-    public LocalDateTime getAddedOn() {
+    public String getAddedOn() {
         return addedOn;
     }
 
-    public void setAddedOn(LocalDateTime addedOn) {
+    public void setAddedOn(String addedOn) {
         this.addedOn = addedOn;
     }
 }

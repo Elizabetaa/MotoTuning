@@ -1,19 +1,15 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.entity.NewsEntity;
-import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.service.AddNewsServiceModel;
 import com.example.demo.model.view.NewsDetailsViewModel;
-import com.example.demo.model.view.NewsVieModel;
+import com.example.demo.model.view.NewsViewModel;
 import com.example.demo.repository.NewsRepository;
 import com.example.demo.service.CloudinaryService;
 import com.example.demo.service.NewsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -52,12 +48,12 @@ public class NewsServiceImpl implements NewsService {
 
     @Override
     @Cacheable("news")
-    public List<NewsVieModel> findAllNews() {
-        List<NewsVieModel> newsVieModels = new ArrayList<>();
+    public List<NewsViewModel> findAllNews() {
+        List<NewsViewModel> newsViewModels = new ArrayList<>();
         this.newsRepository.findAll().forEach(n -> {
-            newsVieModels.add(this.modelMapper.map(n, NewsVieModel.class));
+            newsViewModels.add(this.modelMapper.map(n, NewsViewModel.class));
         });
-        return newsVieModels;
+        return newsViewModels;
     }
 
     @Override
