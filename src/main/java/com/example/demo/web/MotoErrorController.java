@@ -12,14 +12,19 @@ import javax.servlet.http.HttpServletRequest;
 public class MotoErrorController implements ErrorController {
 
     @RequestMapping("/error")
-    public String errorHanding(HttpServletRequest request){
+    public String errorHanding(HttpServletRequest request) {
         Object attribute = request.getAttribute(RequestDispatcher.ERROR_STATUS_CODE);
-        if (attribute != null){
+        if (attribute != null) {
             int status = Integer.parseInt(attribute.toString());
-            if (status == HttpStatus.NOT_FOUND.value()){
+            if (status == HttpStatus.NOT_FOUND.value()) {
                 return "error-404";
+            } else if (status == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
+                return "error500";
+            } else if (status == HttpStatus.FORBIDDEN.value()) {
+                return "error403";
             }
         }
+        System.out.println(Integer.parseInt(attribute.toString()));
         return "error";
     }
 

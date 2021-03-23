@@ -78,7 +78,7 @@ public class InquiryVehicleServiceBindingModel {
     }
 
     @NotBlank()
-    @Size(min = 3,message = "Invalid model")
+    @Size(min = 2,message = "Invalid model")
     public String getModel() {
         return model;
     }
