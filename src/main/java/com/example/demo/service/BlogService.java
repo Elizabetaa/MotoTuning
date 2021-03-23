@@ -2,6 +2,7 @@ package com.example.demo.service;
 
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
+import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.model.view.BlogViewModel;
 
 import java.io.IOException;
@@ -13,4 +14,6 @@ public interface BlogService {
     List<BlogViewModel> findFirstFour();
 
     List<BlogViewModel> findByRoad(BlogCategoryNameEnum motorcycle);
+
+    BlogDetailsViewModel findById(Long id);
 }

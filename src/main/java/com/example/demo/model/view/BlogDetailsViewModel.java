@@ -3,22 +3,15 @@ package com.example.demo.model.view;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 
-public class BlogViewModel {
-    private Long id;
+public class BlogDetailsViewModel {
     private String title;
+    private BlogCategoryNameEnum blogCategory;
     private String imageUrl;
+    private String description;
     private UserEntity author;
     private String addedOn;
 
-    public BlogViewModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public BlogDetailsViewModel() {
     }
 
     public String getTitle() {
@@ -29,12 +22,28 @@ public class BlogViewModel {
         this.title = title;
     }
 
+    public BlogCategoryNameEnum getBlogCategory() {
+        return blogCategory;
+    }
+
+    public void setBlogCategory(BlogCategoryNameEnum blogCategory) {
+        this.blogCategory = blogCategory;
+    }
+
     public String getImageUrl() {
         return imageUrl;
     }
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 
     public UserEntity getAuthor() {

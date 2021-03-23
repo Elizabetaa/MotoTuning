@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.entity.BlogEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
+import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.model.view.BlogViewModel;
 import com.example.demo.repository.BlogRepository;
 import com.example.demo.service.BlogService;
@@ -17,6 +18,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.NoSuchElementException;
 
 @Service
 public class BlogServiceImpl implements BlogService {
@@ -67,5 +69,10 @@ public class BlogServiceImpl implements BlogService {
             blogViewModels.add(this.modelMapper.map(b,BlogViewModel.class));
         });
         return blogViewModels;
+    }
+
+    @Override
+    public BlogDetailsViewModel findById(Long id) {
+        return this.modelMapper.map(this.blogRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No value present")), BlogDetailsViewModel.class);
     }
 }

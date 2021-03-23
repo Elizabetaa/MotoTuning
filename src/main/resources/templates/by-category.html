@@ -19,7 +19,7 @@
          th:each="b : ${blogs}"
          th:object="${b}">
         <img th:src="*{imageUrl}" class="card-img border-rounded" alt="...">
-        <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;" href="/blog/id">HARLEY-DAVIDSON'S
+        <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;" th:href="@{/blog/{id} (id = *{id})}">HARLEY-DAVIDSON'S
             HARDWIRE:
             BETTING BIG ON ELECTRIC</a>
         <p style="font-size: 10px;" class="card-text"

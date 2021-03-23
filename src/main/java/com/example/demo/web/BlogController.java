@@ -4,6 +4,7 @@ import com.example.demo.model.binding.AddBlogBindingModel;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
+import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.model.view.BlogViewModel;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.UserService;
@@ -12,6 +13,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
@@ -85,5 +87,10 @@ public class BlogController {
         model.addAttribute("categoryPage", "BRAND POSTS");
         model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.BRAND));
         return "by-category";
+    }
+    @GetMapping("/{id}")
+    public String details(@PathVariable Long id, Model model){
+        model.addAttribute("blog",this.blogService.findById(id));
+        return "blog-details";
     }
 }
