@@ -2,6 +2,8 @@ package com.example.demo.model.entity;
 
 
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import java.util.List;
@@ -79,7 +81,8 @@ public class BlogEntity extends BaseEntity {
         return this;
     }
 
-    @OneToMany(mappedBy = "blog")
+    @OneToMany(mappedBy = "blog",fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
     public List<CommentEntity> getComments() {
         return commentEntities;
     }

@@ -1,5 +1,7 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head th:replace="fragments/head::head"></head>
 <style>
     .collapsible {
@@ -15,7 +17,7 @@
         font-size: 15px;
     }
 
-    .active, .collapsible:hover {
+    .collapsible:hover {
         background-color: #555;
     }
 
@@ -47,7 +49,7 @@
            style="font-weight: bold;"></p>
     </div>
 
-    <button type="button" class="collapsible">Comments</button>
+    <button type="button"  sec:authorize="isAuthenticated()"  class="collapsible">Comments</button>
     <div class="content">
         <div style="width: 100%; ">
             <form method="post" th:action="@{/blog/details/comments/add/{id} (id = *{id})}">
@@ -60,64 +62,14 @@
             </form>
         </div>
 
-        <div class="commentEntities">
-
+        <div class="commentEntities" th:each="c : *{comments}" >
             <div class="row" style="border-bottom: 1px groove  #777777;margin-top: 2%">
                 <div style="margin-left: 5%; width: 10%;margin-top: 2%">
-                    <img th:src="*{imageUrl}" style="width: 50px;height: 50px;" class="rounded-circle">
-                    <small>Ivan</small>
+                    <img th:src="${c.getUser().imageUrl}" style="width: 50px;height: 50px;" class="rounded-circle">
+                    <small th:text="${c.getUser().firstName}">Ivan</small>
                 </div>
-                <p style="margin-left: 5%; width: 70%; text-align: left">Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! </p>
+                <p th:text="${c.comment}" style="margin-left: 5%; width: 70%; text-align: left"></p>
             </div>
-            <div class="row" style="border-bottom: 1px groove  #777777;margin-top: 2%">
-                <div style="margin-left: 5%; width: 10%;margin-top: 2%">
-                    <img th:src="*{imageUrl}" style="width: 50px;height: 50px;" class="rounded-circle">
-                    <small>Ivan</small>
-                </div>
-                <p style="margin-left: 5%; width: 70%; text-align: left">Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! </p>
-            </div>
-            <div class="row" style="border-bottom: 1px groove  #777777;margin-top: 2%">
-                <div style="margin-left: 5%; width: 10%;margin-top: 2%">
-                    <img th:src="*{imageUrl}" style="width: 50px;height: 50px;" class="rounded-circle">
-                    <small>Ivan</small>
-                </div>
-                <p style="margin-left: 5%; width: 70%; text-align: left">Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! </p>
-            </div>
-            <div class="row" style="border-bottom: 1px groove  #777777;margin-top: 2%">
-                <div style="margin-left: 5%; width: 10%;margin-top: 2%">
-                    <img th:src="*{imageUrl}" style="width: 50px;height: 50px;" class="rounded-circle">
-                    <small>Ivan</small>
-                </div>
-                <p style="margin-left: 5%; width: 70%; text-align: left">Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! </p>
-            </div>
-            <div class="row" style="border-bottom: 1px groove  #777777;margin-top: 2%">
-                <div style="margin-left: 5%; width: 10%;margin-top: 2%">
-                    <img th:src="*{imageUrl}" style="width: 50px;height: 50px;" class="rounded-circle">
-                    <small>Ivan</small>
-                </div>
-                <p style="margin-left: 5%; width: 70%; text-align: left">Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! Very nice post!
-                    Very nice post! Very nice post! Very nice post! </p>
-            </div>
-
         </div>
 
     </div>

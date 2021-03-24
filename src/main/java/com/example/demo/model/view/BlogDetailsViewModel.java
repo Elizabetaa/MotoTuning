@@ -14,7 +14,7 @@ public class BlogDetailsViewModel {
     private String description;
     private UserEntity author;
     private String addedOn;
-//    private List<CommentEntity> comments;
+    private List<CommentEntity> comments;
 
     public BlogDetailsViewModel() {
     }
@@ -74,12 +74,12 @@ public class BlogDetailsViewModel {
     public void setId(Long id) {
         this.id = id;
     }
-    //
-//    public List<CommentEntity> getComments() {
-//        return comments;
-//    }
-//
-//    public void setComments(List<CommentEntity> comments) {
-//        this.comments = comments;
-//    }
+
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> comments) {
+        this.comments = comments;
+    }
 }
