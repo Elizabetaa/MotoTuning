@@ -4,22 +4,20 @@ import com.example.demo.model.binding.AddBlogBindingModel;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
-import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.model.view.BlogViewModel;
 import com.example.demo.service.BlogService;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
+import java.security.Principal;
 import java.util.List;
 
 @Controller
@@ -28,10 +26,12 @@ public class BlogController {
     private final BlogService blogService;
     private final ModelMapper modelMapper;
     private final UserService userService;
-    public BlogController(BlogService blogService, ModelMapper modelMapper, UserService userService) {
+    private final CommentService commentService;
+    public BlogController(BlogService blogService, ModelMapper modelMapper, UserService userService, CommentService commentService) {
         this.blogService = blogService;
         this.modelMapper = modelMapper;
         this.userService = userService;
+        this.commentService = commentService;
     }
 
     @GetMapping("/all")
@@ -92,5 +92,10 @@ public class BlogController {
     public String details(@PathVariable Long id, Model model){
         model.addAttribute("blog",this.blogService.findById(id));
         return "blog-details";
+    }
+    @PostMapping("/details/comments/add/{id}")
+    public String addComment(@PathVariable Long id, @RequestParam("comment") String comment, Principal principal){
+        this.commentService.addComment(comment,principal.getName(),id);
+        return "redirect:/blog/details/{id}";
     }
 }

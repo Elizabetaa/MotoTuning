@@ -4,7 +4,7 @@ package com.example.demo.model.entity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "blogs")
@@ -15,6 +15,7 @@ public class BlogEntity extends BaseEntity {
     private String description;
     private UserEntity author;
     private String addedOn;
+    private List<CommentEntity> commentEntities;
 
     public BlogEntity() {
     }
@@ -76,5 +77,14 @@ public class BlogEntity extends BaseEntity {
     public BlogEntity setAddedOn(String addedOn) {
         this.addedOn = addedOn;
         return this;
+    }
+
+    @OneToMany(mappedBy = "blog")
+    public List<CommentEntity> getComments() {
+        return commentEntities;
+    }
+
+    public void setComments(List<CommentEntity> commentEntities) {
+        this.commentEntities = commentEntities;
     }
 }

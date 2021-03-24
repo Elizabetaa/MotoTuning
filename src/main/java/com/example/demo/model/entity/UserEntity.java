@@ -1,7 +1,5 @@
 package com.example.demo.model.entity;
 
-import org.springframework.web.multipart.MultipartFile;
-
 import javax.persistence.*;
 import java.util.List;
 
@@ -16,6 +14,7 @@ public class UserEntity extends BaseEntity {
     private List<RoleEntity> roles;
     private List<BlogEntity> blogs;
     private List<InquiryEntity> inquiries;
+    private List<CommentEntity> commentEntities;
 
     public UserEntity() {
     }
@@ -101,5 +100,12 @@ public class UserEntity extends BaseEntity {
         return this;
     }
 
+    @OneToMany(mappedBy = "user")
+    public List<CommentEntity> getComments() {
+        return commentEntities;
+    }
 
+    public void setComments(List<CommentEntity> commentEntities) {
+        this.commentEntities = commentEntities;
+    }
 }

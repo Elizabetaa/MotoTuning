@@ -1,17 +1,26 @@
 package com.example.demo.model.view;
 
+import com.example.demo.model.entity.CommentEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 
+import java.util.List;
+
 public class BlogDetailsViewModel {
+    private  Long id;
     private String title;
     private BlogCategoryNameEnum blogCategory;
     private String imageUrl;
     private String description;
     private UserEntity author;
     private String addedOn;
+//    private List<CommentEntity> comments;
 
     public BlogDetailsViewModel() {
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getTitle() {
@@ -61,4 +70,16 @@ public class BlogDetailsViewModel {
     public void setAddedOn(String addedOn) {
         this.addedOn = addedOn;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    //
+//    public List<CommentEntity> getComments() {
+//        return comments;
+//    }
+//
+//    public void setComments(List<CommentEntity> comments) {
+//        this.comments = comments;
+//    }
 }
