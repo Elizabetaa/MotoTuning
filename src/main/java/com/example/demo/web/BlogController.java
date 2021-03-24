@@ -88,7 +88,7 @@ public class BlogController {
         model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.BRAND));
         return "by-category";
     }
-    @GetMapping("/{id}")
+    @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model){
         model.addAttribute("blog",this.blogService.findById(id));
         return "blog-details";

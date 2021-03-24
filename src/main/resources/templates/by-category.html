@@ -9,7 +9,16 @@
 
 <div th:if="${blogs.isEmpty()}" style="text-align: center;margin: auto;height: 220px;margin-top: 5%">
     <h1>Don't have blog with this category</h1>
-    <button style="margin: auto; margin-top: 5%" id="addPost" onclick="window.location.href='/blog/add'">Add Post</button>
+    <button style="margin: auto; margin-top: 5%" id="addPost" sec:authorize="isAuthenticated()"
+            onclick="window.location.href='/blog/add'">Add Post
+    </button>
+
+    <div class="signin-link text-center m-5" sec:authorize="!isAuthenticated()">
+        <span class="text-secondary ">Sign in and write the first blog at this category</span> <a href="/users/signIn"
+                                                                                                  class="signin link-jet"
+                                                                                                  title="Sign in"><span>Sign in</span></a>
+    </div>
+
 
 </div>
 
@@ -19,7 +28,8 @@
          th:each="b : ${blogs}"
          th:object="${b}">
         <img th:src="*{imageUrl}" class="card-img border-rounded" alt="...">
-        <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;" th:href="@{/blog/{id} (id = *{id})}">HARLEY-DAVIDSON'S
+        <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;"
+           th:href="@{/blog/details/{id} (id = *{id})}">HARLEY-DAVIDSON'S
             HARDWIRE:
             BETTING BIG ON ELECTRIC</a>
         <p style="font-size: 10px;" class="card-text"
