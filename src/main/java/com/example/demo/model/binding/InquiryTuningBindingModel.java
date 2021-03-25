@@ -34,7 +34,7 @@ public class InquiryTuningBindingModel {
     }
 
     @NotBlank
-    @Size(min = 10,max = 10,message = "Invalid phone Number")
+    @Size(min = 10,message = "Invalid phone Number")
     public String getPhoneNumber() {
         return phoneNumber;
     }
@@ -74,6 +74,7 @@ public class InquiryTuningBindingModel {
     }
 
     @NotBlank(message = "Model can not be empty")
+    @Size(min = 2,message = "Invalid model")
     public String getModel() {
         return model;
     }
@@ -84,6 +85,7 @@ public class InquiryTuningBindingModel {
     }
 
     @NotBlank(message = "You must write tuning details")
+    @Size(min = 10,message = "Description must contain at least 10 symbols")
     public String getDescription() {
         return description;
     }

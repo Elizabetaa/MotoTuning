@@ -40,7 +40,9 @@
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
                         <label for="response">RESPONSE</label>
                     </div>
-                    <textarea th:field="*{response}" th:errorclass=" border-danger" name="response" id="response"
+                    <textarea
+                            required minlength="10"
+                            th:field="*{response}" th:errorclass=" border-danger" name="response" id="response"
                               style="width: 100%" placeholder="Description"></textarea>
                     <div class="small" th:if="${#fields.hasErrors('response')}">
                         <div style="margin-left: 10px; ">

@@ -37,7 +37,7 @@ public class InquiryVehicleServiceBindingModel {
     }
 
     @NotBlank
-    @Size(min = 10,max = 10,message = "Invalid phone number")
+    @Size(min = 10,message = "Invalid phone number")
     public String getPhoneNumber() {
         return phoneNumber;
     }

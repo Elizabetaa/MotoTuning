@@ -25,13 +25,13 @@
                 <div class="label-holder text-dark textCol d-flex justify-content-center">
                     <label  for="email" class="h4 mb-2">Email</label>
                 </div>
-                <input th:value="${email}" type="email" class="form-control" id="email" name="email"/>
+                <input required  th:value="${email}" type="email" class="form-control" id="email" name="email"/>
             </div>
             <div class="form-group">
                 <div class="label-holder text-dark textCol d-flex justify-content-center">
                     <label for="password" class="h4 mb-2">Password</label>
                 </div>
-                <input type="password" class="form-control" id="password" name="password"/>
+                <input required minlength="6" type="password" class="form-control" id="password" name="password"/>
             </div>
 
             <div class="button-holder d-flex justify-content-center">

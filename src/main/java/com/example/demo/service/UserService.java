@@ -15,4 +15,5 @@ public interface UserService {
 
     UserEntity findByEmail(String authentication);
 
+    boolean userNameExists(String email);
 }

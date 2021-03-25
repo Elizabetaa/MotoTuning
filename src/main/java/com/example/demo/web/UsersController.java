@@ -39,6 +39,7 @@ public class UsersController {
     public String register(Model model) {
         if (!model.containsAttribute("userRegisterBindingModel")) {
             model.addAttribute("userRegisterBindingModel", new UserRegisterBindingModel());
+            model.addAttribute("userExistsError", false);
         }
         return "register";
     }
@@ -49,6 +50,12 @@ public class UsersController {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.userRegisterBindingModel", bindingResult);
+            return "redirect:register";
+        }
+        if (userService.userNameExists(userRegisterBindingModel.getEmail())) {
+            redirectAttributes.addFlashAttribute("userRegisterBindingModel", userRegisterBindingModel);
+            redirectAttributes.addFlashAttribute("userExistsError", true);
+
             return "redirect:register";
         }
 

@@ -20,9 +20,9 @@
             </div>
             <ul class="list-group list-group-flush" style="margin-left: 2%;">
                 <br>
-                <p th:text="|Email: *{email}|">Email: elizabeta@ebv.bg</p>
-                <p th:text="|Vehicle type: *{vehicle}|">Vehicle type: motorcycle</p>
-                <p th:text="|Model: *{model}|">Model: motorcycle</p>
+                <p th:text="|Email: *{email}|"></p>
+                <p th:text="|Vehicle type: *{vehicle}|"></p>
+                <p th:text="|Model: *{model}|"></p>
             </ul>
             <a class="link-details" th:href="@{/inquiries/details/{id}(id = *{id})}">Details</a>
         </div>
@@ -45,9 +45,9 @@
             </div>
             <ul class="list-group list-group-flush" style="margin-left: 2%;">
                 <br>
-                <p th:text="|Email: *{email}|">Email: elizabeta@ebv.bg</p>
-                <p th:text="|Vehicle type: *{vehicle}|">Vehicle type: motorcycle</p>
-                <p th:text="|Model: *{model}|">Model: motorcycle</p>
+                <p th:text="|Email: *{email}|"></p>
+                <p th:text="|Vehicle type: *{vehicle}|"></p>
+                <p th:text="|Model: *{model}|"></p>
             </ul>
             <a class="link-details" th:href="@{/inquiries/details/{id}(id = *{id})}">Details </a>
         </div>
@@ -123,7 +123,7 @@
                         <div class="label-holder text-dark textCol ">
                             <label class="h6 mb-2">Title</label>
                         </div>
-                        <input th:field="*{title}" th:errorclass=" border-danger" class="form-control" type="text" id="name" name="title"/>
+                        <input required minlength="3" th:field="*{title}" th:errorclass=" border-danger" class="form-control" type="text" id="name" name="title"/>
                         <div class="small" th:if="${#fields.hasErrors('title')}">
                             <div style="margin-left: 10px; ">
                                 <small  th:errors="*{title}"></small>
@@ -133,7 +133,7 @@
                         <div class="label-holder text-dark textCol  ">
                             <label for="description" class="h6 mb-2">Description</label>
                         </div>
-                        <textarea th:field="*{description}" th:errorclass=" border-danger" class="form-control" id="description"
+                        <textarea required minlength="100" th:field="*{description}" th:errorclass=" border-danger" class="form-control" id="description"
                                   name="description"></textarea>
                         <div class="small" th:if="${#fields.hasErrors('description')}">
                             <div style="margin-left: 10px; ">
@@ -143,7 +143,7 @@
 
 
                         <div class="fileUpload" >
-                            <input th:field="*{imageUrl}" th:errorclass=" border-danger" type="file" id="imageUrl" name="imageUrl" class="upload"/>
+                            <input required th:field="*{imageUrl}" th:errorclass=" border-danger" type="file" id="imageUrl" name="imageUrl" class="upload"/>
                             <span>Add image</span>
                         </div>
                         <div style="text-align: center">

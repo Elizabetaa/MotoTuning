@@ -64,5 +64,10 @@ public class UserServiceImpl implements UserService {
         return this.userRepository.findByEmail(authentication).orElse(null);
     }
 
+    @Override
+    public boolean userNameExists(String email) {
+        return this.userRepository.findByEmail(email).isPresent();
+    }
+
 
 }

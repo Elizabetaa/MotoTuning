@@ -36,7 +36,7 @@ public class AddNewsBindingModel {
 
 
 
-    @Size(min = 10, message = "Description must be more than 10 symbols")
+    @Size(min = 100, message = "Description must be more than 100 symbols")
     public String getDescription() {
         return description;
     }

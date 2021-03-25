@@ -14,7 +14,11 @@
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <label for="email">Your name</label>
                     <br>
-                    <input style="width: 100%;height: 40px " th:field="*{email}" th:errorclass="border-danger"  name="email" id="email" placeholder="demo@abv.bg">
+                    <input style="width: 100%;height: 40px "
+                           th:field="*{email}"
+                           th:errorclass="border-danger"
+                           required
+                           name="email" id="email" placeholder="demo@abv.bg">
                     <div class="small">
                         <div style="margin-left: 10px; ">
                             <small th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></small>
@@ -24,7 +28,11 @@
                 </div>
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <label for="name">Title</label>
-                    <input style="width: 100%; height: 40px" th:field="*{title}" th:errorclass="border-danger" name="title" id="name" type="text" placeholder="title">
+                    <input style="width: 100%; height: 40px"
+                           required minlength="3"
+                           th:field="*{title}"
+                           th:errorclass="border-danger"
+                           name="title" id="name" type="text" placeholder="title">
                     <div class="small">
                         <div style="margin-left: 10px; ">
                             <small th:if="${#fields.hasErrors('title')}" th:errors="*{title}"></small>
@@ -34,7 +42,11 @@
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <label for="vehicle">Blog Category</label>
                     <br>
-                    <select style="width: 100%; height: 40px;" th:field="*{blogCategory}" th:errorclass="border-danger"  id="vehicle" name="vehicle">
+                    <select style="width: 100%; height: 40px;"
+                            required
+                            th:field="*{blogCategory}"
+                            th:errorclass="border-danger"
+                            id="vehicle" name="vehicle">
                         <option  value="">- Select blog category -</option>
                         <option th:each="s : ${T(com.example.demo.model.entity.enums.BlogCategoryNameEnum).values()}"
                                 th:value="${s}" th:text="${s}"></option>
@@ -47,7 +59,11 @@
                 </div>
             <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                 <label for="name">Description</label>
-                <textarea  th:field="*{description}" th:errorclass="border-danger"  name="description" id="description" style="width: 100%" placeholder="Description"></textarea>
+                <textarea
+                        required minlength="100"
+                        th:field="*{description}"
+                        th:errorclass="border-danger"
+                        name="description" id="description" style="width: 100%" placeholder="Description"></textarea>
                 <div class="small">
                     <div style="margin-left: 10px; ">
                         <small th:if="${#fields.hasErrors('description')}" th:errors="*{description}"></small>
