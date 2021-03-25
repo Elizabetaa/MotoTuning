@@ -1,5 +1,6 @@
 package com.example.demo.model.binding;
 
+import com.example.demo.config.validator.MultipartFileExists;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import org.springframework.web.multipart.MultipartFile;
@@ -49,6 +50,7 @@ public class AddBlogBindingModel {
         this.blogCategory = blogCategory;
     }
 
+    @MultipartFileExists(message = "Select Image")
     public MultipartFile getImageUrl() {
         return imageUrl;
     }

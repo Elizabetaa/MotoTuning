@@ -11,6 +11,7 @@ public class UserEntity extends BaseEntity {
     private String email;
     private String password;
     private String imageUrl;
+
     private List<RoleEntity> roles;
     private List<BlogEntity> blogs;
     private List<InquiryEntity> inquiries;

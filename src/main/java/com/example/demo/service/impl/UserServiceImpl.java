@@ -2,21 +2,28 @@ package com.example.demo.service.impl;
 
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.RoleNameEnum;
+import com.example.demo.model.service.EditAccountServiceModel;
 import com.example.demo.model.service.UserRegisterServiceModel;
+import com.example.demo.model.view.CurrentUserViewModel;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.CloudinaryService;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
+import org.apache.tomcat.util.http.fileupload.FileUtils;
+import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.modelmapper.ModelMapper;
+import org.springframework.mock.web.MockMultipartFile;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 @Service
@@ -67,6 +74,28 @@ public class UserServiceImpl implements UserService {
     @Override
     public boolean userNameExists(String email) {
         return this.userRepository.findByEmail(email).isPresent();
+    }
+
+    @Override
+    public void editAccount(EditAccountServiceModel editAccountServiceModel, String email) throws IOException {
+        UserEntity userEntity = this.userRepository.findByEmail(email).get();
+        if (!editAccountServiceModel.getImageUrl().isEmpty()){
+            MultipartFile img = editAccountServiceModel.getImageUrl();
+            String url = cloudinaryService.uploadImage(img);
+            userEntity.setImageUrl(url);
+
+        }
+        userEntity.setFirstName(editAccountServiceModel.getFirstName())
+                .setLastName(editAccountServiceModel.getLastName());
+
+        this.userRepository.save(userEntity);
+    }
+
+    @Override
+    public CurrentUserViewModel findCurrentUser(String email) throws IOException {
+        UserEntity userEntity = this.userRepository.findByEmail(email).get();
+        CurrentUserViewModel map = this.modelMapper.map(userEntity, CurrentUserViewModel.class);
+        return this.modelMapper.map(userEntity,CurrentUserViewModel.class);
     }
 
 

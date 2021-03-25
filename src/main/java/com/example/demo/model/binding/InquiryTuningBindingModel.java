@@ -5,10 +5,7 @@ import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
 
-import javax.validation.constraints.Email;
-import javax.validation.constraints.NotBlank;
-import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
+import javax.validation.constraints.*;
 
 public class InquiryTuningBindingModel {
     private String email;
@@ -34,7 +31,8 @@ public class InquiryTuningBindingModel {
     }
 
     @NotBlank
-    @Size(min = 10,message = "Invalid phone Number")
+    @Size(min = 10,message = "Number must be ta least 10 digits")
+    @Pattern(regexp = "(\\+\\d{12})|(\\d{10})",message = "Invalid phone number")
     public String getPhoneNumber() {
         return phoneNumber;
     }

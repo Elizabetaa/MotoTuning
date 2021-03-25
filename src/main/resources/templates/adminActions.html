@@ -142,19 +142,20 @@
                         </div>
 
 
-                        <div class="fileUpload" >
-                            <input required th:field="*{imageUrl}" th:errorclass=" border-danger" type="file" id="imageUrl" name="imageUrl" class="upload"/>
-                            <span>Add image</span>
-                        </div>
-                        <div style="text-align: center">
-                        <small th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}"
-                                   class="text-danger" ></small>
+                        <div class="fileUpload " style="height: 40px">
+                            <label for="imageUrl">Add photo</label>
+                            <br>
+                            <input type="file" id="imageUrl" name="imageUrl" class="upload"/>
+                            <div class="small">
+                                <div style="margin-left: 10px; ">
+                                    <small th:if="${#fields.hasErrors('imageUrl')}" th:errors="*{imageUrl}"></small>
+                                </div>
+                            </div>
                         </div>
 
-
-                        <div class="button-holder d-flex justify-content-center"
-                             style="margin-bottom: 3%;margin-top: 3%">
-                            <button type="submit" class="btn btn-dark btn-block" value="Submit">Submit</button>
+                        <div class="button-holder d-flex justify-content-center m-3"
+                             style="margin-bottom: 3%;margin-top: 8%">
+                            <button type="submit" class="btn btn-dark btn-block " value="Submit">Submit</button>
                         </div>
                     </form>
                     <div class="col-xl-4 col-lg-4 col-md-12 mx-auto mb-4">

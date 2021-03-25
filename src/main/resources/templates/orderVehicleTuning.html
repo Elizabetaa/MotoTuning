@@ -34,7 +34,9 @@
                 </div>
                 <div class="col-sm-6" style="margin-top: 2%">
                     <label for="phoneNumber">Your phone number</label>
-                    <input style="width: 100%; height: 40px" required minlength="2" th:field="*{phoneNumber}" th:errorclass=" border-danger"
+                    <input style="width: 100%; height: 40px" required minlength="2"
+                           pattern="(\+\d{12})|(\d{10})"
+                           th:field="*{phoneNumber}" th:errorclass=" border-danger"
                            name="phoneNumber" id="phoneNumber" type="text" placeholder="+359 00 0000000">
                     <div class="small" th:if="${#fields.hasErrors('phoneNumber')}">
                         <div style="margin-left: 10px; ">

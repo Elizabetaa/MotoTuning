@@ -1,5 +1,6 @@
 package com.example.demo.model.binding;
 
+import com.example.demo.config.validator.MultipartFileExists;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
@@ -24,7 +25,7 @@ public class AddNewsBindingModel {
         this.title = title;
     }
 
-    @NotNull(message = "You must select image")
+    @MultipartFileExists(message = "Select Image")
     public MultipartFile getImageUrl() {
         return imageUrl;
     }
@@ -32,8 +33,6 @@ public class AddNewsBindingModel {
     public void setImageUrl(MultipartFile imageUrl) {
         this.imageUrl = imageUrl;
     }
-
-
 
 
     @Size(min = 100, message = "Description must be more than 100 symbols")

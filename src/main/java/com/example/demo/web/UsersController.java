@@ -1,7 +1,10 @@
 package com.example.demo.web;
 
+import com.example.demo.model.binding.EditAccountBindingModel;
 import com.example.demo.model.binding.UserRegisterBindingModel;
+import com.example.demo.model.service.EditAccountServiceModel;
 import com.example.demo.model.service.UserRegisterServiceModel;
+import com.example.demo.model.view.CurrentUserViewModel;
 import com.example.demo.model.view.MyInquiriesViewModel;
 import com.example.demo.service.InquiryService;
 import com.example.demo.service.UserService;
@@ -88,7 +91,6 @@ public class UsersController {
     @GetMapping("/account")
     public String myAccount(Model model,Principal principal) {
         model.addAttribute("currentUser", this.userService.findByEmail(principal.getName()));
-        List<MyInquiriesViewModel> myInquiries = this.inquiryService.getMyInquiries(principal.getName());
         model.addAttribute("myInquiries",this.inquiryService.getMyInquiries(principal.getName()));
         return "myAccount";
     }
@@ -98,6 +100,29 @@ public class UsersController {
 
         this.userService.addImage(imageUrl);
         return "home";
+    }
+
+    @GetMapping("/editAccount")
+    public String editAccount(Model model, Principal principal) throws IOException {
+        model.addAttribute("currentUser", this.userService.findCurrentUser(principal.getName()));
+        if (!model.containsAttribute("editAccountBindingModel")){
+            model.addAttribute("editAccountBindingModel", new EditAccountBindingModel());
+            model.addAttribute("userExistsError", false);
+        }
+        return "edit-account";
+    }
+    @PostMapping("/editAccount")
+    public String editAccountConfirm(@Valid CurrentUserViewModel currentUserViewModel,
+                                     BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) throws IOException {
+        EditAccountBindingModel editAccountBindingModel = this.modelMapper.map(currentUserViewModel,EditAccountBindingModel.class);
+        if (bindingResult.hasErrors()){
+            redirectAttributes.addFlashAttribute("editAccountBindingModel", editAccountBindingModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.editAccountBindingModel", editAccountBindingModel);
+            return "redirect:editAccount";
+        }
+
+        this.userService.editAccount(this.modelMapper.map(editAccountBindingModel, EditAccountServiceModel.class),principal.getName());
+        return "redirect:account";
     }
 
 }

@@ -41,15 +41,10 @@ public class BlogServiceImpl implements BlogService {
     public void addBlog(AddBlogServiceModel addBlogServiceModel) throws IOException {
         addBlogServiceModel.setAddedOn(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
         BlogEntity blogEntity = this.modelMapper.map(addBlogServiceModel, BlogEntity.class);
-        if (addBlogServiceModel.getImageUrl().isEmpty()) {
-            blogEntity.setImageUrl("https://res.cloudinary.com/elizabetak/image/upload/v1616501806/p5dneoqsob60zdzck4xd.jpg");
-            this.blogRepository.save(blogEntity);
-        } else {
             MultipartFile img = addBlogServiceModel.getImageUrl();
             String url = cloudinaryService.uploadImage(img);
             blogEntity.setImageUrl(url);
             this.blogRepository.save(blogEntity);
-        }
     }
 
     @Override

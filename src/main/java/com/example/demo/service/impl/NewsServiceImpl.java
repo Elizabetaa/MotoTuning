@@ -34,16 +34,10 @@ public class NewsServiceImpl implements NewsService {
     @CacheEvict(value = "news", allEntries = true)
     public void addNews(AddNewsServiceModel addNewsServiceModel) throws IOException {
         NewsEntity newsEntity = this.modelMapper.map(addNewsServiceModel, NewsEntity.class);
-        if (addNewsServiceModel.getImageUrl().isEmpty()) {
-            newsEntity.setImageUrl("https://res.cloudinary.com/elizabetak/image/upload/v1616422823/mmn2ueedpftlieb6plbs.jpg");
-            this.newsRepository.save(newsEntity);
-        } else {
             MultipartFile img = addNewsServiceModel.getImageUrl();
             String url = cloudinaryService.uploadImage(img);
             newsEntity.setImageUrl(url);
             this.newsRepository.save(newsEntity);
-        }
-
     }
 
     @Override

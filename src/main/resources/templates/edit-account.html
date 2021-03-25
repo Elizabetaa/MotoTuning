@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+<main>
+
+    <!--        <form id="add-article-form" class="form w-25 mx-auto" th:action="@{/users/addImg}" th:method="post"-->
+    <!--              enctype="multipart/form-data">-->
+
+    <!--            <div class="fileUpload btn btn-primary" style="margin-top: 2%;">-->
+    <!--                <label class="upload">-->
+    <!--                    <input name='imageUrl' id="imageUrl" type="file"/> Upload Image-->
+    <!--                </label>-->
+    <!--            </div>-->
+    <!--            <hr class="hr-2 bg-dark w-25">-->
+    <!--            <div class="button-holder d-flex justify-content-center">-->
+    <!--                <button type="submit" class="btn btn-success">Add</button>-->
+    <!--            </div>-->
+    <!--        </form>-->
+
+    <div class="row" style="height: 800px">
+
+        <div id="add">
+            <h3 style="text-align: center;margin-top: 3%;font-weight: 400; text-transform: uppercase;">Add new post</h3>
+            <hr>
+            <form method="POST" th:action="@{/users/editAccount}" th:object="${currentUser}"
+                  enctype="multipart/form-data">
+
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <label for="firstName">Your first name</label>
+                    <br>
+                    <input style="width: 100%;height: 40px "
+                           th:field="*{firstName}"
+                           th:errorclass="border-danger"
+                           required
+                           name="firstName" id="firstName" placeholder="First Name">
+                    <div class="small">
+                        <div style="margin-left: 10px; ">
+                            <small th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <label for="lastName">Your last name</label>
+                    <br>
+                    <input style="width: 100%;height: 40px "
+                           th:field="*{lastName}"
+                           name="lastName" id="lastName">
+                    <div class="small">
+                        <div style="margin-left: 10px; ">
+                            <small th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <div class="fileUpload">
+                        <label for="imageUrl">Change photo</label>
+                        <input th:value="${currentUser.imageUrl}" type="file" class="form-control-file" name="imageUrl" id="imageUrl">
+                    </div>
+                </div>
+
+                <div class="button-holder d-flex justify-content-center">
+                    <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+<section class="" th:replace="fragments/footer::footer"></section>
+</body>
+
+</html>
