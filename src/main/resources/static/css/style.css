@@ -146,13 +146,13 @@ li a:hover {
     border-style: none;
     margin-top: 7%;
     width: 40%;
-    height: 396px;
     margin-left: 7%;
 }
 
 #service p {
     /*font-weight: bold;*/
-    margin-top: 38%;
+    margin-top: 40%;
+
 }
 
 #service .img {
@@ -333,7 +333,6 @@ li a:hover {
 }
 
 
-
 #add {
     margin-top: 4%;
     width: 30%;
@@ -344,26 +343,3 @@ li a:hover {
 #add label {
     font-weight: 600;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

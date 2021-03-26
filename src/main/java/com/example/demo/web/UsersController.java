@@ -104,24 +104,22 @@ public class UsersController {
 
     @GetMapping("/editAccount")
     public String editAccount(Model model, Principal principal) throws IOException {
-        model.addAttribute("currentUser", this.userService.findCurrentUser(principal.getName()));
-        if (!model.containsAttribute("editAccountBindingModel")){
-            model.addAttribute("editAccountBindingModel", new EditAccountBindingModel());
-            model.addAttribute("userExistsError", false);
+
+        if (!model.containsAttribute("currentUserViewModel")){
+            model.addAttribute("currentUserViewModel", this.userService.findCurrentUser(principal.getName()));
         }
         return "edit-account";
     }
     @PostMapping("/editAccount")
     public String editAccountConfirm(@Valid CurrentUserViewModel currentUserViewModel,
                                      BindingResult bindingResult, RedirectAttributes redirectAttributes, Principal principal) throws IOException {
-        EditAccountBindingModel editAccountBindingModel = this.modelMapper.map(currentUserViewModel,EditAccountBindingModel.class);
         if (bindingResult.hasErrors()){
-            redirectAttributes.addFlashAttribute("editAccountBindingModel", editAccountBindingModel);
-            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.editAccountBindingModel", editAccountBindingModel);
+            redirectAttributes.addFlashAttribute("currentUserViewModel", currentUserViewModel);
+            redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.currentUserViewModel", bindingResult);
             return "redirect:editAccount";
         }
 
-        this.userService.editAccount(this.modelMapper.map(editAccountBindingModel, EditAccountServiceModel.class),principal.getName());
+        this.userService.editAccount(this.modelMapper.map(currentUserViewModel, EditAccountServiceModel.class),principal.getName());
         return "redirect:account";
     }
 

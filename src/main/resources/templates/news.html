@@ -4,8 +4,15 @@
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
+<div class="card mb-4" style="width: 70%;height: 450px; background-color: LightGray; margin: 5% auto auto; border-style: none" th:if="${news.isEmpty()}">
+    <h1 style="text-align: center;margin-top: 3%;">
+        Don't have any news yet
+    </h1>
+   <hr size="30" color="#0077b3" style="margin-top: 2%; "/>
 
-<div class="card mb-4" style="width: 70%; background-color: LightGray; margin: 5% auto auto; border-style: none">
+
+</div>
+<div class="card mb-4" style="width: 70%; background-color: LightGray; margin: 5% auto auto; border-style: none" th:unless="${news.isEmpty()}">
     <hr size="30" color="#0077b3" style="margin-top: 2%; "/>
     <div  th:each="n : ${news}" th:object="${n}">
         <div class="row g-1" style="margin-top: 3%; margin-left: 3%" >

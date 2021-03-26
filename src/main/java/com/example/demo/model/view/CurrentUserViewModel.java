@@ -1,6 +1,10 @@
 package com.example.demo.model.view;
 
+import com.example.demo.config.validator.MultipartFileExists;
 import org.springframework.web.multipart.MultipartFile;
+
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 public class CurrentUserViewModel {
     public String email;
@@ -18,7 +22,8 @@ public class CurrentUserViewModel {
     public void setEmail(String email) {
         this.email = email;
     }
-
+    @NotBlank
+    @Size(min = 2, message = "First name length must be at least 2 symbols")
     public String getFirstName() {
         return firstName;
     }
@@ -26,7 +31,8 @@ public class CurrentUserViewModel {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
+    @NotBlank
+    @Size(min = 2, message = "Last name length must be at least 2 symbols")
     public String getLastName() {
         return lastName;
     }

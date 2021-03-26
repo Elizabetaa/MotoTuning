@@ -49,9 +49,9 @@
            style="font-weight: bold;"></p>
     </div>
 
-    <button type="button"  sec:authorize="isAuthenticated()"  class="collapsible">Comments</button>
-    <div class="content">
-        <div style="width: 100%; ">
+    <button type="button"  class="collapsible">Comments</button>
+    <div class="content" >
+        <div style="width: 100%;" sec:authorize="isAuthenticated()">
             <form method="post" th:action="@{/blog/details/comments/add/{id} (id = *{id})}">
                 <div class="input-group">
                     <textarea th:name="comment" class="form-control" aria-label="With textarea"></textarea>

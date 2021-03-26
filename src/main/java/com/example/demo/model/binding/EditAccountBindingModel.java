@@ -39,7 +39,6 @@ public class EditAccountBindingModel {
         this.lastName = lastName;
     }
 
-    @MultipartFileExists
     public MultipartFile getImageUrl() {
         return imageUrl;
     }
