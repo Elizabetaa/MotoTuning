@@ -9,7 +9,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "inquiries")
-public class InquiryEntity extends BaseEntity{
+public class InquiryEntity extends BaseEntity {
 
     private InquiryTypeNameEnum inquiry;
     private String email;
@@ -21,7 +21,6 @@ public class InquiryEntity extends BaseEntity{
     private String description;
     private String response;
     private UserEntity author;
-    private String status;
 
     public InquiryEntity() {
     }
@@ -38,7 +37,7 @@ public class InquiryEntity extends BaseEntity{
     }
 
 
-    @Column(name = "email",nullable = false)
+    @Column(name = "email", nullable = false)
     public String getEmail() {
         return email;
     }
@@ -126,14 +125,5 @@ public class InquiryEntity extends BaseEntity{
     public InquiryEntity setAuthor(UserEntity author) {
         this.author = author;
         return this;
-    }
-
-    @Column(name = "status")
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
     }
 }

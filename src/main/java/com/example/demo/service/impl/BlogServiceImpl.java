@@ -32,6 +32,8 @@ public class BlogServiceImpl implements BlogService {
         this.cloudinaryService = cloudinaryService;
     }
 
+
+
     @Override
     public void addBlog(AddBlogServiceModel addBlogServiceModel) throws IOException {
         addBlogServiceModel.setAddedOn(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
@@ -56,9 +58,9 @@ public class BlogServiceImpl implements BlogService {
     }
 
     @Override
-    public List<BlogViewModel> findByRoad(BlogCategoryNameEnum motorcycle) {
+    public List<BlogViewModel> findByCategory(BlogCategoryNameEnum category) {
         List<BlogViewModel> blogViewModels = new ArrayList<>();
-        this.blogRepository.findByBlogCategory(motorcycle).forEach(b -> {
+        this.blogRepository.findByBlogCategory(category).forEach(b -> {
             blogViewModels.add(this.modelMapper.map(b,BlogViewModel.class));
         });
         return blogViewModels;

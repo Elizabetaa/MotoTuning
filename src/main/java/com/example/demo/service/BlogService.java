@@ -13,7 +13,7 @@ public interface BlogService {
 
     List<BlogViewModel> findFirstFour();
 
-    List<BlogViewModel> findByRoad(BlogCategoryNameEnum motorcycle);
+    List<BlogViewModel> findByCategory(BlogCategoryNameEnum motorcycle);
 
     BlogDetailsViewModel findById(Long id);
 }

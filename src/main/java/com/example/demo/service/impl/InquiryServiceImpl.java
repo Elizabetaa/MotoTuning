@@ -20,6 +20,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class InquiryServiceImpl implements InquiryService {
@@ -38,11 +39,13 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     @CacheEvict(value = "inquiriesService", allEntries = true)
     public List<InquiryEntity> addInquiryVehicleService(InquiryVehicleServiceServiceModel inquiry) {
+
         InquiryEntity inquiryEntity = this.modelMapper.map(inquiry, InquiryEntity.class);
         String authentication = SecurityContextHolder.getContext().getAuthentication().getName();
         UserEntity byEmail = userService.findByEmail(authentication);
         inquiryEntity.setAuthor(byEmail);
         this.inquiryRepository.save(inquiryEntity);
+
         return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).orElse(null);
     }
 
@@ -54,6 +57,7 @@ public class InquiryServiceImpl implements InquiryService {
         UserEntity byEmail = userService.findByEmail(authentication);
         inquiryEntity.setAuthor(byEmail);
         this.inquiryRepository.save(inquiryEntity);
+
         return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).orElse(null);
     }
 
@@ -83,7 +87,9 @@ public class InquiryServiceImpl implements InquiryService {
 
     @Override
     public InquiryDetailsViewModel findById(Long id) {
-       return this.modelMapper.map(this.inquiryRepository.findById(id).get(), InquiryDetailsViewModel.class);
+        Optional<InquiryEntity> byId = this.inquiryRepository.findById(id);
+        InquiryDetailsViewModel inquiryDetailsViewModel = this.modelMapper.map(byId.get(), InquiryDetailsViewModel.class);
+        return inquiryDetailsViewModel;
     }
 
     @Override

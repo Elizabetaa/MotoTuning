@@ -1,7 +1,10 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.entity.UserEntity;
+import com.example.demo.repository.BlogRepository;
 import com.example.demo.repository.UserRepository;
+import com.example.demo.service.CloudinaryService;
+import org.modelmapper.ModelMapper;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -21,6 +24,8 @@ public class MotoTuningUserService implements UserDetailsService {
     public MotoTuningUserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
+
+
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {

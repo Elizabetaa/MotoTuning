@@ -4,8 +4,6 @@ import com.example.demo.model.binding.AddBlogBindingModel;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
-import com.example.demo.model.view.BlogDetailsViewModel;
-import com.example.demo.model.view.BlogViewModel;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.UserService;
@@ -19,7 +17,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequestMapping("/blog")
@@ -67,25 +64,25 @@ public class BlogController {
     @GetMapping("/categories/road")
     public String postsRoad(Model model){
         model.addAttribute("categoryPage", "ROAD POSTS");
-        model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.ROADS));
+        model.addAttribute("blogs",this.blogService.findByCategory(BlogCategoryNameEnum.ROADS));
         return "by-category";
     }
     @GetMapping("/categories/motorcycle")
     public String postsMotorcycle(Model model){
         model.addAttribute("categoryPage", "MOTORCYCLE POSTS");
-        model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.MOTORCYCLE));
+        model.addAttribute("blogs",this.blogService.findByCategory(BlogCategoryNameEnum.MOTORCYCLE));
         return "by-category";
     }
     @GetMapping("/categories/tuning")
     public String postsTuning(Model model){
         model.addAttribute("categoryPage", "TUNING POSTS");
-        model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.TUNING));
+        model.addAttribute("blogs",this.blogService.findByCategory(BlogCategoryNameEnum.TUNING));
         return "by-category";
     }
     @GetMapping("/categories/brands")
     public String postsBrands(Model model){
         model.addAttribute("categoryPage", "BRAND POSTS");
-        model.addAttribute("blogs",this.blogService.findByRoad(BlogCategoryNameEnum.BRAND));
+        model.addAttribute("blogs",this.blogService.findByCategory(BlogCategoryNameEnum.BRAND));
         return "by-category";
     }
     @GetMapping("/details/{id}")

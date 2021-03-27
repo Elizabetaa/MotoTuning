@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.demo.services;
 
 import com.example.demo.model.entity.RoleEntity;
 import com.example.demo.model.entity.UserEntity;
@@ -22,7 +22,7 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 @ExtendWith(MockitoExtension.class)
-class MotorcycleApplicationTests {
+class MotoTuningUserServiceTest {
 
     private MotoTuningUserService serviceTest;
 

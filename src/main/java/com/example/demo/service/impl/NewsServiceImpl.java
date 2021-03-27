@@ -30,6 +30,8 @@ public class NewsServiceImpl implements NewsService {
         this.cloudinaryService = cloudinaryService;
     }
 
+
+
     @Override
     @CacheEvict(value = "news", allEntries = true)
     public void addNews(AddNewsServiceModel addNewsServiceModel) throws IOException {
