@@ -60,7 +60,6 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     @Cacheable("inquiriesService")
     public List <InquiryViewModel> findAllInquiriesForService() {
-        //TODO make InquiryServiceViewModel
         List<InquiryViewModel> inquiryViewModels = new ArrayList<>();
         this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).get()
                 .forEach(i -> {

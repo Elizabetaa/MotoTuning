@@ -49,7 +49,7 @@
            style="font-weight: bold;"></p>
     </div>
 
-    <button type="button"  class="collapsible">Comments</button>
+    <button type="button" class="collapsible">Comments</button>
     <div class="content" >
         <div style="width: 100%;" sec:authorize="isAuthenticated()">
             <form method="post" th:action="@{/blog/details/comments/add/{id} (id = *{id})}">

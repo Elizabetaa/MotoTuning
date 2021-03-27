@@ -37,7 +37,6 @@ public class BlogController {
 
     @GetMapping("/all")
     public String blog(Model model) {
-        List<BlogViewModel> viewModels = this.blogService.findFirstFour();
         model.addAttribute("blogs",this.blogService.findFirstFour());
         return "blog";
     }

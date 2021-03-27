@@ -1,17 +1,13 @@
 package com.example.demo.service.impl;
 
 import com.example.demo.model.entity.BlogEntity;
-import com.example.demo.model.entity.CommentEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
-import com.example.demo.model.service.CommentServiceModel;
 import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.model.view.BlogViewModel;
 import com.example.demo.repository.BlogRepository;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.CloudinaryService;
-import com.example.demo.service.CommentService;
-import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
@@ -22,7 +18,6 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
-import java.util.Optional;
 
 @Service
 public class BlogServiceImpl implements BlogService {
