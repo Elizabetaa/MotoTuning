@@ -1,0 +1,19 @@
+spring:
+
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            ddl-auto: create-drop
+        open-in-view: false
+    servlet:
+        multipart:
+            max-file-size: 1MB
+            max-request-size: 5MB
+    mvc:
+        hiddenmethod:
+            filter:
+                enabled: true
+
+#carousel:
+#    images: aerosmith.jpeg, iron.jpeg, madonna.jpg, metallica.jpg, queen.jpg, rolling.jpeg
+#    refresh-cron: "0 */10 * * * *"

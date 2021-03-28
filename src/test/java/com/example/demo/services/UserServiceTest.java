@@ -10,6 +10,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.CloudinaryService;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.impl.UserServiceImpl;
+import org.assertj.core.util.Arrays;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -22,6 +23,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 
 @ExtendWith(MockitoExtension.class)
@@ -102,11 +105,38 @@ public class UserServiceTest {
         editAccountServiceModel.setFirstName("firstName");
         editAccountServiceModel.setLastName("lastName");
         editAccountServiceModel.setImageUrl(null);
-        UserEntity userEntity = modelMapper.map(editAccountServiceModel,UserEntity.class);
+        UserEntity userEntity = modelMapper.map(editAccountServiceModel, UserEntity.class);
 
         Mockito.when(userRepository.findByEmail("test@")).thenReturn(Optional.of(userEntity));
-        userService.editAccount(editAccountServiceModel,"test@");
+        userService.editAccount(editAccountServiceModel, "test@");
 
         Mockito.verify(userRepository).save(userEntity);
+    }
+
+    @Test
+    void changeRoleTest() {
+        UserEntity userEntity = new UserEntity();
+        userEntity.setEmail("test@").setFirstName("FirstName");
+        RoleEntity admin = new RoleEntity();
+        admin.setRole(RoleNameEnum.ADMIN).setId(1L);
+        RoleEntity user = new RoleEntity();
+        user.setRole(RoleNameEnum.USER).setId(1L);
+
+        Mockito.when(userRepository.findByEmail("test@")).thenReturn(Optional.of(userEntity));
+        Mockito.when(roleService.findByName(RoleNameEnum.ADMIN)).thenReturn(admin);
+        Mockito.when(roleService.findByName(RoleNameEnum.USER)).thenReturn(user);
+
+        userService.changeRole("test@", "admin");
+        userService.changeRole("test@", "user");
+        Mockito.verify(userRepository,Mockito.times(2)).save(userEntity);
+    }
+
+    @Test
+    void getAllEmailsTest(){
+        Mockito.when(userRepository.findAllEmails("test@abv.bg")).thenReturn(List.of("test1@abv.bg", "test2@abv.bg", "test3@abv.bg", "test4@abv.bg", "test5@abv.bg"));
+
+        List<String> allEmails = userService.getAllEmails("test@abv.bg");
+        Assertions.assertEquals(5,allEmails.size());
+        Assertions.assertFalse(allEmails.contains("test@abv.bg"));
     }
 }

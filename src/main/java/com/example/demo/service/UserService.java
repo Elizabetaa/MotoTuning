@@ -4,9 +4,10 @@ import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.service.EditAccountServiceModel;
 import com.example.demo.model.service.UserRegisterServiceModel;
 import com.example.demo.model.view.CurrentUserViewModel;
-import org.springframework.web.multipart.MultipartFile;
+
 
 import java.io.IOException;
+import java.util.List;
 
 public interface UserService {
 
@@ -20,4 +21,9 @@ public interface UserService {
     void editAccount(EditAccountServiceModel editAccountServiceModel, String name) throws IOException;
 
     CurrentUserViewModel findCurrentUser(String name) throws IOException;
+
+    List<String> getAllEmails(String email);
+
+
+    void changeRole(String email, String role);
 }

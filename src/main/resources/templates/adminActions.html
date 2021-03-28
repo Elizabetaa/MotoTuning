@@ -72,21 +72,21 @@
                 <hr>
                 <div class="row mt-4 tm-edit-product-row">
                     <div class="col-xl-7 col-lg-7 col-md-12">
-                        <form action="/role/add" method="POST"
+                        <form th:action="@{/admin/role/add}" method="POST"
                               class="tm-edit-product-form">
                             <div class="input-group mb-3">
-                                <label for="username"
+                                <label for="email"
                                        class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Users</label>
-                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="username"
-                                        name="username">
+                                <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="email"
+                                        name="email">
                                     <option value="" selected>Select user</option>
-                                    <option>Pesho</option>
+                                    <option th:each="email: ${allUsersEmails}" th:value="${email}" th:text="${email}"></option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
                                 <label class="col-xl-4 col-lg-4 col-md-4 col-sm-5 col-form-label">Users</label>
                                 <div>
-                                    <input type="radio" id="user" name="role" value="user">
+                                    <input type="radio" id="user" name="role" value="user" checked>
                                     <label for="user">User</label><br/>
                                     <input type="radio" id="admin" name="role" value="admin">
                                     <label for="admin">Admin</label><br/>

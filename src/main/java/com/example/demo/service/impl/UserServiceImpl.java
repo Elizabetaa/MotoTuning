@@ -1,5 +1,6 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.model.entity.RoleEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.RoleNameEnum;
 import com.example.demo.model.service.EditAccountServiceModel;
@@ -87,6 +88,28 @@ public class UserServiceImpl implements UserService {
         UserEntity userEntity = this.userRepository.findByEmail(email).get();
         CurrentUserViewModel map = this.modelMapper.map(userEntity, CurrentUserViewModel.class);
         return this.modelMapper.map(userEntity, CurrentUserViewModel.class);
+    }
+
+    @Override
+    public List<String> getAllEmails(String email) {
+        return this.userRepository.findAllEmails(email);
+
+    }
+
+
+    @Override
+    public void changeRole(String email, String role) {
+        UserEntity userEntity = this.userRepository.findByEmail(email).get();
+        RoleEntity admin = roleService.findByName(RoleNameEnum.ADMIN);
+        RoleEntity user = roleService.findByName(RoleNameEnum.USER);
+
+        if (role.equals("admin")){
+            userEntity.setRoles(List.of(admin,user));
+        }else {
+            userEntity.setRoles(List.of(user));
+        }
+
+        this.userRepository.save(userEntity);
     }
 
 
