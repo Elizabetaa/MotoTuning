@@ -12,7 +12,7 @@ public class AddBlogServiceModel {
     private MultipartFile imageUrl;
     private String description;
     private UserEntity author;
-    private String addedOn;
+    private LocalDateTime addedOn;
 
     public AddBlogServiceModel() {
     }
@@ -57,11 +57,11 @@ public class AddBlogServiceModel {
         this.author = author;
     }
 
-    public String getAddedOn() {
+    public LocalDateTime getAddedOn() {
         return addedOn;
     }
 
-    public void setAddedOn(String addedOn) {
+    public void setAddedOn(LocalDateTime addedOn) {
         this.addedOn = addedOn;
     }
 }

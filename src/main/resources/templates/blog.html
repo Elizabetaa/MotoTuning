@@ -15,8 +15,8 @@
 
 <div style="margin-top: 3%;" class="fyp-slider full-img carouse-wrap d-flex flex-wrap" id="recentPosts">
     <div class="card" style="width: 18rem; background-color: LightGray;border: none "th:each="b : ${blogs}" th:object="${b}">
-        <img th:src="*{imageUrl}" class="card-img border-rounded" alt="...">
-        <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;" th:href="@{/blog/details/{id} (id = *{id})}">HARLEY-DAVIDSON'S
+        <img th:src="*{imageUrl}" class="card-img border-rounded" alt="..." >
+        <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;width: 248px ;height:48px" th:href="@{/blog/details/{id} (id = *{id})}">HARLEY-DAVIDSON'S
             HARDWIRE:
             BETTING BIG ON ELECTRIC</a>
         <p style="font-size: 10px;" class="card-text"
@@ -75,14 +75,14 @@
     </div>
     <div class="imageContainer">
         <a href="/blog/categories/brands">
-            <img src="/images/brands.jpeg" alt="Card image"
+            <img src="/images/brands.png" alt="Card image"
                  class="image">
             <div class="mid">
                 <div class="text">
                     <p href="/blog/categories/brands"
                        style="text-align: center; color: white;text-transform: uppercase;font-size: 25px "
                        class="card-title font-weight-bold ">
-                        BEST BRAND's</p>
+                        BEST BRANDS</p>
                 </div>
             </div>
         </a>

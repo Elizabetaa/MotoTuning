@@ -6,6 +6,7 @@ import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Entity
@@ -16,7 +17,7 @@ public class BlogEntity extends BaseEntity {
     private String imageUrl;
     private String description;
     private UserEntity author;
-    private String addedOn;
+    private LocalDateTime addedOn;
     private List<CommentEntity> commentEntities;
 
     public BlogEntity() {
@@ -72,11 +73,11 @@ public class BlogEntity extends BaseEntity {
     }
 
     @Column(nullable = false)
-    public String getAddedOn() {
+    public LocalDateTime getAddedOn() {
         return addedOn;
     }
 
-    public BlogEntity setAddedOn(String addedOn) {
+    public BlogEntity setAddedOn(LocalDateTime addedOn) {
         this.addedOn = addedOn;
         return this;
     }

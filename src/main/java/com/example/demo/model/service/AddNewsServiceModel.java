@@ -1,6 +1,7 @@
 package com.example.demo.model.service;
 
 import com.example.demo.model.entity.UserEntity;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
@@ -9,7 +10,7 @@ public class AddNewsServiceModel {
     private String title;
     private MultipartFile imageUrl;
     private String description;
-    private String addedOn;
+    private LocalDateTime addedOn;
 
     public AddNewsServiceModel() {
     }
@@ -38,11 +39,11 @@ public class AddNewsServiceModel {
         this.description = description;
     }
 
-    public String getAddedOn() {
+    public LocalDateTime getAddedOn() {
         return addedOn;
     }
 
-    public void setAddedOn(String addedOn) {
+    public void setAddedOn(LocalDateTime addedOn) {
         this.addedOn = addedOn;
     }
 }

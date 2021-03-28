@@ -5,8 +5,8 @@
 <head th:replace="fragments/head::head"></head>
 <style>
     .collapsible {
-        margin: auto auto 3%;
         background-color: #777;
+        margin: 3% auto;
         color: white;
         cursor: pointer;
         padding: 10px;
@@ -48,20 +48,18 @@
         <p th:text="|POSTED BY *{author.firstName} RESEARCH ON *{addedOn}|" class="card-text"
            style="font-weight: bold;"></p>
     </div>
-
-    <button type="button" class="collapsible">Comments</button>
-    <div class="content" >
-        <div style="width: 100%;" sec:authorize="isAuthenticated()">
-            <form method="post" th:action="@{/blog/details/comments/add/{id} (id = *{id})}">
-                <div class="input-group">
-                    <textarea th:name="comment" class="form-control" aria-label="With textarea"></textarea>
-                    <div class="button-holder d-flex  justify-content-center">
-                        <button type="submit" class="btn btn-dark " value="Sign in">Add</button>
-                    </div>
+    <div style="width: 80%; margin: auto auto 3%;" sec:authorize="isAuthenticated()">
+        <form method="post" th:action="@{/blog/details/comments/add/{id} (id = *{id})}">
+            <div class="input-group">
+                <textarea th:name="comment" class="form-control" aria-label="With textarea"></textarea>
+                <div class="button-holder d-flex  justify-content-center">
+                    <button type="submit" class="btn btn-dark " value="Sign in">Add Comment</button>
                 </div>
-            </form>
-        </div>
-
+            </div>
+        </form>
+    </div>
+    <button th:unless="*{comments.isEmpty()}" type="button" class="collapsible">Comments</button>
+    <div class="content" >
         <div class="commentEntities" th:each="c : *{comments}" >
             <div class="row" style="border-bottom: 1px groove  #777777;margin-top: 2%">
                 <div style="margin-left: 5%; width: 10%;margin-top: 2%">

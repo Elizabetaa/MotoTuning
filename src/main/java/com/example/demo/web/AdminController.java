@@ -72,7 +72,8 @@ public class AdminController {
             return "redirect:actions#my-form1";
         }
         AddNewsServiceModel addNewsServiceModel = this.modelMapper.map(addNewsBindingModel, AddNewsServiceModel.class);
-        addNewsServiceModel.setAddedOn(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        addNewsServiceModel.setAddedOn(LocalDateTime.now());
 
 
         this.newsService.addNews(addNewsServiceModel);

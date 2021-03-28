@@ -14,6 +14,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -23,6 +25,7 @@ public class NewsServiceImpl implements NewsService {
     private final ModelMapper modelMapper;
     private final NewsRepository newsRepository;
     private final CloudinaryService cloudinaryService;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
 
     public NewsServiceImpl(ModelMapper modelMapper, NewsRepository newsRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
@@ -47,7 +50,9 @@ public class NewsServiceImpl implements NewsService {
     public List<NewsViewModel> findAllNews() {
         List<NewsViewModel> newsViewModels = new ArrayList<>();
         this.newsRepository.findAll().forEach(n -> {
-            newsViewModels.add(this.modelMapper.map(n, NewsViewModel.class));
+            NewsViewModel newsViewModel = this.modelMapper.map(n, NewsViewModel.class);
+            newsViewModel.setAddedOn(n.getAddedOn().format(formatter));
+            newsViewModels.add(newsViewModel);
         });
         return newsViewModels;
     }
@@ -55,6 +60,10 @@ public class NewsServiceImpl implements NewsService {
     @Override
     public NewsDetailsViewModel findById(Long id) {
         NewsEntity newsEntity = this.newsRepository.findById(id).orElseThrow(() -> new NoSuchElementException("Don't existing news with id " + id));
-        return this.modelMapper.map(newsEntity,NewsDetailsViewModel.class);
+
+        NewsDetailsViewModel newsDetailsViewModel = this.modelMapper.map(newsEntity, NewsDetailsViewModel.class);
+        newsDetailsViewModel.setAddedOn(newsEntity.getAddedOn().format(formatter));
+        return newsDetailsViewModel;
     }
 }
+

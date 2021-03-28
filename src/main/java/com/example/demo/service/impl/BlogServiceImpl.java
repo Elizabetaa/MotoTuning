@@ -24,6 +24,8 @@ public class BlogServiceImpl implements BlogService {
     private final ModelMapper modelMapper;
     private final BlogRepository blogRepository;
     private final CloudinaryService cloudinaryService;
+    private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+
 
     public BlogServiceImpl(ModelMapper modelMapper, BlogRepository blogRepository,
                            CloudinaryService cloudinaryService) {
@@ -36,7 +38,7 @@ public class BlogServiceImpl implements BlogService {
 
     @Override
     public void addBlog(AddBlogServiceModel addBlogServiceModel) throws IOException {
-        addBlogServiceModel.setAddedOn(LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        addBlogServiceModel.setAddedOn(LocalDateTime.now());
         BlogEntity blogEntity = this.modelMapper.map(addBlogServiceModel, BlogEntity.class);
             MultipartFile img = addBlogServiceModel.getImageUrl();
             String url = cloudinaryService.uploadImage(img);
@@ -47,13 +49,11 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public List<BlogViewModel> findFirstFour() {
         List<BlogViewModel> blogViewModels = new ArrayList<>();
-        List<BlogEntity> all = this.blogRepository.findAll();
-        for (int i = all.size()-1; i >0 ; i--) {
-            blogViewModels.add(this.modelMapper.map(all.get(i), BlogViewModel.class));
-            if (blogViewModels.size() == 4){
-                return blogViewModels;
-            }
-        }
+        this.blogRepository.findTop4ByOrderByAddedOnDesc().forEach(b -> {
+            BlogViewModel blogViewModel = this.modelMapper.map(b, BlogViewModel.class);
+            blogViewModel.setAddedOn(b.getAddedOn().format(formatter));
+            blogViewModels.add(blogViewModel);
+        });
         return blogViewModels;
     }
 
@@ -69,8 +69,8 @@ public class BlogServiceImpl implements BlogService {
     @Override
     public BlogDetailsViewModel findById(Long id) {
         BlogEntity blogEntity = this.blogRepository.findById(id).orElseThrow(() -> new NoSuchElementException("No value present"));
-        BlogDetailsViewModel map = this.modelMapper.map(blogEntity,
-                BlogDetailsViewModel.class);
+        BlogDetailsViewModel map = this.modelMapper.map(blogEntity, BlogDetailsViewModel.class);
+        map.setAddedOn(blogEntity.getAddedOn().format(formatter));
         return map;
     }
 
