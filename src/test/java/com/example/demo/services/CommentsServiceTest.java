@@ -5,7 +5,9 @@ import com.example.demo.model.entity.CommentEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.service.CommentServiceModel;
 import com.example.demo.model.view.BlogDetailsViewModel;
+import com.example.demo.repository.BlogRepository;
 import com.example.demo.repository.CommentRepository;
+import com.example.demo.repository.UserRepository;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.UserService;
 import com.example.demo.service.impl.BlogServiceImpl;
@@ -18,11 +20,18 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
+import java.util.Optional;
+
 @ExtendWith(MockitoExtension.class)
 public class CommentsServiceTest {
     private CommentServiceImpl commentService;
     @Mock
     CommentRepository commentRepository;
+    @Mock
+    UserRepository userRepository;
+    @Mock
+    BlogRepository blogRepository;
+
     @Mock
     UserService userService;
     @Mock
@@ -33,11 +42,11 @@ public class CommentsServiceTest {
     @BeforeEach
     public void setUp() {
         modelMapper = new ModelMapper();
-        commentService = new CommentServiceImpl(commentRepository,userService, blogService, modelMapper);
+        commentService = new CommentServiceImpl(commentRepository, userService, blogService, modelMapper);
     }
-//
+
 //    @Test
-//    void addComment(){
+//    void addComment() {
 //        UserEntity userEntity = new UserEntity();
 //        userEntity.setEmail("test@emal");
 //
@@ -48,9 +57,10 @@ public class CommentsServiceTest {
 //        commentEntity.setComment("comment");
 //        commentEntity.setUser(userEntity);
 //
-//        Mockito.when(userService.findByEmail("test@email")).thenReturn(userEntity);
-//        Mockito.when(blogService.findById(1L)).thenReturn(blogEntity);
-//        CommentServiceModel commentServiceModel = commentService.addComment("test@email","comment",1L);
+//        Mockito.when(userRepository.findByEmail("test@email")).thenReturn(Optional.of(userEntity));
+//        BlogEntity blogEntity1 = this.modelMapper.map(blogEntity,BlogEntity.class);
+//        Mockito.when(blogRepository.findById(1L)).thenReturn(Optional.of(modelMapper.map(blogEntity,BlogEntity.class)));
+//        CommentServiceModel commentServiceModel = commentService.addComment("test@email", "comment", 1L);
 //        System.out.println();
 //    }
 

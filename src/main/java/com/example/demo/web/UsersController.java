@@ -95,12 +95,6 @@ public class UsersController {
         return "myAccount";
     }
 
-    @PostMapping("/addImg")
-    public String add(@ModelAttribute("imageUrl")  MultipartFile imageUrl) throws IOException {
-
-        this.userService.addImage(imageUrl);
-        return "home";
-    }
 
     @GetMapping("/editAccount")
     public String editAccount(Model model, Principal principal) throws IOException {

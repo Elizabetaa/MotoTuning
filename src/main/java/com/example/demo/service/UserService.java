@@ -12,7 +12,6 @@ public interface UserService {
 
 
     void register(UserRegisterServiceModel map);
-    void addImage(MultipartFile imageUrl) throws IOException;
 
     UserEntity findByEmail(String authentication);
 

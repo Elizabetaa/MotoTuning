@@ -18,6 +18,7 @@ public class RoleServiceImpl implements RoleService {
 
     @Override
     public void initRoles() {
+
         if (roleRepository.count() == 0) {
             Arrays.stream(RoleNameEnum.values()).forEach(r -> {
                 RoleEntity roleEntity = new RoleEntity();
@@ -25,6 +26,7 @@ public class RoleServiceImpl implements RoleService {
                 this.roleRepository.save(roleEntity);
             });
         }
+
     }
 
     @Override

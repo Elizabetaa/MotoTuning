@@ -4,7 +4,6 @@ package com.example.demo.services;
 import com.example.demo.model.entity.BlogEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
-import com.example.demo.model.service.AddBlogServiceModel;
 import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.model.view.BlogViewModel;
 import com.example.demo.repository.BlogRepository;
@@ -18,10 +17,8 @@ import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
-import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
-import java.util.ArrayList;
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
 
@@ -45,7 +42,7 @@ public class BlogServiceTest {
 
 
     @Test
-    void findByRoadTest() {
+    void findByRoadCategory() {
         UserEntity userEntity = new UserEntity();
         userEntity.setEmail("test@abv.bg").setPassword("password");
         BlogEntity ROADS = new BlogEntity();
@@ -78,7 +75,7 @@ public class BlogServiceTest {
     @Test
     void findByIdTest(){
         BlogEntity blogEntity = new BlogEntity();
-        blogEntity.setImageUrl("imageUrl").setDescription("desc").setTitle("title").setBlogCategory(BlogCategoryNameEnum.ROADS);
+        blogEntity.setImageUrl("imageUrl").setDescription("desc").setTitle("title").setAddedOn(LocalDateTime.now()).setBlogCategory(BlogCategoryNameEnum.ROADS);
 
         Mockito.when(blogRepository.findById(1L)).thenReturn(Optional.of(blogEntity));
         BlogDetailsViewModel blogDetailsViewModel = modelMapper.map(blogEntity,BlogDetailsViewModel.class);
@@ -87,6 +84,33 @@ public class BlogServiceTest {
 
         Assertions.assertEquals(blogDetailsViewModel.getTitle(),byId.getTitle());
 
+    }
+
+    @Test
+    void findFirstFourTest(){
+        BlogEntity blogEntity1 = new BlogEntity();
+        blogEntity1.setTitle("title1").setAddedOn( LocalDateTime.of(2017, 2, 13, 15, 56));
+
+        BlogEntity blogEntity2 = new BlogEntity();
+        blogEntity2.setTitle("title2").setAddedOn( LocalDateTime.of(2018, 2, 13, 15, 56));
+
+        BlogEntity blogEntity3 = new BlogEntity();
+        blogEntity3.setTitle("title3").setAddedOn( LocalDateTime.of(2019, 2, 13, 15, 56));
+
+        BlogEntity blogEntity4 = new BlogEntity();
+        blogEntity4.setTitle("title4").setAddedOn( LocalDateTime.of(2020, 2, 13, 15, 56));
+
+        BlogEntity blogEntity5 = new BlogEntity();
+        blogEntity5.setTitle("title5").setAddedOn( LocalDateTime.of(2021, 2, 13, 15, 56));
+
+        Mockito.when(blogRepository.findTop4ByOrderByAddedOnDesc()).thenReturn(List.of(blogEntity2,blogEntity3,blogEntity4,blogEntity5));
+
+        List<BlogViewModel> firstFour = blogService.findFirstFour();
+        modelMapper.map(blogEntity2,BlogViewModel.class);
+        Assertions.assertEquals(modelMapper.map(blogEntity2,BlogViewModel.class).getTitle(),firstFour.get(0).getTitle());
+        Assertions.assertEquals(modelMapper.map(blogEntity3,BlogViewModel.class).getTitle(),firstFour.get(1).getTitle());
+        Assertions.assertEquals(modelMapper.map(blogEntity4,BlogViewModel.class).getTitle(),firstFour.get(2).getTitle());
+        Assertions.assertEquals(modelMapper.map(blogEntity5,BlogViewModel.class).getTitle(),firstFour.get(3).getTitle());
     }
 
 }

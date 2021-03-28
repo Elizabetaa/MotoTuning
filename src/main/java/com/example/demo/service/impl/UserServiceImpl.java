@@ -54,16 +54,6 @@ public class UserServiceImpl implements UserService {
         this.userRepository.save(user);
     }
 
-    @Override
-    public void addImage(MultipartFile imageUrl) throws IOException {
-        MultipartFile img = imageUrl;
-        String url = cloudinaryService.uploadImage(img);
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        UserEntity userEntity = this.userRepository.findByEmail(userDetails.getUsername()).get();
-        userEntity.setImageUrl(url);
-        this.userRepository.save(userEntity);
-    }
 
     @Override
     public UserEntity findByEmail(String authentication) {
@@ -79,12 +69,13 @@ public class UserServiceImpl implements UserService {
     @Override
     public void editAccount(EditAccountServiceModel editAccountServiceModel, String email) throws IOException {
         UserEntity userEntity = this.userRepository.findByEmail(email).get();
-        if (!editAccountServiceModel.getImageUrl().isEmpty()){
+
+        if (editAccountServiceModel.getImageUrl() == null || !editAccountServiceModel.getImageUrl().isEmpty()) {
             MultipartFile img = editAccountServiceModel.getImageUrl();
             String url = cloudinaryService.uploadImage(img);
             userEntity.setImageUrl(url);
-
         }
+
         userEntity.setFirstName(editAccountServiceModel.getFirstName())
                 .setLastName(editAccountServiceModel.getLastName());
 
@@ -95,7 +86,7 @@ public class UserServiceImpl implements UserService {
     public CurrentUserViewModel findCurrentUser(String email) throws IOException {
         UserEntity userEntity = this.userRepository.findByEmail(email).get();
         CurrentUserViewModel map = this.modelMapper.map(userEntity, CurrentUserViewModel.class);
-        return this.modelMapper.map(userEntity,CurrentUserViewModel.class);
+        return this.modelMapper.map(userEntity, CurrentUserViewModel.class);
     }
 
 

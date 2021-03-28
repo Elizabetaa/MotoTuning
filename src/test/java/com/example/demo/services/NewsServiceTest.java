@@ -4,6 +4,7 @@ import com.example.demo.model.entity.NewsEntity;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.view.InquiryDetailsViewModel;
 import com.example.demo.model.view.NewsDetailsViewModel;
+import com.example.demo.model.view.NewsViewModel;
 import com.example.demo.repository.InquiryRepository;
 import com.example.demo.repository.NewsRepository;
 import com.example.demo.service.CloudinaryService;
@@ -19,6 +20,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 
+import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -29,33 +32,55 @@ public class NewsServiceTest {
     @Mock
     NewsRepository mockNewsRepository;
     @Mock
-    ModelMapper mockModelMapper = new ModelMapper();
+    ModelMapper mockModelMapper ;
     @Mock
     CloudinaryService cloudinaryService;
 
     @BeforeEach
     public void setUp() {
+        mockModelMapper = new ModelMapper();
         serviceTest = new NewsServiceImpl(mockModelMapper, mockNewsRepository, cloudinaryService);
     }
 
     @Test
     void findById() {
-        NewsDetailsViewModel newsDetailsViewModel = new NewsDetailsViewModel();
-        newsDetailsViewModel.setTitle("title");
-        newsDetailsViewModel.setImageUrl("url");
-        newsDetailsViewModel.setDescription("desc");
 
         NewsEntity newsEntity = new NewsEntity();
         newsEntity.setTitle("title")
                 .setImageUrl("url")
-                .setDescription("desc");
+                .setDescription("desc")
+                .setAddedOn(LocalDateTime.now());
+
+        NewsDetailsViewModel newsDetailsViewModel = this.mockModelMapper.map(newsEntity, NewsDetailsViewModel.class);
 
         Mockito.when(mockNewsRepository.findById(1L)).thenReturn(Optional.of(newsEntity));
-        Mockito.when(mockModelMapper.map(newsEntity, NewsDetailsViewModel.class)).thenReturn(newsDetailsViewModel);
 
         NewsDetailsViewModel byId = serviceTest.findById(1L);
+        Assertions.assertEquals(newsDetailsViewModel.getTitle(), byId.getTitle());
 
-        Assertions.assertEquals(newsDetailsViewModel,byId);
+    }
+    @Test
+    void findByAll() {
+
+        NewsEntity newsEntity = new NewsEntity();
+        newsEntity.setTitle("title")
+                .setImageUrl("url")
+                .setDescription("desc")
+                .setAddedOn(LocalDateTime.now());
+        NewsEntity newsEntity2 = new NewsEntity();
+        newsEntity2.setTitle("title2")
+                .setImageUrl("url")
+                .setDescription("desc")
+                .setAddedOn(LocalDateTime.now());
+
+        List<NewsDetailsViewModel> newsDetailsViewModels = new ArrayList<>();
+        newsDetailsViewModels.add(this.mockModelMapper.map(newsEntity, NewsDetailsViewModel.class));
+        newsDetailsViewModels.add(this.mockModelMapper.map(newsEntity2, NewsDetailsViewModel.class));
+
+        Mockito.when(mockNewsRepository.findAll()).thenReturn(List.of(newsEntity,newsEntity2));
+
+        List<NewsViewModel> allNews = serviceTest.findAllNews();
+        Assertions.assertEquals(2, allNews.size());
 
     }
 

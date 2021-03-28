@@ -3,6 +3,7 @@ package com.example.demo.service.impl;
 import com.example.demo.model.entity.BlogEntity;
 import com.example.demo.model.entity.CommentEntity;
 import com.example.demo.model.service.CommentServiceModel;
+import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.repository.CommentRepository;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.CommentService;
@@ -26,6 +27,7 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentServiceModel addComment(String comment, String email, Long id) {
+
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setComment(comment);
         commentEntity.setUser(this.userService.findByEmail(email));
