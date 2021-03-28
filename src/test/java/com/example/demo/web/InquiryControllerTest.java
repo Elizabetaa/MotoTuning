@@ -28,8 +28,8 @@ import static org.springframework.security.test.web.servlet.request.SecurityMock
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 @SpringBootTest
-@RunWith(SpringRunner.class)
 @AutoConfigureMockMvc
+@AutoConfigureTestDatabase
 public class InquiryControllerTest {
     private static final String INQUIRY_CONTROLLER_PREFIX = "/inquiries";
 
@@ -49,11 +49,6 @@ public class InquiryControllerTest {
         this.init();
     }
 
-    private InquiryTypeNameEnum inquiry;
-    private VehicleTypeNameEnum vehicle;
-    private BrandsNameEnum brand;
-    private String model;
-    private String description;
 
     @Test
     @WithMockUser(username = "test@mail.com", roles = {"USER", "ADMIN"})
