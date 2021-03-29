@@ -1,5 +1,4 @@
 spring:
-
     jpa:
         database-platform: org.hibernate.dialect.H2Dialect
         hibernate:
@@ -13,7 +12,7 @@ spring:
         hiddenmethod:
             filter:
                 enabled: true
-
-#carousel:
-#    images: aerosmith.jpeg, iron.jpeg, madonna.jpg, metallica.jpg, queen.jpg, rolling.jpeg
-#    refresh-cron: "0 */10 * * * *"
+cloudinary:
+    api-key: 561528376342884
+    api-secret: KGP037qFjovwOHMo7vJcw39BynM
+    cloud-name: elizabetak

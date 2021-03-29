@@ -7,25 +7,22 @@ import com.example.demo.model.entity.enums.*;
 import com.example.demo.repository.InquiryRepository;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
 import java.util.List;
 
 import static org.springframework.security.test.web.servlet.request.SecurityMockMvcRequestPostProcessors.csrf;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
+import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.*;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -33,6 +30,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 public class InquiryControllerTest {
     private static final String INQUIRY_CONTROLLER_PREFIX = "/inquiries";
 
+    private Long testId;
     @Autowired
     private MockMvc mockMvc;
     @Autowired
@@ -48,6 +46,12 @@ public class InquiryControllerTest {
     public void setUp() {
         this.init();
     }
+    @AfterEach
+    public void clearDB(){
+        inquiryRepository.deleteAll();
+        userRepository.deleteAll();
+        System.out.println(inquiryRepository.count());
+    }
 
 
     @Test
@@ -59,7 +63,71 @@ public class InquiryControllerTest {
                 .param("inquiry", String.valueOf(InquiryTypeNameEnum.SERVICE))
                 .param("vehicle", String.valueOf(VehicleTypeNameEnum.MOTORCYCLE))
                 .param("brand", String.valueOf(BrandsNameEnum.DUCATI))
+                .param("vehicleService", String.valueOf(ServiceTypeNameEnum.OIL))
                 .param("model", "R1")
+                .with(csrf())).andExpect(status().is3xxRedirection());
+
+        Assertions.assertEquals(2, inquiryRepository.count());
+    }
+
+    @Test
+    @WithMockUser(username = "test@.com", roles = "USER")
+    void testShouldReturnInvalidStatusViewNameAndModel() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(INQUIRY_CONTROLLER_PREFIX + "/vehicleService")
+                .param("email", "test@mail.com")
+                .param("phoneNumber", "1234567899")
+                .param("inquiry", String.valueOf(InquiryTypeNameEnum.SERVICE))
+                .param("vehicle", String.valueOf(VehicleTypeNameEnum.MOTORCYCLE))
+                .param("brand", String.valueOf(BrandsNameEnum.DUCATI))
+                .param("model", "R1")
+                .with(csrf())).andExpect(status().is3xxRedirection());
+
+        Assertions.assertEquals(1, inquiryRepository.count());
+    }
+    @Test
+    @WithMockUser(username = "test@.com", roles = "USER")
+    void detailsByIdShouldWorkCorrectly() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get(INQUIRY_CONTROLLER_PREFIX + "/details/{id}", testId)
+        ).
+                andExpect(status().isOk()).
+                andExpect(view().name("inquiryDetails")).
+                andExpect(model().attributeExists("inquiryEntity"));
+    }
+    @Test
+    @WithMockUser(username = "test@.com", roles = "USER")
+    void deleteByIdShouldWorkCorrectly() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get(INQUIRY_CONTROLLER_PREFIX + "/delete/{id}", testId)
+        ).andExpect(view().name("redirect:/users/account"));
+        Assertions.assertEquals(0, inquiryRepository.count());
+    }
+    @Test
+    @WithMockUser(username = "test@.com", roles = "USER")
+    void addResponseShouldWorkCorrectly() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(INQUIRY_CONTROLLER_PREFIX + "/details/{id}",testId)
+                .param("response", "some response")
+                .with(csrf())).andExpect(status().is3xxRedirection());
+        Assertions.assertEquals("some response",inquiryRepository.findById(testId).get().getResponse());
+    }
+    @Test
+    @WithMockUser(username = "test@.com", roles = "USER")
+    void addShouldReturnValidView() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.get(INQUIRY_CONTROLLER_PREFIX + "/add")
+        ).
+                andExpect(status().isOk()).
+                andExpect(view().name("makeOrder"));
+    }
+
+    @Test
+    @WithMockUser(username = "test@.com", roles = "USER")
+    void testShouldReturnValidStatusViewNameAndModelForVehicleTuningPost() throws Exception {
+        mockMvc.perform(MockMvcRequestBuilders.post(INQUIRY_CONTROLLER_PREFIX + "/vehicleTuning")
+                .param("email", "test@mail.com")
+                .param("phoneNumber", "1234567899")
+                .param("inquiry", String.valueOf(InquiryTypeNameEnum.SERVICE))
+                .param("vehicle", String.valueOf(VehicleTypeNameEnum.MOTORCYCLE))
+                .param("brand", String.valueOf(BrandsNameEnum.DUCATI))
+                .param("model", "R1")
+                .param("description","description")
                 .with(csrf())).andExpect(status().is3xxRedirection());
 
         Assertions.assertEquals(2, inquiryRepository.count());
@@ -84,6 +152,7 @@ public class InquiryControllerTest {
                 .setService(ServiceTypeNameEnum.OIL).setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity);
 
         inquiryRepository.save(inquiryEntity);
+        testId = inquiryEntity.getId();
 
     }
 }
