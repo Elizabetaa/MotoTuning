@@ -15,6 +15,7 @@ import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.cache.annotation.Caching;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -93,7 +94,7 @@ public class InquiryServiceImpl implements InquiryService {
     }
 
     @Override
-    @CacheEvict(value = "inquiriesService", allEntries = true)
+    @CacheEvict(value = { "inquiriesService", "inquiriesTuning" }, allEntries = true)
     public void addRequest(AddResponseServiceModel map) {
         InquiryEntity inquiryEntity = this.inquiryRepository.findById(map.getId()).orElse(null);
         inquiryEntity.setResponse(map.getResponse());
