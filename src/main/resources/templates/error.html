@@ -1,11 +1,17 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 
-<head th:replace="fragments/head::head"></head>
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
-<h1>Big Error</h1>
+<main>
+    <div style="text-align: center;margin-top: 5%;height: 397px">
+        <h1>Internal server error</h1>
+        <h4>Please try again later ot feel free to contact us if the problem persist</h4>
+        <img src="/images/crash500.png" alt="" style="width: 300px">
+    </div>
+
+</main>
 <section class="" th:replace="fragments/footer::footer"></section>
 </body>
 

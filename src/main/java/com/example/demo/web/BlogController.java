@@ -4,6 +4,7 @@ import com.example.demo.model.binding.AddBlogBindingModel;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
+import com.example.demo.model.view.BlogDetailsViewModel;
 import com.example.demo.service.BlogService;
 import com.example.demo.service.CommentService;
 import com.example.demo.service.UserService;
@@ -96,7 +97,7 @@ public class BlogController {
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
-        this.blogService.findById(id);
+        BlogDetailsViewModel byId = this.blogService.findById(id);
         model.addAttribute("blog", this.blogService.findById(id));
         return "blog-details";
     }

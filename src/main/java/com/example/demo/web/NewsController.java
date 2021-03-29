@@ -21,7 +21,6 @@ public class NewsController {
 
     @GetMapping("/all")
     public String all(Model model) {
-       List<NewsViewModel> newsViewModel =  this.newsService.findAllNews();
         model.addAttribute("news",this.newsService.findAllNews());
         return "news";
     }
