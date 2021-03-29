@@ -10,6 +10,7 @@ import com.example.demo.service.NewsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -65,6 +66,14 @@ public class NewsServiceImpl implements NewsService {
         NewsDetailsViewModel newsDetailsViewModel = this.modelMapper.map(newsEntity, NewsDetailsViewModel.class);
         newsDetailsViewModel.setAddedOn(newsEntity.getAddedOn().format(formatter));
         return newsDetailsViewModel;
+    }
+
+    //deleting all news every month
+    @Scheduled(cron = "0 0 0 1 * *")
+    @CacheEvict(value = "news", allEntries = true)
+    public void del (){
+        System.out.println("delete");
+        this.newsRepository.deleteAll();
     }
 }
 
