@@ -21,6 +21,7 @@ public class InquiryEntity extends BaseEntity {
     private String description;
     private String response;
     private UserEntity author;
+    private boolean agree;
 
     public InquiryEntity() {
     }
@@ -125,5 +126,14 @@ public class InquiryEntity extends BaseEntity {
     public InquiryEntity setAuthor(UserEntity author) {
         this.author = author;
         return this;
+    }
+
+
+    public boolean isAgree() {
+        return agree;
+    }
+
+    public void setAgree(boolean agree) {
+        this.agree = agree;
     }
 }

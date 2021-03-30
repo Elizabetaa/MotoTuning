@@ -68,12 +68,5 @@ public class NewsServiceImpl implements NewsService {
         return newsDetailsViewModel;
     }
 
-    //deleting all news every month
-    @Scheduled(cron = "0 0 0 1 * *")
-    @CacheEvict(value = "news", allEntries = true)
-    public void del (){
-        System.out.println("delete");
-        this.newsRepository.deleteAll();
-    }
 }
 

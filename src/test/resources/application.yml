@@ -1,9 +1,9 @@
-spring:
-    jpa:
-        database-platform: org.hibernate.dialect.H2Dialect
-        hibernate:
-            ddl-auto: create-drop
-        open-in-view: false
+jpa:
+    #For H2 Database
+    database-platform: org.hibernate.dialect.H2Dialect
+    hibernate:
+        ddl-auto: create-drop
+    open-in-view: false
     servlet:
         multipart:
             max-file-size: 1MB
@@ -12,6 +12,12 @@ spring:
         hiddenmethod:
             filter:
                 enabled: true
+
 cloudinary:
     api-key: 561528376342884
+    api-secret: KGP037qFjovwOHMo7vJcw39BynM
     cloud-name: elizabetak
+
+carousel:
+        images: beforeAfter1.jpg, beforeAfter2.jpg, beforeAfter3.jpg
+        refresh-cron: "0 */10 * * * *"

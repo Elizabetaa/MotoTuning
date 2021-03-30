@@ -5,6 +5,7 @@ import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import com.example.demo.model.view.InquiryDetailsViewModel;
+import com.example.demo.model.view.InquiryTaskViewModel;
 import com.example.demo.model.view.InquiryViewModel;
 import com.example.demo.model.view.MyInquiriesViewModel;
 
@@ -26,4 +27,8 @@ public interface InquiryService {
     List<MyInquiriesViewModel> getMyInquiries(String email);
 
     void deleteById(Long id);
+
+    void agree(Long id);
+
+    List<InquiryTaskViewModel> findTasks();
 }

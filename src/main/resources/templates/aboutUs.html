@@ -31,15 +31,15 @@
      style="width: 60%; margin-top: 5%;margin-left: 20%">
     <div class="carousel-inner">
         <div class="carousel-item active">
-            <img style="height: 400px; width: 100%; margin-top: unset" class="d-block w-100" src="/images/beforeAfter1.jpg"
+            <img style="height: 400px; width: 100%; margin-top: unset" class="d-block w-100"  th:src="@{/images/{image}(image=${firstImg})}"
                  alt="First slide">
         </div>
         <div class="carousel-item">
-            <img style="height: 400px; width: 100%; margin-top: unset" class="d-block w-100" src="/images/beforeAfter2.jpg"
+            <img style="height: 400px; width: 100%; margin-top: unset" class="d-block w-100"  th:src="@{/images/{image}(image=${secondImg})}"
                  alt="Second slide">
         </div>
         <div class="carousel-item">
-            <img style="height: 400px; width: 100%; margin-top: unset" class="d-block w-100" src="/images/beforeAfter3.jpg"
+            <img style="height: 400px; width: 100%; margin-top: unset" class="d-block w-100"  th:src="@{/images/{image}(image=${thirdImg})}"
                  alt="Third slide">
         </div>
     </div>

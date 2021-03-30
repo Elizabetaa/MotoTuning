@@ -5,7 +5,7 @@
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 
-<h2 style="text-align: center; font-weight: bold; margin-top: 5%" th:text="${categoryPage}">ROAD POSTS</h2>
+<h2 style="text-align: center; font-weight: bold; margin-top: 5%"th:unless="${blogs.isEmpty()}" th:text="${categoryPage}">ROAD POSTS</h2>
 
 <div th:if="${blogs.isEmpty()}" style="text-align: center;margin: auto;height: 220px;margin-top: 5%">
     <h1>Don't have blog with this category</h1>

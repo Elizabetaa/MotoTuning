@@ -7,6 +7,7 @@ import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import com.example.demo.model.view.InquiryDetailsViewModel;
+import com.example.demo.model.view.InquiryTaskViewModel;
 import com.example.demo.model.view.InquiryViewModel;
 import com.example.demo.model.view.MyInquiriesViewModel;
 import com.example.demo.repository.InquiryRepository;
@@ -113,6 +114,22 @@ public class InquiryServiceImpl implements InquiryService {
     @Override
     public void deleteById(Long id) {
         this.inquiryRepository.deleteById(id);
+    }
+
+    @Override
+    public void agree(Long id) {
+        InquiryEntity byId = this.inquiryRepository.findById(id).get();
+        byId.setAgree(true);
+        this.inquiryRepository.save(byId);
+    }
+
+    @Override
+    public List<InquiryTaskViewModel> findTasks() {
+        List<InquiryTaskViewModel> inquiryTaskViewModels = new ArrayList<>();
+        this.inquiryRepository.findAllByAgree(true).forEach(i -> {
+                inquiryTaskViewModels.add(modelMapper.map(i,InquiryTaskViewModel.class));
+        });
+        return inquiryTaskViewModels;
     }
 
 

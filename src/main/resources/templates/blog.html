@@ -10,7 +10,7 @@
     <button id="addPost" sec:authorize="isAuthenticated()"  onclick="window.location.href='/blog/add'">Add Post</button>
 </div>
 
-<h2 style="text-align: center; font-weight: bold; margin-top: 5%">RECENT POSTS</h2>
+<h2 th:unless="${blogs.isEmpty()}" style="text-align: center; font-weight: bold; margin-top: 5%">RECENT POSTS</h2>
 
 
 <div style="margin-top: 3%;" class="fyp-slider full-img carouse-wrap d-flex flex-wrap" id="recentPosts">

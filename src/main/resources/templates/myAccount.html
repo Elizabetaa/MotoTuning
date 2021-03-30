@@ -2,7 +2,7 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head::head"></head>
 
-<body >
+<body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 <main>
     <div class="row" style="margin-top: 5%">
@@ -16,7 +16,9 @@
                             <span th:text="|*{firstName} *{lastName}|" class="text-dark wrap">Elizabeta</span>
                         </p>
                         <hr>
-                        <button type="button" class="btn btn-white btn-lg btn-block" onclick="window.location.href='/users/editAccount'">Edit</button>
+                        <button type="button" class="btn btn-white btn-lg btn-block"
+                                onclick="window.location.href='/users/editAccount'">Edit
+                        </button>
                     </div>
                 </div>
             </div>
@@ -27,12 +29,14 @@
                 <h2 class="tm-block-title d-inline-block">My inquiries</h2>
             </div>
             <hr class="col-xl-12 col-lg-10 col-md-12 col-sm-12">
-            <div  th:if="${myInquiries.isEmpty()}">
+            <div th:if="${myInquiries.isEmpty()}">
                 <div style="margin: 4%">
                     <div class="card" style="width: 70rem; height: 13rem;border-radius: 10px;background-color: #e5e5e5">
                         <h4 style="text-align: center;margin-top: 3%">You don't have any inquiries yet!</h4>
                         <div style="margin-top: 3%">
-                            <button id="addPost" style="margin-left: 20rem" onclick="window.location.href='/inquiries/add'" >Make inquiry</button>
+                            <button id="addPost" style="margin-left: 20rem"
+                                    onclick="window.location.href='/inquiries/add'">Make inquiry
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -40,21 +44,38 @@
             <div th:each="inquiry : ${myInquiries}" th:object="${inquiry}">
                 <div style="margin: 4%">
                     <div class="card" style="width: 70rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
-                        <div class="card-footer" style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;"
-                        th:text="|*{vehicle} *{model}|">
+                        <div class="card-footer"
+                             style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;"
+                             th:text="|*{vehicle} *{model}|">
                         </div>
-                        <ul class="list-group list-group-flush" style="margin-left: 2%;" >
+                        <ul class="list-group list-group-flush" style="margin-left: 2%;">
                             <br>
                             <p th:if="*{response == null}" style="text-align: center">It is being processed...</p>
                             <p th:unless="*{response == null}" th:text="*{response}"></p>
                         </ul>
-                        <form th:action="@{/inquiries/delete/{id} (id= *{id})}">
-                            <div class="btn-group" role="group" aria-label="Basic example">
-                                <button type="submit" class="btn btn-danger" style="font-size: 16px;width: 100%">Denial</button>
+                        <div th:unless="*{response == null}">
+                            <div class="row" style="width: 100%;margin: auto" th:if="*{agree == false}">
+                                <div style="width: 50%">
+                                    <form th:action="@{/inquiries/delete/{id} (id= *{id})}">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="submit" class="btn btn-danger"
+                                                    style="font-size: 16px;width: 100%">Denial
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div style="width: 50%">
+                                    <form th:action="@{/inquiries/agree/{id} (id= *{id})}">
+                                        <div class="btn-group" role="group" aria-label="Basic example">
+                                            <button type="submit" class="btn btn-success"
+                                                    style="font-size: 16px;width: 100%">
+                                                Agree
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </form>
-
-
+                        </div>
                     </div>
                 </div>
             </div>

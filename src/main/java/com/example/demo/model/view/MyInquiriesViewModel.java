@@ -7,6 +7,7 @@ public class MyInquiriesViewModel {
     private VehicleTypeNameEnum vehicle;
     private String model;
     private String response;
+    private boolean agree;
 
     public MyInquiriesViewModel() {
     }
@@ -41,5 +42,13 @@ public class MyInquiriesViewModel {
 
     public void setResponse(String response) {
         this.response = response;
+    }
+
+    public boolean isAgree() {
+        return agree;
+    }
+
+    public void setAgree(boolean agree) {
+        this.agree = agree;
     }
 }

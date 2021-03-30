@@ -102,12 +102,12 @@ public class UserServiceImpl implements UserService {
         RoleEntity admin = roleService.findByName(RoleNameEnum.ADMIN);
         RoleEntity user = roleService.findByName(RoleNameEnum.USER);
 
-        if (role.equals("admin")){
-            userEntity.setRoles(List.of(admin,user));
-        }else {
+        if (role.equals("admin")) {
+            userEntity.setRoles(List.of(admin, user));
+        } else {
             userEntity.setRoles(List.of(user));
         }
-
+        System.out.println();
         this.userRepository.save(userEntity);
     }
 
