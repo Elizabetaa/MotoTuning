@@ -19,8 +19,7 @@ public class InquiryTuningBindingModel {
     public InquiryTuningBindingModel() {
     }
 
-    @NotBlank
-    @Email
+
     public String getEmail() {
         return email;
     }

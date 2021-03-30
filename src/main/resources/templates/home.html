@@ -9,7 +9,7 @@
 
 <div  style="width: 65%; margin: 5% auto auto;" class="row bg-white" sec:authorize="hasRole('ADMIN')">
     <div class="col-12" style="text-align: center"  th:unless="${tasks.isEmpty()}" >
-        <h2 class="tm-block-title d-inline-block">Tasks for today</h2>
+        <h2 class="tm-block-title d-inline-block">TASKS</h2>
     </div>
     <hr th:unless="${tasks.isEmpty()}"  class="col-xl-12 col-lg-10 col-md-12 col-sm-12">
     <div>
@@ -23,11 +23,10 @@
         <div style="margin: 4%">
             <div class="card" style="width: 70rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
                 <div class="card-footer" style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;"
-                     th:text="|*{vehicle} *{model} *{brand}|" >
+                     th:text="|*{inquiry.name()} *{vehicle} *{model} *{brand}|" >
                 </div>
                 <ul class="list-group list-group-flush" style="margin-left: 2%;" >
                     <br>
-                    <p th:text="*{inquiry.name()}" style="text-align: center"></p>
                     <p  style="text-align: center; font-weight: bold">DESCRIPTION</p>
                     <p th:text="*{description}" style="text-align: center"></p>
                     <p  style="text-align: center; font-weight: bold">RESPONSE</p>

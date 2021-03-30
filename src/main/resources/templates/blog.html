@@ -14,7 +14,7 @@
 
 
 <div style="margin-top: 3%;" class="fyp-slider full-img carouse-wrap d-flex flex-wrap" id="recentPosts">
-    <div class="card" style="width: 18rem; background-color: LightGray;border: none "th:each="b : ${blogs}" th:object="${b}">
+    <div class="card" style="width: 18rem; background-color: LightGray;border: none " th:each="b : ${blogs}" th:object="${b}">
         <img th:src="*{imageUrl}" class="card-img border-rounded" alt="..." >
         <a th:text="*{title}" class="card-title" style="color: #111111; font-weight: bold;width: 248px ;height:48px" th:href="@{/blog/details/{id} (id = *{id})}">HARLEY-DAVIDSON'S
             HARDWIRE:

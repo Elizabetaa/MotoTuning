@@ -48,7 +48,7 @@ public class InquiryController {
 
     @PostMapping("/vehicleService")
     public String vehicleServiceConfirm(@Valid InquiryVehicleServiceBindingModel inquiryVehicleServiceBindingModel,
-                                        BindingResult bindingResult, RedirectAttributes redirectAttributes) {
+                                        BindingResult bindingResult, RedirectAttributes redirectAttributes,Principal principal) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("inquiryVehicleServiceBindingModel", inquiryVehicleServiceBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.inquiryVehicleServiceBindingModel", bindingResult);
@@ -56,6 +56,7 @@ public class InquiryController {
             return "redirect:vehicleService";
         }
         inquiryVehicleServiceBindingModel.setInquiry(InquiryTypeNameEnum.SERVICE);
+        inquiryVehicleServiceBindingModel.setEmail(principal.getName());
         inquiryService.addInquiryVehicleService(this.modelMapper.map(inquiryVehicleServiceBindingModel, InquiryVehicleServiceServiceModel.class));
 
         return "redirect:/users/account";
@@ -72,7 +73,7 @@ public class InquiryController {
     @PostMapping("/vehicleTuning")
     public String vehicleTuningConfirm(@Valid InquiryTuningBindingModel inquiryTuningBindingModel,
                                        BindingResult bindingResult,
-                                       RedirectAttributes redirectAttributes) {
+                                       RedirectAttributes redirectAttributes,Principal principal) {
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("inquiryTuningBindingModel", inquiryTuningBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.inquiryTuningBindingModel", bindingResult);
@@ -80,6 +81,7 @@ public class InquiryController {
             return "redirect:vehicleTuning";
         }
         inquiryTuningBindingModel.setInquiry(InquiryTypeNameEnum.TUNING);
+        inquiryTuningBindingModel.setEmail(principal.getName());
         inquiryService.addInquiryVehicleTuning(this.modelMapper.map(inquiryTuningBindingModel,InquiryTuningBindingModel.class));
         return "redirect:/users/account";
     }

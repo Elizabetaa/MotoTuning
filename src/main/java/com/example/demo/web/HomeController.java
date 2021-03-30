@@ -24,7 +24,8 @@ public class HomeController {
     }
 
     @GetMapping("/home")
-    public String home() {
+    public String home(Model model) {
+        model.addAttribute("tasks", inquiryService.findTasks());
         return "home";
     }
 

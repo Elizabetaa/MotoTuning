@@ -21,15 +21,18 @@
         <hr>
         <form method="POST" th:action="@{/inquiries/vehicleService}" th:object="${inquiryVehicleServiceBindingModel}">
             <div class="row">
-                <div class="col-sm-6" style="margin-top: 2%">
-                    <label for="email">Your email</label>
-                    <br>
-                    <input style="width: 100%;height: 40px "
-                           required
-                           th:field="*{email}" th:errorclass=" border-danger" type="email"  name="email" id="email" placeholder="demo@abv.bg">
-                    <div class="small" th:if="${#fields.hasErrors('email')}">
+                <div class="col-sm-6 " style="margin-top: 2%">
+                    <div class="label-holder text-dark textCol d-flex ">
+                        <label for="brand">Brand</label>
+                    </div>
+                    <select style="width: 100%; height: 40px;" required th:field="*{brand}" id="brand" name="brand" th:errorclass=" border-danger" >
+                        <option value="">- Select Brand -</option>
+                        <option th:each="b : ${T(com.example.demo.model.entity.enums.BrandsNameEnum).values()}"
+                                th:value="${b}" th:text="${b}"></option>
+                    </select>
+                    <div class="small" th:if="${#fields.hasErrors('brand')}">
                         <div style="margin-left: 10px; ">
-                            <small  th:errors="*{email}"></small>
+                            <small  th:errors="*{brand}"></small>
                         </div>
                     </div>
                 </div>
@@ -74,21 +77,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
-                    <div class="label-holder text-dark textCol d-flex justify-content-center">
-                        <label for="brand">Brand</label>
-                    </div>
-                    <select style="width: 100%; height: 40px;" required th:field="*{brand}" id="brand" name="brand" th:errorclass=" border-danger" >
-                        <option value="">- Select Brand -</option>
-                        <option th:each="b : ${T(com.example.demo.model.entity.enums.BrandsNameEnum).values()}"
-                                th:value="${b}" th:text="${b}"></option>
-                    </select>
-                     <div class="small" th:if="${#fields.hasErrors('brand')}">
-                        <div style="margin-left: 10px; ">
-                            <small  th:errors="*{brand}"></small>
-                        </div>
-                    </div>
-                </div>
+
                 <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
                         <label for="model">Model</label>
