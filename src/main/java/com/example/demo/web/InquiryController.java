@@ -113,6 +113,11 @@ public class InquiryController {
         this.inquiryService.deleteById(id);
         return "redirect:/users/account";
     }
+    @GetMapping("/finish/{id}")
+    public String finishedTask(@PathVariable Long id){
+        this.inquiryService.deleteById(id);
+        return "redirect:/home";
+    }
     @GetMapping("/agree/{id}")
     public String agreeInquiry(@PathVariable Long id){
         this.inquiryService.agree(id);
