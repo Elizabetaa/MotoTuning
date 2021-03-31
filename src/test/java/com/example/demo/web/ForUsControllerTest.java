@@ -31,6 +31,6 @@ public class ForUsControllerTest {
                 FOR_US_CONTROLLER_PREFIX + "/aboutUs"
         )).
                 andExpect(status().isOk()).
-                andExpect(view().name("aboutUs"));
+                andExpect(view().name("about_us"));
     }
 }

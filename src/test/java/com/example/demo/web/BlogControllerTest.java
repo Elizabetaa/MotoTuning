@@ -95,7 +95,7 @@ public class BlogControllerTest {
                 BLOG_CONTROLLER_PREFIX + "/details/{id}", 1L
         )).
                 andExpect(status().isOk()).
-                andExpect(view().name("blog-details")).
+                andExpect(view().name("blog_details")).
                 andExpect(model().attributeExists("blog"));
     }
     @Test
@@ -111,7 +111,7 @@ public class BlogControllerTest {
     void testShouldReturnCorrectStatusAndViewForAdd() throws Exception {
         mockMvc.perform(MockMvcRequestBuilders.get(BLOG_CONTROLLER_PREFIX + "/add"))
                 .andExpect(status().isOk())
-                .andExpect(view().name("blog-add"));
+                .andExpect(view().name("blog_add"));
     }
 
     @Test

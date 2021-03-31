@@ -1,7 +1,6 @@
 package com.example.demo.model.view;
 
-import com.example.demo.model.entity.UserEntity;
-import com.example.demo.model.entity.enums.BrandsNameEnum;
+import com.example.demo.model.entity.enums.MakeNameEnum;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
@@ -13,7 +12,7 @@ public class InquiryTaskViewModel {
     private String phoneNumber;
     private VehicleTypeNameEnum vehicle;
     private ServiceTypeNameEnum service;
-    private BrandsNameEnum brand;
+    private MakeNameEnum make;
     private String model;
     private String description;
     private String response;
@@ -70,12 +69,12 @@ public class InquiryTaskViewModel {
         this.service = service;
     }
 
-    public BrandsNameEnum getBrand() {
-        return brand;
+    public MakeNameEnum getMake() {
+        return make;
     }
 
-    public void setBrand(BrandsNameEnum brand) {
-        this.brand = brand;
+    public void setMake(MakeNameEnum make) {
+        this.make = make;
     }
 
     public String getModel() {

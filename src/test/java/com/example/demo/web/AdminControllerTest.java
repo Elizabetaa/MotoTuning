@@ -87,7 +87,7 @@ public class AdminControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get(ADMIN_CONTROLLER_PREFIX + "/actions")
         ).
                 andExpect(status().isOk())
-                .andExpect(view().name("adminActions"))
+                .andExpect(view().name("admin_actions"))
                 .andExpect(model().attributeExists("allUsersEmails"));
     }
 

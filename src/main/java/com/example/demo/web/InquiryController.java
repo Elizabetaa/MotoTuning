@@ -3,7 +3,6 @@ package com.example.demo.web;
 import com.example.demo.model.binding.AddResponseBindingModel;
 import com.example.demo.model.binding.InquiryTuningBindingModel;
 import com.example.demo.model.binding.InquiryVehicleServiceBindingModel;
-import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.service.AddResponseServiceModel;
 import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
@@ -35,7 +34,7 @@ public class InquiryController {
 
     @GetMapping("/add")
     public String addOrder() {
-        return "makeOrder";
+        return "add_inquiry";
     }
 
     @GetMapping("/vehicleService")
@@ -43,7 +42,7 @@ public class InquiryController {
         if (!model.containsAttribute("inquiryVehicleServiceBindingModel")) {
             model.addAttribute("inquiryVehicleServiceBindingModel", new InquiryVehicleServiceBindingModel());
         }
-        return "orderVehicleService";
+        return "inquiry_vehicle_service";
     }
 
     @PostMapping("/vehicleService")
@@ -57,6 +56,7 @@ public class InquiryController {
         }
         inquiryVehicleServiceBindingModel.setInquiry(InquiryTypeNameEnum.SERVICE);
         inquiryVehicleServiceBindingModel.setEmail(principal.getName());
+        InquiryVehicleServiceServiceModel map = this.modelMapper.map(inquiryVehicleServiceBindingModel, InquiryVehicleServiceServiceModel.class);
         inquiryService.addInquiryVehicleService(this.modelMapper.map(inquiryVehicleServiceBindingModel, InquiryVehicleServiceServiceModel.class));
 
         return "redirect:/users/account";
@@ -67,7 +67,7 @@ public class InquiryController {
         if (!model.containsAttribute("inquiryTuningBindingModel")) {
             model.addAttribute("inquiryTuningBindingModel", new InquiryTuningBindingModel());
         }
-        return "orderVehicleTuning";
+        return "inquiry_vehicle_tuning";
     }
 
     @PostMapping("/vehicleTuning")
@@ -93,7 +93,7 @@ public class InquiryController {
             model.addAttribute("addResponseBindingModel", new AddResponseBindingModel());
         }
         model.addAttribute("inquiryEntity",this.inquiryService.findById(id));
-        return "inquiryDetails";
+        return "inquiry_details";
     }
 
     @PostMapping("/details/{id}")

@@ -26,6 +26,6 @@ public class ForUsController {
         model.addAttribute("firstImg", carouselService.firstImage());
         model.addAttribute("secondImg", carouselService.secondImage());
         model.addAttribute("thirdImg", carouselService.thirdImage());
-        return "aboutUs";
+        return "about_us";
     }
 }

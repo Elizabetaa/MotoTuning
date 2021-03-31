@@ -1,7 +1,6 @@
 package com.example.demo.web;
 
 import com.example.demo.model.binding.AddBlogBindingModel;
-import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.service.AddBlogServiceModel;
 import com.example.demo.model.view.BlogDetailsViewModel;
@@ -46,7 +45,7 @@ public class BlogController {
             model.addAttribute("addBlogBindingModel", new AddBlogBindingModel());
             model.addAttribute("userNotFound", false);
         }
-        return "blog-add";
+        return "blog_add";
     }
 
     @PostMapping("/add")
@@ -71,35 +70,35 @@ public class BlogController {
     public String postsRoad(Model model) {
         model.addAttribute("categoryPage", "ROAD POSTS");
         model.addAttribute("blogs", this.blogService.findByCategory(BlogCategoryNameEnum.ROADS));
-        return "by-category";
+        return "by_category";
     }
 
     @GetMapping("/categories/motorcycle")
     public String postsMotorcycle(Model model) {
         model.addAttribute("categoryPage", "MOTORCYCLE POSTS");
         model.addAttribute("blogs", this.blogService.findByCategory(BlogCategoryNameEnum.MOTORCYCLE));
-        return "by-category";
+        return "by_category";
     }
 
     @GetMapping("/categories/tuning")
     public String postsTuning(Model model) {
         model.addAttribute("categoryPage", "TUNING POSTS");
         model.addAttribute("blogs", this.blogService.findByCategory(BlogCategoryNameEnum.TUNING));
-        return "by-category";
+        return "by_category";
     }
 
     @GetMapping("/categories/brands")
     public String postsBrands(Model model) {
         model.addAttribute("categoryPage", "BRAND POSTS");
         model.addAttribute("blogs", this.blogService.findByCategory(BlogCategoryNameEnum.BRAND));
-        return "by-category";
+        return "by_category";
     }
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
         BlogDetailsViewModel byId = this.blogService.findById(id);
         model.addAttribute("blog", this.blogService.findById(id));
-        return "blog-details";
+        return "blog_details";
     }
 
     @PostMapping("/details/comments/add/{id}")

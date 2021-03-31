@@ -62,7 +62,7 @@ public class InquiryControllerTest {
                 .param("phoneNumber", "1234567899")
                 .param("inquiry", String.valueOf(InquiryTypeNameEnum.SERVICE))
                 .param("vehicle", String.valueOf(VehicleTypeNameEnum.MOTORCYCLE))
-                .param("brand", String.valueOf(BrandsNameEnum.DUCATI))
+                .param("make", String.valueOf(MakeNameEnum.DUCATI))
                 .param("vehicleService", String.valueOf(ServiceTypeNameEnum.OIL))
                 .param("model", "R1")
                 .with(csrf())).andExpect(status().is3xxRedirection());
@@ -78,7 +78,7 @@ public class InquiryControllerTest {
                 .param("phoneNumber", "1234567899")
                 .param("inquiry", String.valueOf(InquiryTypeNameEnum.SERVICE))
                 .param("vehicle", String.valueOf(VehicleTypeNameEnum.MOTORCYCLE))
-                .param("brand", String.valueOf(BrandsNameEnum.DUCATI))
+                .param("make", String.valueOf(MakeNameEnum.DUCATI))
                 .param("model", "R1")
                 .with(csrf())).andExpect(status().is3xxRedirection());
 
@@ -90,7 +90,7 @@ public class InquiryControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get(INQUIRY_CONTROLLER_PREFIX + "/details/{id}", testId)
         ).
                 andExpect(status().isOk()).
-                andExpect(view().name("inquiryDetails")).
+                andExpect(view().name("inquiry_details")).
                 andExpect(model().attributeExists("inquiryEntity"));
     }
     @Test
@@ -114,7 +114,7 @@ public class InquiryControllerTest {
         mockMvc.perform(MockMvcRequestBuilders.get(INQUIRY_CONTROLLER_PREFIX + "/add")
         ).
                 andExpect(status().isOk()).
-                andExpect(view().name("makeOrder"));
+                andExpect(view().name("add_inquiry"));
     }
 
     @Test
@@ -125,7 +125,7 @@ public class InquiryControllerTest {
                 .param("phoneNumber", "1234567899")
                 .param("inquiry", String.valueOf(InquiryTypeNameEnum.SERVICE))
                 .param("vehicle", String.valueOf(VehicleTypeNameEnum.MOTORCYCLE))
-                .param("brand", String.valueOf(BrandsNameEnum.DUCATI))
+                .param("make", String.valueOf(MakeNameEnum.DUCATI))
                 .param("model", "R1")
                 .param("description","description")
                 .with(csrf())).andExpect(status().is3xxRedirection());
@@ -149,7 +149,7 @@ public class InquiryControllerTest {
         userRepository.save(userEntity);
         InquiryEntity inquiryEntity = new InquiryEntity();
         inquiryEntity.setInquiry(InquiryTypeNameEnum.SERVICE).setEmail("test@mail.com").setPhoneNumber("088888888888").setVehicle(VehicleTypeNameEnum.MOTORCYCLE)
-                .setService(ServiceTypeNameEnum.OIL).setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity);
+                .setService(ServiceTypeNameEnum.OIL).setMake(MakeNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity);
 
         inquiryRepository.save(inquiryEntity);
         testId = inquiryEntity.getId();

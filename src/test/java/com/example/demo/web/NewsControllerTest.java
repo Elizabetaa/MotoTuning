@@ -48,6 +48,6 @@ public class NewsControllerTest {
         )).
                 andExpect(status().isOk()).
                 andExpect(model().attributeExists("news")).
-                andExpect(view().name("news-details"));
+                andExpect(view().name("news_details"));
     }
 }

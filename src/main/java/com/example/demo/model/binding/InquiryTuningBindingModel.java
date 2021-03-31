@@ -1,8 +1,7 @@
 package com.example.demo.model.binding;
 
-import com.example.demo.model.entity.enums.BrandsNameEnum;
+import com.example.demo.model.entity.enums.MakeNameEnum;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
-import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
 
 import javax.validation.constraints.*;
@@ -12,7 +11,7 @@ public class InquiryTuningBindingModel {
     private String phoneNumber;
     private InquiryTypeNameEnum inquiry;
     private VehicleTypeNameEnum vehicle;
-    private BrandsNameEnum brand;
+    private MakeNameEnum make;
     private String model;
     private String description;
 
@@ -60,15 +59,15 @@ public class InquiryTuningBindingModel {
         return this;
     }
 
-    @NotNull(message = "Select brand")
-    public BrandsNameEnum getBrand() {
-        return brand;
+    public MakeNameEnum getMake() {
+        return make;
     }
 
-    public InquiryTuningBindingModel setBrand(BrandsNameEnum brand) {
-        this.brand = brand;
-        return this;
+    public void setMake(MakeNameEnum make) {
+        this.make = make;
     }
+
+    @NotNull(message = "Select make")
 
     @NotBlank(message = "Model can not be empty")
     @Size(min = 2,message = "Invalid model")

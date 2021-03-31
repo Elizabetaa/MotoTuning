@@ -1,11 +1,9 @@
 package com.example.demo.web;
 
-import com.example.demo.model.binding.EditAccountBindingModel;
 import com.example.demo.model.binding.UserRegisterBindingModel;
 import com.example.demo.model.service.EditAccountServiceModel;
 import com.example.demo.model.service.UserRegisterServiceModel;
 import com.example.demo.model.view.CurrentUserViewModel;
-import com.example.demo.model.view.MyInquiriesViewModel;
 import com.example.demo.service.InquiryService;
 import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
@@ -16,14 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
-import java.util.List;
 
 @Controller
 @RequestMapping("/users")
@@ -70,7 +66,7 @@ public class UsersController {
 
     @GetMapping("/signIn")
     public String signIn() {
-        return "signIn";
+        return "sign_in";
     }
 
     @PostMapping("/signIn-error")
@@ -92,7 +88,7 @@ public class UsersController {
     public String myAccount(Model model,Principal principal) {
         model.addAttribute("currentUser", this.userService.findByEmail(principal.getName()));
         model.addAttribute("myInquiries",this.inquiryService.getMyInquiries(principal.getName()));
-        return "myAccount";
+        return "my_account";
     }
 
 
@@ -102,7 +98,7 @@ public class UsersController {
         if (!model.containsAttribute("currentUserViewModel")){
             model.addAttribute("currentUserViewModel", this.userService.findCurrentUser(principal.getName()));
         }
-        return "edit-account";
+        return "edit_account";
     }
     @PostMapping("/editAccount")
     public String editAccountConfirm(@Valid CurrentUserViewModel currentUserViewModel,

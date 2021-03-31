@@ -1,6 +1,6 @@
 package com.example.demo.model.binding;
 
-import com.example.demo.model.entity.enums.BrandsNameEnum;
+import com.example.demo.model.entity.enums.MakeNameEnum;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
@@ -13,7 +13,7 @@ public class InquiryVehicleServiceBindingModel {
     private InquiryTypeNameEnum inquiry;
     private VehicleTypeNameEnum vehicle;
     private ServiceTypeNameEnum vehicleService;
-    private BrandsNameEnum brand;
+    private MakeNameEnum make;
     private String model;
     private String description;
 
@@ -64,12 +64,12 @@ public class InquiryVehicleServiceBindingModel {
     }
 
     @NotNull(message = "Select brand")
-    public BrandsNameEnum getBrand() {
-        return brand;
+    public MakeNameEnum getMake() {
+        return make;
     }
 
-    public InquiryVehicleServiceBindingModel setBrand(BrandsNameEnum brand) {
-        this.brand = brand;
+    public InquiryVehicleServiceBindingModel setMake(MakeNameEnum make) {
+        this.make = make;
         return this;
     }
 

@@ -6,18 +6,19 @@
 <nav th:fragment="navbar">
     <ul id="ulNavBar">
         <li style="float:left"><a href="/">Home</a></li>
-        <li sec:authorize="isAuthenticated()" style="text-align:center; float: left;margin-left: 35%"><a href="/users/account">Welcome, <u><span
+        <li style="text-align:center; float: left;margin-left: 35%"><a  sec:authorize="isAuthenticated()"
+                                                                        href="/users/account">Welcome, <u><span
                 sec:authentication="name"></span></u></a></li>
-        <li sec:authorize="!isAuthenticated()"><a href="/users/register">Register</a></li>
-        <li sec:authorize="!isAuthenticated()"><a href="/users/signIn">Sign in</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/users/register">Register</a></li>
+        <li><a sec:authorize="!isAuthenticated()" href="/users/signIn">Sign in</a></li>
         <li sec:authorize="isAuthenticated()">
             <form th:action="@{/signOut}" method="POST">
                 <button id="signOnt" type="submit"> Sign out</button>
             </form>
         </li>
         <li><a sec:authorize="isAuthenticated()" href="/users/account">My account</a></li>
-        <li sec:authorize="isAuthenticated()"><a href="/inquiries/add">Make inquiry</a></li>
-        <!--        <li sec:authorize="isAuthenticated()"><a  href="/services/information">Service Information</a></li>-->
+        <li><a  sec:authorize="isAuthenticated()"href="/inquiries/add">Make inquiry</a></li>
+        <li><a sec:authorize="isAuthenticated()" href="/services/information">Service Information</a></li>
         <li><a sec:authorize="isAuthenticated()" href="/news/all">News</a></li>
         <li><a sec:authorize="hasRole('ADMIN')" href="/admin/actions">Admin action</a></li>
         <li><a href="/blog/all">Blog</a></li>

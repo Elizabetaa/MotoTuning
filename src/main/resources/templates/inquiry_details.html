@@ -10,7 +10,7 @@
     <div class="card" style="width: 45rem;border-top-left-radius: 10px;border-top-right-radius: 10px;margin: auto"
          th:object="${inquiryEntity}">
         <div class="card-footer"
-             style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;">
+             style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;" th:text="*{make}">
             Inquiry
         </div>
         <ul class="list-group list-group-flush" style="margin-left: 2%">

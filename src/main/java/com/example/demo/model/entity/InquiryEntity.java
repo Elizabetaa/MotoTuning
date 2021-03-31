@@ -1,6 +1,6 @@
 package com.example.demo.model.entity;
 
-import com.example.demo.model.entity.enums.BrandsNameEnum;
+import com.example.demo.model.entity.enums.MakeNameEnum;
 import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
 import com.example.demo.model.entity.enums.ServiceTypeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
@@ -16,7 +16,7 @@ public class InquiryEntity extends BaseEntity {
     private String phoneNumber;
     private VehicleTypeNameEnum vehicle;
     private ServiceTypeNameEnum service;
-    private BrandsNameEnum brand;
+    private MakeNameEnum make;
     private String model;
     private String description;
     private String response;
@@ -79,12 +79,12 @@ public class InquiryEntity extends BaseEntity {
     }
 
     @Column(nullable = false)
-    public BrandsNameEnum getBrand() {
-        return brand;
+    public MakeNameEnum getMake() {
+        return make;
     }
 
-    public InquiryEntity setBrand(BrandsNameEnum brand) {
-        this.brand = brand;
+    public InquiryEntity setMake(MakeNameEnum brand) {
+        this.make = brand;
         return this;
     }
 

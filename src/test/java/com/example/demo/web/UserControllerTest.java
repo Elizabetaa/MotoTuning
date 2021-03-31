@@ -61,7 +61,7 @@ public class UserControllerTest {
                 USER_CONTROLLER_PREFIX + "/signIn"
         )).
                 andExpect(status().isOk()).
-                andExpect(view().name("signIn"));
+                andExpect(view().name("sign_in"));
     }
     @Test
     void registerShouldReturnValidStatusAndAddUser() throws Exception {
@@ -93,7 +93,7 @@ public class UserControllerTest {
                 andExpect(status().isOk()).
                 andExpect(model().attributeExists("currentUser")).
                 andExpect(model().attributeExists("myInquiries")).
-                andExpect(view().name("myAccount"));
+                andExpect(view().name("my_account"));
     }
     @Test
     @WithMockUser(username = "test@mail.com", roles = "ADMIN")
@@ -102,7 +102,7 @@ public class UserControllerTest {
                 USER_CONTROLLER_PREFIX + "/editAccount"
         )).
                 andExpect(status().isOk()).
-                andExpect(view().name("edit-account"));
+                andExpect(view().name("edit_account"));
     }
     @Test
     @WithMockUser(username = "test@mail.com", roles = "ADMIN")

@@ -5,16 +5,13 @@ import com.example.demo.model.entity.RoleEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.*;
 import com.example.demo.model.service.AddResponseServiceModel;
-import com.example.demo.model.service.InquiryVehicleServiceServiceModel;
 import com.example.demo.model.view.InquiryDetailsViewModel;
 import com.example.demo.model.view.InquiryViewModel;
 import com.example.demo.model.view.MyInquiriesViewModel;
 import com.example.demo.repository.InquiryRepository;
-import com.example.demo.repository.UserRepository;
 import com.example.demo.service.InquiryService;
 import com.example.demo.service.UserService;
 import com.example.demo.service.impl.InquiryServiceImpl;
-import com.example.demo.service.impl.MotoTuningUserService;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -61,7 +58,7 @@ public class InquiryServiceTest {
         InquiryEntity inquiryEntity = new InquiryEntity();
         inquiryEntity.setInquiry(InquiryTypeNameEnum.SERVICE).setEmail("test@abv.bg").setPhoneNumber("0123456789")
                 .setVehicle(VehicleTypeNameEnum.MOTORCYCLE).setService(ServiceTypeNameEnum.OIL)
-                .setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity);
+                .setMake(MakeNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity);
 
 
         Mockito.when(mockInquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE, null))
@@ -90,7 +87,7 @@ public class InquiryServiceTest {
         InquiryEntity inquiryEntity = new InquiryEntity();
         inquiryEntity.setInquiry(InquiryTypeNameEnum.TUNING).setEmail("test@abv.bg").setPhoneNumber("0123456789")
                 .setVehicle(VehicleTypeNameEnum.MOTORCYCLE).setService(ServiceTypeNameEnum.OIL)
-                .setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity);
+                .setMake(MakeNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity);
 
 
         Mockito.when(mockInquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.TUNING, null))
@@ -116,13 +113,13 @@ public class InquiryServiceTest {
         InquiryEntity inquiryEntity = new InquiryEntity();
         inquiryEntity.setInquiry(InquiryTypeNameEnum.TUNING).setEmail("test@abv.bg").setPhoneNumber("0123456789")
                 .setVehicle(VehicleTypeNameEnum.MOTORCYCLE).setService(ServiceTypeNameEnum.OIL)
-                .setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
+                .setMake(MakeNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
 
         Mockito.when(mockInquiryRepository.findById(inquiryEntity.getId())).thenReturn(Optional.of(inquiryEntity));
         InquiryDetailsViewModel inquiryDetailsViewModel = new InquiryDetailsViewModel();
         inquiryDetailsViewModel.setInquiry(InquiryTypeNameEnum.TUNING).setEmail("test@abv.bg").setPhoneNumber("0123456789")
                 .setVehicle(VehicleTypeNameEnum.MOTORCYCLE).setService(ServiceTypeNameEnum.OIL)
-                .setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
+                .setMake(MakeNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
         Mockito.when(mockModelMapper.map(inquiryEntity,InquiryDetailsViewModel.class)).thenReturn(inquiryDetailsViewModel);
         InquiryDetailsViewModel byId = serviceTest.findById(inquiryEntity.getId());
         Assertions.assertEquals(inquiryDetailsViewModel,byId);
@@ -144,7 +141,7 @@ public class InquiryServiceTest {
         InquiryEntity inquiryEntity = new InquiryEntity();
         inquiryEntity.setInquiry(InquiryTypeNameEnum.TUNING).setEmail("test@abv.bg").setPhoneNumber("0123456789")
                 .setVehicle(VehicleTypeNameEnum.MOTORCYCLE).setService(ServiceTypeNameEnum.OIL)
-                .setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
+                .setMake(MakeNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
 
         Mockito.when(mockInquiryRepository.findByEmailOrderByResponseDesc("test@abv.bg")).thenReturn(List.of(inquiryEntity));
         MyInquiriesViewModel inquiriesViewModel = new MyInquiriesViewModel();
@@ -178,7 +175,7 @@ public class InquiryServiceTest {
         InquiryEntity inquiryEntity = new InquiryEntity();
         inquiryEntity.setInquiry(InquiryTypeNameEnum.TUNING).setEmail("test@abv.bg").setPhoneNumber("0123456789")
                 .setVehicle(VehicleTypeNameEnum.MOTORCYCLE).setService(ServiceTypeNameEnum.OIL)
-                .setBrand(BrandsNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
+                .setMake(MakeNameEnum.SUZUKI).setModel("R1").setDescription("desc").setAuthor(userEntity).setId(1L);
 
         Mockito.when(mockInquiryRepository.findById(1L)).thenReturn(Optional.of(inquiryEntity));
 

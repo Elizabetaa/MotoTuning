@@ -1,5 +1,6 @@
 package com.example.demo.model.view;
 
+import com.example.demo.model.entity.enums.MakeNameEnum;
 import com.example.demo.model.entity.enums.VehicleTypeNameEnum;
 
 public class InquiryViewModel {
@@ -7,6 +8,7 @@ public class InquiryViewModel {
     private String email;
     private VehicleTypeNameEnum vehicle;
     private String model;
+    private MakeNameEnum make;
 
     public InquiryViewModel() {
     }
@@ -45,5 +47,13 @@ public class InquiryViewModel {
     public InquiryViewModel setModel(String model) {
         this.model = model;
         return this;
+    }
+
+    public MakeNameEnum getMake() {
+        return make;
+    }
+
+    public void setMake(MakeNameEnum make) {
+        this.make = make;
     }
 }

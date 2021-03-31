@@ -19,7 +19,6 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 
 
 @Controller
@@ -55,7 +54,7 @@ public class AdminController {
 
         model.addAttribute("allUsersEmails",userService.getAllEmails(principal.getName()));
 
-        return "adminActions";
+        return "admin_actions";
     }
 
 

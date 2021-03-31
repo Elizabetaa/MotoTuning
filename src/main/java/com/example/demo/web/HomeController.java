@@ -1,12 +1,9 @@
 package com.example.demo.web;
 
-import com.example.demo.model.view.InquiryTaskViewModel;
 import com.example.demo.service.InquiryService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-
-import java.util.List;
 
 @Controller
 public class HomeController {
@@ -31,21 +28,21 @@ public class HomeController {
 
     @GetMapping("/home/motorcycle")
     public String motorcycle() {
-        return "motorcyclePassion";
+        return "motorcycle_passion";
     }
 
     @GetMapping("/home/utv")
     public String utv() {
-        return "utvPassion";
+        return "utv_passion";
     }
 
     @GetMapping("/home/dirtBike")
     public String dirtBike() {
-        return "dirtBikePassion";
+        return "dirt_bike_passion";
     }
     @GetMapping("/home/atv")
     public String atv() {
-        return "atvPassion";
+        return "atv_passion";
     }
 
 }

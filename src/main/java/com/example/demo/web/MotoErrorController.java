@@ -17,11 +17,11 @@ public class MotoErrorController implements ErrorController {
         if (attribute != null) {
             int status = Integer.parseInt(attribute.toString());
             if (status == HttpStatus.NOT_FOUND.value()) {
-                return "error-404";
+                return "error_404";
             } else if (status == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-                return "error500";
+                return "error_500";
             } else if (status == HttpStatus.FORBIDDEN.value()) {
-                return "error403";
+                return "error_403";
             }
         }
         System.out.println(Integer.parseInt(attribute.toString()));

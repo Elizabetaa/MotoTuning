@@ -41,7 +41,7 @@ public class HomeControllerTest {
                 HOME_CONTROLLER_PREFIX + "/motorcycle"
         )).
                 andExpect(status().isOk()).
-                andExpect(view().name("motorcyclePassion"));
+                andExpect(view().name("motorcycle_passion"));
     }
     @Test
     void testShouldReturnValidStatusAndViewHomeMotorcycleUtc() throws Exception {
@@ -49,6 +49,6 @@ public class HomeControllerTest {
                 HOME_CONTROLLER_PREFIX + "/utv"
         )).
                 andExpect(status().isOk()).
-                andExpect(view().name("utvPassion"));
+                andExpect(view().name("utv_passion"));
     }
 }
