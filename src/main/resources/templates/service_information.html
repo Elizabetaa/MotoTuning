@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+
+<main>
+    <div>
+        <img id="inf" class="card-img" src="/images/banner.jpg" alt="Card image"
+             style="position: absolute;top: 60px;border-radius: 0">
+        <h3 class="card-img-overlay"
+            style="background-color:rgba(0, 0, 0, 0.6); height: 70px;margin-top: 16.6%;text-align: center; color: #e5e5e5">
+            Manuals and useful files for motorcycles</h3>
+    </div>
+    <div style="margin-top: 20%">
+        <button id="addPost" onclick="window.location.href='/service/add'">Add File</button>
+
+        <div style="width: 80%;height: 1000px;margin: 5% auto auto;">
+            <form class="form-inline my-2 my-lg-0 " style="margin-left: 25%;width: 60%">
+                <input class="form-control mr-sm-2 col-sm-9" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
+            </form>
+            <div class="row" style="margin-top: 5%">
+                <div class="card m-5 border-dark" style="width: 18rem;border-radius: 0;">
+                    <div class="card-body">
+                        <img src="/images/ktm-logo.png" alt="make image" style="width: 100%; height: 60px">
+                        <h5 class="card-title" style="text-align: center">KTM</h5>
+                        <br>
+                        <h6 class="card-subtitle mb-2 text-muted">navod duke 390 2018</h6>
+                        <a href="/images/myw3schoolsimage.jpg" download >
+                            <img id="pdf" src="/images/download.png" alt="make image" width="80" height="50">
+                        </a>
+                        <p class="card-text">2021-03-31 08:15</p>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</main>
+
+<section class="" th:replace="fragments/footer::footer"></section>
+</body>
+
+</html>
+

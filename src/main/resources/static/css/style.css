@@ -343,3 +343,7 @@ li a:hover {
 #add label {
     font-weight: 600;
 }
+
+#pdf img:hover {
+    opacity: 0.4%;
+}

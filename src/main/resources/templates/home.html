@@ -5,9 +5,9 @@
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
-<img src="/images/foot_banner.png" class="img-fluid" style="width: 100%" alt="Responsive image">
+<img src="/images/foot_banner.png" class="img-fluid" style="width: 100%;position: absolute;top: 60px;" alt="Responsive image">
 
-<div  style="width: 65%; margin: 5% auto auto;" class="row bg-white" sec:authorize="hasRole('ADMIN')">
+<div  style="width: 65%; margin: 15% auto auto;" class="row bg-white" sec:authorize="hasRole('ADMIN')">
     <div class="col-12" style="text-align: center"  th:unless="${tasks.isEmpty()}" >
         <h2 class="tm-block-title d-inline-block">TASKS</h2>
     </div>
