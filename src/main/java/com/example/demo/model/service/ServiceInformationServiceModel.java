@@ -1,28 +1,19 @@
-package com.example.demo.model.view;
+package com.example.demo.model.service;
 
 import com.example.demo.model.entity.enums.MakeNameEnum;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.sql.Blob;
 import java.time.LocalDateTime;
 import java.time.Year;
 
-public class ServiceInfoViewModel {
-    private Long id;
+public class ServiceInformationServiceModel {
     private MakeNameEnum make;
     private String model;
     private Year year;
-    private String  addedOn;
+    private String description;
+    private LocalDateTime addedOn;
 
-    public ServiceInfoViewModel() {
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public ServiceInformationServiceModel() {
     }
 
     public MakeNameEnum getMake() {
@@ -49,11 +40,19 @@ public class ServiceInfoViewModel {
         this.year = year;
     }
 
-    public String  getAddedOn() {
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public LocalDateTime getAddedOn() {
         return addedOn;
     }
 
-    public void setAddedOn(String  addedOn) {
+    public void setAddedOn(LocalDateTime addedOn) {
         this.addedOn = addedOn;
     }
 }

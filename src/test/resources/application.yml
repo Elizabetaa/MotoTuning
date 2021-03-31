@@ -8,6 +8,8 @@ jpa:
         multipart:
             max-file-size: 1MB
             max-request-size: 5MB
+            blob:
+                max_allowed_packet: 128M
     mvc:
         hiddenmethod:
             filter:

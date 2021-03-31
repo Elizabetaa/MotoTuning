@@ -1,26 +1,29 @@
-package com.example.demo.model.entity;
+package com.example.demo.model.view;
 
 import com.example.demo.model.entity.enums.MakeNameEnum;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
 import java.time.LocalDateTime;
 import java.time.Year;
 
-@Entity
-@Table
-public class MotorcyclesInformation extends BaseEntity{
+public class ServiceInformationDetailsViewModel {
+    private Long id;
     private MakeNameEnum make;
     private String model;
     private Year year;
-    private String pdfUrl;
-    private LocalDateTime addedOn;
+    private String addedOn;
+    private String description;
 
-    public MotorcyclesInformation() {
+    public ServiceInformationDetailsViewModel() {
     }
 
-    @Column(nullable = false)
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public MakeNameEnum getMake() {
         return make;
     }
@@ -37,7 +40,6 @@ public class MotorcyclesInformation extends BaseEntity{
         this.model = model;
     }
 
-    @Column(nullable = false)
     public Year getYear() {
         return year;
     }
@@ -45,20 +47,20 @@ public class MotorcyclesInformation extends BaseEntity{
     public void setYear(Year year) {
         this.year = year;
     }
-    @Column(nullable = false)
-    public String getPdfUrl() {
-        return pdfUrl;
-    }
 
-    public void setPdfUrl(String pdfUrl) {
-        this.pdfUrl = pdfUrl;
-    }
-    @Column(nullable = false)
-    public LocalDateTime getAddedOn() {
+    public String getAddedOn() {
         return addedOn;
     }
 
-    public void setAddedOn(LocalDateTime addedOn) {
+    public void setAddedOn(String addedOn) {
         this.addedOn = addedOn;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }

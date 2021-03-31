@@ -18,18 +18,18 @@
         <div style="margin: 5% auto auto; ">
             <h3 style="text-align: center;text-shadow: 5px 8px 5px white;">Add a manual</h3>
             <hr>
-            <form method="POST" style="margin-top: 5%">
+            <form method="POST" style="margin-top: 5%" th:action="@{/service/information/add}" th:object="${serviceInformationBindingModel}" enctype="multipart/form-data">
                 <div>
                     <div class="col-sm-12 " style="margin-top: 2%">
                         <div class="label-holder text-dark textCol d-flex ">
                             <label for="make">Make</label>
                         </div>
-                        <select style="width: 100%; height: 40px;" required id="make" name="make">
+                        <select style="width: 100%; height: 40px;" th:field="*{make}" th:errorclass = "border-danger" required id="make" name="make">
                             <option value="">- Select Make -</option>
                             <option th:each="b : ${T(com.example.demo.model.entity.enums.MakeNameEnum).values()}"
                                     th:value="${b}" th:text="${b}"></option>
                         </select>
-                        <div class="small">
+                        <div class="small" th:if="${#fields.hasErrors('make')}" th:errors="*{make}">
                             <div style="margin-left: 10px; ">
                                 <small></small>
                             </div>
@@ -39,10 +39,10 @@
                         <div class="label-holder text-dark textCol d-flex ">
                             <label for="make">Year</label>
                         </div>
-                        <select style="width: 100%; height: 40px;" required id="year" name="year">
+                        <select style="width: 100%; height: 40px;"  th:field="*{year}" th:errorclass = "border-danger" required id="year" name="year">
                             <option value="">- Select Year -</option>
                         </select>
-                        <div class="small">
+                        <div class="small" th:if="${#fields.hasErrors('year')}" th:errors="*{year}">
                             <div style="margin-left: 10px; ">
                                 <small></small>
                             </div>
@@ -53,25 +53,24 @@
                     <div class="label-holder text-dark textCol d-flex ">
                         <label for="model">Model</label>
                     </div>
-                    <input style="width: 100%; height: 40px" required minlength="2" name="model" id="model"
+                    <input  th:field="*{model}" th:errorclass = "border-danger" style="width: 100%; height: 40px" required minlength="2" name="model" id="model"
                            class="full-width" placeholder="Model" type="text">
-                    <div class="small">
+                    <div class="small" th:if="${#fields.hasErrors('model')}" th:errors="*{model}">
                         <div style="margin-left: 10px; ">
                             <small></small>
                         </div>
                     </div>
                 </div>
-                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
-                    <div class="fileUpload">
-                        <div class="label-holder text-dark textCol d-flex justify-content-center">
-                            <label for="pdfUrl">Choose pdf file</label>
-                        </div>
-                        <input  type="file" class="form-control-file" name="pdfUrl" id="pdfUrl">
+                <div class="form-group col-sm-12" style="margin-top: 2%">
+                    <div class="label-holder text-dark textCol d-flex justify-content-center">
+                        <label for="description">Description</label>
                     </div>
+                    <textarea th:field="*{description}" name="description" id="description" style="width: 100%" placeholder="Description"></textarea>
                 </div>
 
+
                 <div class="button-holder d-flex justify-content-center" style="margin-top: 5%">
-                    <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+                    <button type="submit" class="btn btn-dark " id="submit-pdf" value="Sign in">Submit</button>
                 </div>
 
             </form>
@@ -99,6 +98,7 @@
             ddlYears.appendChild(option);
         }
     };
+
 </script>
 </body>
 
