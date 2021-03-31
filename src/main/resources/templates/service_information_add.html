@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head::head"></head>
+
+<body>
+<nav th:replace="fragments/navbar::navbar"></nav>
+
+<main>
+    <div class="row">
+
+    <div style="width: 25%;margin-left: 5%;margin-top: 7%;">
+        <img  class="card-img" src="/images/manual.png" alt="Card image" style="margin: auto" >
+        <h6 style="text-align: center; ">
+            Here you can add a new manual to our database.
+        </h6>
+    </div>
+    <div style="width: 50%; margin-left: 5%">
+        <div style="margin: 5% auto auto; ">
+            <h3 style="text-align: center;text-shadow: 5px 8px 5px white;">Add a manual</h3>
+            <hr>
+            <form method="POST" style="margin-top: 5%">
+                <div>
+                    <div class="col-sm-12 " style="margin-top: 2%">
+                        <div class="label-holder text-dark textCol d-flex ">
+                            <label for="make">Make</label>
+                        </div>
+                        <select style="width: 100%; height: 40px;" required id="make" name="make">
+                            <option value="">- Select Make -</option>
+                            <option th:each="b : ${T(com.example.demo.model.entity.enums.MakeNameEnum).values()}"
+                                    th:value="${b}" th:text="${b}"></option>
+                        </select>
+                        <div class="small">
+                            <div style="margin-left: 10px; ">
+                                <small></small>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-12" style="margin-top: 2%">
+                        <div class="label-holder text-dark textCol d-flex ">
+                            <label for="make">Year</label>
+                        </div>
+                        <select style="width: 100%; height: 40px;" required id="year" name="year">
+                            <option value="">- Select Year -</option>
+                        </select>
+                        <div class="small">
+                            <div style="margin-left: 10px; ">
+                                <small></small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12" style="margin-top: 2%">
+                    <div class="label-holder text-dark textCol d-flex ">
+                        <label for="model">Model</label>
+                    </div>
+                    <input style="width: 100%; height: 40px" required minlength="2" name="model" id="model"
+                           class="full-width" placeholder="Model" type="text">
+                    <div class="small">
+                        <div style="margin-left: 10px; ">
+                            <small></small>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-12 justify-content-center" style="margin-top: 2%">
+                    <div class="fileUpload">
+                        <div class="label-holder text-dark textCol d-flex justify-content-center">
+                            <label for="pdfUrl">Choose pdf file</label>
+                        </div>
+                        <input  type="file" class="form-control-file" name="pdfUrl" id="pdfUrl">
+                    </div>
+                </div>
+
+                <div class="button-holder d-flex justify-content-center" style="margin-top: 5%">
+                    <button type="submit" class="btn btn-dark " value="Sign in">Submit</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+
+    </div>
+</main>
+
+<section class="" th:replace="fragments/footer::footer"></section>
+<script type="text/javascript">
+    window.onload = function () {
+        //Reference the DropDownList.
+        var ddlYears = document.getElementById("year");
+
+        //Determine the Current Year.
+        var currentYear = (new Date()).getFullYear();
+
+        //Loop and add the Year values to DropDownList.
+        for (var i = 1950; i <= currentYear; i++) {
+            var option = document.createElement("OPTION");
+            option.innerHTML = i;
+            option.value = i;
+            ddlYears.appendChild(option);
+        }
+    };
+</script>
+</body>
+
+</html>
+

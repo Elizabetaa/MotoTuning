@@ -10,14 +10,14 @@ import java.time.Year;
 
 @Entity
 @Table
-public class MotorcycleInformation extends BaseEntity{
+public class MotorcyclesInformation extends BaseEntity{
     private MakeNameEnum make;
     private String model;
     private Year year;
     private String pdfUrl;
     private LocalDateTime addedOn;
 
-    public MotorcycleInformation() {
+    public MotorcyclesInformation() {
     }
 
     @Column(nullable = false)
