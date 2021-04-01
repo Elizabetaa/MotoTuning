@@ -2,6 +2,7 @@ package com.example.demo.web;
 
 import com.example.demo.model.binding.ServiceInformationBindingModel;
 import com.example.demo.model.service.ServiceInformationServiceModel;
+import com.example.demo.model.view.ServiceInfoViewModel;
 import com.example.demo.model.view.ServiceInformationDetailsViewModel;
 import com.example.demo.service.MotorcyclesInformationService;
 import org.modelmapper.ModelMapper;
@@ -18,6 +19,7 @@ import javax.validation.Valid;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Controller
 @RequestMapping("/service")
@@ -32,6 +34,7 @@ public class ServiceInformationController {
 
     @GetMapping("/information")
     public String getInfo(Model model){
+        List<ServiceInfoViewModel> all = motorcyclesInformationService.getAll();
         model.addAttribute("manuals",motorcyclesInformationService.getAll());
         return "service_information";
     }

@@ -1,7 +1,6 @@
 package com.example.demo.model.service;
 
 import com.example.demo.model.entity.enums.MakeNameEnum;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.time.Year;
@@ -10,7 +9,7 @@ public class ServiceInformationServiceModel {
     private MakeNameEnum make;
     private String model;
     private Year year;
-    private String description;
+    private String pdfUrl;
     private LocalDateTime addedOn;
 
     public ServiceInformationServiceModel() {
@@ -40,12 +39,12 @@ public class ServiceInformationServiceModel {
         this.year = year;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPdfUrl() {
+        return pdfUrl;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPdfUrl(String pdfUrl) {
+        this.pdfUrl = pdfUrl;
     }
 
     public LocalDateTime getAddedOn() {

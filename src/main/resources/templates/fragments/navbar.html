@@ -17,7 +17,7 @@
             </form>
         </li>
         <li><a sec:authorize="isAuthenticated()" href="/users/account">My account</a></li>
-        <li><a  sec:authorize="isAuthenticated()"href="/inquiries/add">Make inquiry</a></li>
+        <li><a sec:authorize="isAuthenticated()" href="/inquiries/add">Make inquiry</a></li>
         <li><a sec:authorize="isAuthenticated()" href="/service/information">Service Information</a></li>
         <li><a sec:authorize="isAuthenticated()" href="/news/all">News</a></li>
         <li><a sec:authorize="hasRole('ADMIN')" href="/admin/actions">Admin action</a></li>

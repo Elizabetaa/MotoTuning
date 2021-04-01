@@ -7,6 +7,7 @@ import com.example.demo.model.view.ServiceInformationDetailsViewModel;
 import com.example.demo.repository.MotorcyclesInformationRepository;
 import com.example.demo.service.MotorcyclesInformationService;
 import org.modelmapper.ModelMapper;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Service;
 
 import java.time.format.DateTimeFormatter;
@@ -31,6 +32,8 @@ public class MotorcyclesInformationServiceImpl implements MotorcyclesInformation
         List<ServiceInfoViewModel> serviceInfoViewModels = new ArrayList<>();
         this.motorcyclesInformationRepository.findAll().forEach(mi -> {
             ServiceInfoViewModel map = this.modelMapper.map(mi, ServiceInfoViewModel.class);
+            String pdfUrl = mi.getPdfUrl();
+            map.setPrdFurl(pdfUrl);
             map.setAddedOn(mi.getAddedOn().format(formatter));
             serviceInfoViewModels.add(map);
         });

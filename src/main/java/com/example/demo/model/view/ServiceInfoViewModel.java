@@ -13,6 +13,15 @@ public class ServiceInfoViewModel {
     private String model;
     private Year year;
     private String  addedOn;
+    private String prdFurl;
+
+    public String getPrdFurl() {
+        return prdFurl;
+    }
+
+    public void setPrdFurl(String prdFurl) {
+        this.prdFurl = prdFurl;
+    }
 
     public ServiceInfoViewModel() {
     }

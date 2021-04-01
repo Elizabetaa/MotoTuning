@@ -1,21 +1,17 @@
 package com.example.demo.model.binding;
 
-import com.example.demo.config.validator.MultipartFileExists;
 import com.example.demo.model.entity.enums.MakeNameEnum;
-import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
-import java.time.LocalDateTime;
 import java.time.Year;
 
 public class ServiceInformationBindingModel {
     private MakeNameEnum make;
     private String model;
     private Year year;
-    private String description;
+    private String pdfUrl;
 
     public ServiceInformationBindingModel() {
     }
@@ -48,14 +44,14 @@ public class ServiceInformationBindingModel {
         this.year = year;
     }
 
-
-    @NotBlank
-    @Size(min = 100,message = "Description should be at least 100 symbols")
-    public String getDescription() {
-        return description;
+//
+//    @NotBlank
+//    @Size(min = 100,message = "Description should be at least 100 symbols")
+    public String getPdfUrl() {
+        return pdfUrl;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPdfUrl(String pdfUrl) {
+        this.pdfUrl = pdfUrl;
     }
 }

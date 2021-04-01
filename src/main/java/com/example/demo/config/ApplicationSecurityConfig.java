@@ -27,30 +27,18 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         http.
                 authorizeRequests().
-                // allow access to static resources to anyone
-                //  requestMatchers(PathRequest.toStaticResources().atCommonLocations()).permitAll().
-                // allow access to index, user login and registration to anyone
                         antMatchers("/", "/users/signIn", "/users/register", "/blog/all", "/blog/categories/**", "/blog/details/{id}",
                         "/tuning/**", "/css/style.css", "/images/**", "/home/**").permitAll().
                          antMatchers("/admin/**").hasRole("ADMIN").
-                // protect all other pages
-                //  antMatchers("/admin/**","/news/**","/inquiries/**","/users/**","/blog/**").authenticated().
                         antMatchers("/**").authenticated().
 
                 and().
-                // configure login with HTML form
                         formLogin().
-                // our login page will be served by the controller with mapping /users/login
                         loginPage("/users/signIn").
-                // the name of the user name input field in OUR login form is username (optional)
                         usernameParameter("email").
-                // the name of the user password input field in OUR login form is password (optional)
                         passwordParameter(UsernamePasswordAuthenticationFilter.SPRING_SECURITY_FORM_PASSWORD_KEY).
-                // on login success redirect here
                         defaultSuccessUrl("/home").
-//                // on login failure redirect here
         failureForwardUrl("/users/signIn-error")
-//                       failureUrl("/users/signIn-error")
                 .and()
                 .logout()
                 .logoutUrl("/signOut")

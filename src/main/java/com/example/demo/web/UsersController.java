@@ -86,6 +86,7 @@ public class UsersController {
 
     @GetMapping("/account")
     public String myAccount(Model model,Principal principal) {
+        System.out.println();
         model.addAttribute("currentUser", this.userService.findByEmail(principal.getName()));
         model.addAttribute("myInquiries",this.inquiryService.getMyInquiries(principal.getName()));
         return "my_account";

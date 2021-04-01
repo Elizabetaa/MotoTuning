@@ -25,8 +25,9 @@
                 <input id="searchInput" class="form-control mr-sm-2" style="width: 95%" type="search"
                        placeholder="Enter make or model" aria-label="Search">
             </div>
-            <div class="row" id="serviceList" style="margin-top: 5%">
-                <a th:href="@{/service/details/{id}(id = *{id})}" th:each="m : ${manuals}" th:object="${m}">
+            <div class="row"  >
+                <div id="serviceList" style="margin-top: 5%" th:each="m : ${manuals}" th:object="${m}" >
+                    <!--                <a th:href="@{/service/details/{id}(id = *{id})}" th:each="m : ${manuals}" th:object="${m}">-->
                     <div style="margin-top: 5%">
                         <div class="card m-5 border-dark" style="width: 18rem;border-radius: 0;">
                             <div class="card-body">
@@ -37,9 +38,14 @@
                                     2018</h6>
                                 <p class="card-text" th:text="*{addedOn}">2021-03-31 08:15</p>
                             </div>
+                            <a th:href="*{prdFurl}" download   target="_blank">
+                                <img id="pdf" src="/images/download.png" alt="make image" width="80" height="50">
+                            </a>
                         </div>
                     </div>
-                </a>
+                    <!--                </a>-->
+                </div>
+
             </div>
         </div>
     </div>

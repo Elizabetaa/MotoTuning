@@ -4,9 +4,7 @@ import com.example.demo.model.entity.enums.MakeNameEnum;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Lob;
 import javax.persistence.Table;
-import java.sql.Blob;
 import java.time.LocalDateTime;
 import java.time.Year;
 
@@ -16,8 +14,9 @@ public class MotorcyclesInformationEntity extends BaseEntity{
     private MakeNameEnum make;
     private String model;
     private Year year;
-    private String description;
+    private String pdfUrl;
     private LocalDateTime addedOn;
+
 
     public MotorcyclesInformationEntity() {
     }
@@ -49,12 +48,12 @@ public class MotorcyclesInformationEntity extends BaseEntity{
     }
 
     @Column(columnDefinition = "TEXT",nullable = false)
-    public String getDescription() {
-        return description;
+    public String getPdfUrl() {
+        return pdfUrl;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPdfUrl(String description) {
+        this.pdfUrl = description;
     }
 
 

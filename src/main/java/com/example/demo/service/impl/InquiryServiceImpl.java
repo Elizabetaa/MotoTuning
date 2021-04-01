@@ -16,7 +16,7 @@ import com.example.demo.service.UserService;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.cache.annotation.Caching;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
@@ -36,16 +36,11 @@ public class InquiryServiceImpl implements InquiryService {
         this.modelMapper = modelMapper;
         this.userService = userService;
     }
-
-
     @Override
     @CacheEvict(value = "inquiriesService", allEntries = true)
     public List<InquiryEntity> addInquiryVehicleService(InquiryVehicleServiceServiceModel inquiry) {
-
         InquiryEntity inquiryEntity = this.modelMapper.map(inquiry, InquiryEntity.class);
-        String authentication = SecurityContextHolder.getContext().getAuthentication().getName();
-        UserEntity byEmail = userService.findByEmail(authentication);
-        inquiryEntity.setAuthor(byEmail);
+        mapInquiry(inquiryEntity);
         this.inquiryRepository.save(inquiryEntity);
 
         return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).orElse(null);
@@ -55,12 +50,17 @@ public class InquiryServiceImpl implements InquiryService {
     @CacheEvict(value = "inquiriesTuning", allEntries = true)
     public List<InquiryEntity> addInquiryVehicleTuning(InquiryTuningBindingModel map) {
         InquiryEntity inquiryEntity = this.modelMapper.map(map,InquiryEntity.class);
-        String authentication = SecurityContextHolder.getContext().getAuthentication().getName();
-        UserEntity byEmail = userService.findByEmail(authentication);
-        inquiryEntity.setAuthor(byEmail);
+        mapInquiry(inquiryEntity);
         this.inquiryRepository.save(inquiryEntity);
 
         return this.inquiryRepository.findByInquiryAndResponse(InquiryTypeNameEnum.SERVICE,null).orElse(null);
+    }
+
+    @Async
+     void mapInquiry(InquiryEntity inquiryEntity){
+        String authentication = SecurityContextHolder.getContext().getAuthentication().getName();
+        UserEntity byEmail = userService.findByEmail(authentication);
+        inquiryEntity.setAuthor(byEmail);
     }
 
     @Override
