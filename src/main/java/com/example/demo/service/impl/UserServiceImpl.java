@@ -14,6 +14,7 @@ import org.apache.tomcat.util.http.fileupload.FileUtils;
 import org.apache.tomcat.util.http.fileupload.IOUtils;
 import org.modelmapper.ModelMapper;
 import org.springframework.mock.web.MockMultipartFile;
+import org.springframework.scheduling.annotation.Async;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -74,6 +75,7 @@ public class UserServiceImpl implements UserService {
             MultipartFile img = editAccountServiceModel.getImageUrl();
             String url = cloudinaryService.uploadImage(img);
             userEntity.setImageUrl(url);
+
         }
 
         userEntity.setFirstName(editAccountServiceModel.getFirstName())

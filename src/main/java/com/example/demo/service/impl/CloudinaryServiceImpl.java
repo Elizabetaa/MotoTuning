@@ -18,7 +18,6 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     private static final String URL = "url";
 
     private final Cloudinary cloudinary;
-
     public CloudinaryServiceImpl(Cloudinary cloudinary) {
         this.cloudinary = cloudinary;
     }

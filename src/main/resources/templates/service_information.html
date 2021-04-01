@@ -16,12 +16,16 @@
     <div style="margin-top: 20%">
         <button id="addPost" onclick="window.location.href='/service/information/add'">Add File</button>
 
-        <div style="width: 80%;height: 1000px;margin: 5% auto auto;">
-            <form class="form-inline my-2 my-lg-0 " style="margin-left: 25%;width: 60%">
-                <input class="form-control mr-sm-2 col-sm-9" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            <div class="row">
+        <div style="width: 80%;height: 1000px;margin: 4% auto auto;">
+<!--            <form class="form-inline my-2 my-lg-0 " style="margin-left: 25%;width: 60%">-->
+<!--                <input class="form-control mr-sm-2 col-sm-9" type="search" placeholder="Search" id="searchInput" aria-label="Search">-->
+<!--                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>-->
+<!--            </form>-->
+            <div class="form-inline my-2 my-lg-0" style="margin-left: 2%;width: 100%;">
+                <input id="searchInput" class="form-control mr-sm-2" style="width: 95%" type="search"
+                       placeholder="Enter make or model" aria-label="Search">
+            </div>
+            <div class="row" id="serviceList" style="margin-top: 5%">
                 <a th:href="@{/service/details/{id}(id = *{id})}" th:each="m : ${manuals}" th:object="${m}">
                     <div style="margin-top: 5%">
                         <div class="card m-5 border-dark" style="width: 18rem;border-radius: 0;">
@@ -42,8 +46,8 @@
     </div>
 
 </main>
-
 <section class="" th:replace="fragments/footer::footer"></section>
+<script th:src="@{/js/search-bar.js}"></script>
 </body>
 
 </html>
