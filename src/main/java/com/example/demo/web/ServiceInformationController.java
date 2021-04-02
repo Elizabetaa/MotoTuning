@@ -60,10 +60,6 @@ public class ServiceInformationController {
         return "redirect:/service/information";
     }
 
-    @GetMapping("/details/{id}")
-    private String getInfoDetails(Model model, @PathVariable Long id){
-        model.addAttribute("info",this.motorcyclesInformationService.getById(id));
-        return "information_details";
-    }
+
 
 }
