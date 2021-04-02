@@ -4,7 +4,10 @@
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
-
+<a class="top-link hide" href="" id="js-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+    <span class="screen-reader-text">Back to top</span>
+</a>
 <h2 style="text-align: center; font-weight: bold; margin-top: 5%"th:unless="${blogs.isEmpty()}" th:text="${categoryPage}">ROAD POSTS</h2>
 
 <div th:if="${blogs.isEmpty()}" style="text-align: center;margin: auto;height: 220px;margin-top: 5%">
@@ -37,6 +40,7 @@
     </div>
 </div>
 
+<script th:src="@{/js/scroll-button.js}"></script>
 
 <section class="" th:replace="fragments/footer::footer"></section>
 </body>

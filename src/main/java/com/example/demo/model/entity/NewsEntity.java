@@ -1,7 +1,11 @@
 package com.example.demo.model.entity;
 
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
+
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
 @Table(name = "news")
@@ -10,6 +14,8 @@ public class NewsEntity extends BaseEntity{
     private String imageUrl;
     private String description;
     private LocalDateTime addedOn;
+    private List<CommentEntity> comments;
+
 
     public NewsEntity() {
     }
@@ -48,5 +54,15 @@ public class NewsEntity extends BaseEntity{
 
     public void setAddedOn(LocalDateTime addedOn) {
         this.addedOn = addedOn;
+    }
+
+    @OneToMany(mappedBy = "news",fetch = FetchType.EAGER)
+    @Fetch(value = FetchMode.SUBSELECT)
+    public List<CommentEntity> getComments() {
+        return comments;
+    }
+
+    public void setComments(List<CommentEntity> commentEntities) {
+        this.comments = commentEntities;
     }
 }

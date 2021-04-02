@@ -1,10 +1,44 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org" >
 <head th:replace="fragments/head::head"></head>
+<style>
+    .collapsible {
+        background-color: #777;
+        margin: 3% auto;
+        color: white;
+        cursor: pointer;
+        padding: 10px;
+        width: 50%;
+        border: none;
+        text-align: center;
+        outline: none;
+        font-size: 15px;
+    }
 
+    .collapsible:hover {
+        background-color: #555;
+    }
+
+    .content {
+        margin: auto auto 3%;
+        width: 80%;
+        display: none;
+        overflow: hidden;
+        background-color: #f1f1f1;
+    }
+
+    .commentEntities {
+        margin-top: 3%;
+        margin-left: 3%;
+        width: 80%;
+    }
+</style>
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
-
+<a class="top-link hide" href="" id="js-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+    <span class="screen-reader-text">Back to top</span>
+</a>
 <div style="background-color: white; width: 60%; margin: auto;border-style: groove; text-align: center" th:object="${news}">
 
     <h1 th:text="*{title}" style="margin-top: 2%"></h1>
@@ -13,9 +47,47 @@
         <p th:text="*{description}">  </p>
         <p th:text="*{addedOn}" class="card-text"></p>
     </div>
+    <div style="width: 80%; margin: auto auto 3%;">
+        <form method="post" th:action="@{/blog/details/comments/add/{id} (id = *{id})}">
+            <div class="input-group">
+                <textarea th:name="comment" class="form-control" aria-label="With textarea"></textarea>
+                <div class="button-holder d-flex  justify-content-center">
+                    <button type="submit" class="btn btn-dark " value="Sign in">Add Comment</button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <button th:unless="*{comments.isEmpty()}" type="button" class="collapsible">Comments</button>
+    <div class="content" >
+        <div class="commentEntities" th:each="c : *{comments}" >
+            <div class="row" style="border-bottom: 1px groove  #777777;margin-top: 2%">
+                <div style="margin-left: 5%; width: 10%;margin-top: 2%">
+                    <img th:src="${c.getUser().imageUrl}" style="width: 50px;height: 50px;" class="rounded-circle">
+                    <small th:text="${c.getUser().firstName}">Ivan</small>
+                </div>
+                <p th:text="${c.comment}" style="margin-left: 5%; width: 70%; text-align: left"></p>
+            </div>
+        </div>
 
+    </div>
 </div>
+<script th:src="@{/js/scroll-button.js}"></script>
+<script>
+    var coll = document.getElementsByClassName("collapsible");
+    var i;
 
+    for (i = 0; i < coll.length; i++) {
+        coll[i].addEventListener("click", function () {
+            this.classList.toggle("active");
+            var content = this.nextElementSibling;
+            if (content.style.display === "block") {
+                content.style.display = "none";
+            } else {
+                content.style.display = "block";
+            }
+        });
+    }
+</script>
 <section class="" th:replace="fragments/footer::footer"></section>
 </body>
 

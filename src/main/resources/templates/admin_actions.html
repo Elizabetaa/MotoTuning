@@ -4,7 +4,10 @@
 
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
-
+<a class="top-link hide" href="" id="js-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+    <span class="screen-reader-text">Back to top</span>
+</a>
 <div style="border-style: ridge; width: 80%;margin-top: 5%;margin-left: 10%; background-color: white" class="row">
 
     <div class="col-12" style="margin-top: 3%;text-align: center">
@@ -15,14 +18,19 @@
     <div style="margin: 4%" th:each="s : ${service}" th:object="${s}">
         <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
             <div class="card-footer"
-                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;" th:text="*{make}">
+                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;"
+                 th:text="*{make}">
                 Inquiry
             </div>
             <ul class="list-group list-group-flush" style="margin-left: 2%;">
                 <br>
-                <p th:text="|Email: *{email}|"></p>
-                <p th:text="|Vehicle type: *{vehicle}|"></p>
-                <p th:text="|Model: *{model}|"></p>
+                <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Email:&nbsp;</p>
+                    <p th:text="*{email}"></p></div>
+                <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Vehicle type:&nbsp;</p>
+                    <p th:text="*{vehicle}"></p></div>
+                <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Model:&nbsp;</p>
+                    <p th:text="*{model}"></p></div>
+
             </ul>
             <a class="link-details" th:href="@{/inquiries/details/{id}(id = *{id})}">Details</a>
         </div>
@@ -40,14 +48,18 @@
     <div style="margin: 4%" th:each="t : ${tuning}" th:object="${t}">
         <div class="card" style="width: 35rem;border-top-left-radius: 10px;border-top-right-radius: 10px">
             <div class="card-footer"
-                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;" th:text="*{make}">
+                 style="text-align: center;border-top-left-radius: 10px;border-top-right-radius: 10px;background-color: Gainsboro;"
+                 th:text="*{make}">
                 Inquiry
             </div>
             <ul class="list-group list-group-flush" style="margin-left: 2%;">
                 <br>
-                <p th:text="|Email: *{email}|"></p>
-                <p th:text="|Vehicle type: *{vehicle}|"></p>
-                <p th:text="|Model: *{model}|"></p>
+                <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Email:&nbsp;</p>
+                    <p th:text="*{email}"></p></div>
+                <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Vehicle type:&nbsp;</p>
+                    <p th:text="*{vehicle}"></p></div>
+                <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Model:&nbsp;</p>
+                    <p th:text="*{model}"></p></div>
             </ul>
             <a class="link-details" th:href="@{/inquiries/details/{id}(id = *{id})}">Details </a>
         </div>
@@ -80,7 +92,8 @@
                                 <select class="custom-select col-xl-9 col-lg-8 col-md-8 col-sm-7" id="email"
                                         name="email">
                                     <option value="" selected>Select user</option>
-                                    <option th:each="email: ${allUsersEmails}" th:value="${email}" th:text="${email}"></option>
+                                    <option th:each="email: ${allUsersEmails}" th:value="${email}"
+                                            th:text="${email}"></option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
@@ -118,26 +131,29 @@
                 </div>
                 <hr>
                 <div class="row" style="width:100%;">
-                    <form id="my-form1" method="post" th:action="@{/admin/addNews}" th:object="${addNewsBindingModel}"  enctype="multipart/form-data"
+                    <form id="my-form1" method="post" th:action="@{/admin/addNews}" th:object="${addNewsBindingModel}"
+                          enctype="multipart/form-data"
                           style="width: 50%">
                         <div class="label-holder text-dark textCol ">
                             <label class="h6 mb-2">Title</label>
                         </div>
-                        <input required minlength="3" th:field="*{title}" th:errorclass=" border-danger" class="form-control" type="text" id="name" name="title"/>
+                        <input required minlength="3" th:field="*{title}" th:errorclass=" border-danger"
+                               class="form-control" type="text" id="name" name="title"/>
                         <div class="small" th:if="${#fields.hasErrors('title')}">
                             <div style="margin-left: 10px; ">
-                                <small  th:errors="*{title}"></small>
+                                <small th:errors="*{title}"></small>
                             </div>
                         </div>
 
                         <div class="label-holder text-dark textCol  ">
                             <label for="description" class="h6 mb-2">Description</label>
                         </div>
-                        <textarea required minlength="100" th:field="*{description}" th:errorclass=" border-danger" class="form-control" id="description"
+                        <textarea required minlength="100" th:field="*{description}" th:errorclass=" border-danger"
+                                  class="form-control" id="description"
                                   name="description"></textarea>
                         <div class="small" th:if="${#fields.hasErrors('description')}">
                             <div style="margin-left: 10px; ">
-                                <small  th:errors="*{description}"></small>
+                                <small th:errors="*{description}"></small>
                             </div>
                         </div>
 
@@ -167,6 +183,7 @@
     </div>
 </div>
 
+<script th:src="@{/js/scroll-button.js}"></script>
 
 <section class="" th:replace="fragments/footer::footer"></section>
 </body>

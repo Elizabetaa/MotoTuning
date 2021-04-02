@@ -1,7 +1,6 @@
 package com.example.demo.model.entity;
 
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
@@ -12,6 +11,7 @@ public class CommentEntity extends BaseEntity{
     private String comment;
     private BlogEntity blog;
     private UserEntity user;
+    private NewsEntity news;
 
     public CommentEntity() {
     }
@@ -40,5 +40,14 @@ public class CommentEntity extends BaseEntity{
 
     public void setUser(UserEntity userEntity) {
         this.user = userEntity;
+    }
+
+    @ManyToOne
+    public NewsEntity getNews() {
+        return news;
+    }
+
+    public void setNews(NewsEntity newsEntity) {
+        this.news = newsEntity;
     }
 }

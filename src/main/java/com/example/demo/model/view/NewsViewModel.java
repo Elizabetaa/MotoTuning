@@ -1,8 +1,10 @@
 package com.example.demo.model.view;
 
+import com.example.demo.model.entity.CommentEntity;
 import com.example.demo.model.entity.UserEntity;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class NewsViewModel {
     private Long id;

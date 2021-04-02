@@ -37,7 +37,10 @@
 </style>
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
-
+<a class="top-link hide" href="" id="js-top">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6"><path d="M12 6H0l6-6z"/></svg>
+    <span class="screen-reader-text">Back to top</span>
+</a>
 <div style="background-color: white; width: 60%; margin: auto;border-style: groove; text-align: center"
      th:object="${blog}">
 
@@ -73,6 +76,8 @@
     </div>
 
 </div>
+<script th:src="@{/js/scroll-button.js}"></script>
+
 <script>
     var coll = document.getElementsByClassName("collapsible");
     var i;

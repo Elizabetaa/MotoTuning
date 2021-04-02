@@ -6,10 +6,10 @@
 <nav th:replace="fragments/navbar::navbar"></nav>
 <main>
 
-    <div class="row" style="height: 800px">
+    <div class="row" style="height: 800px;width: 100%">
 
-        <div id="add">
-            <h3 style="text-align: center;margin-top: 3%;font-weight: 400; text-transform: uppercase;">Add new post</h3>
+        <div id="add" style="margin: auto">
+            <h3 style="text-align: center;margin-top: 3%;font-weight: 400; text-transform: uppercase;">Edit account</h3>
             <hr>
             <form method="POST" th:action="@{/users/editAccount}" th:object="${currentUserViewModel}"
                   enctype="multipart/form-data">

@@ -15,22 +15,14 @@
         </div>
         <ul class="list-group list-group-flush" style="margin-left: 2%">
             <br>
-            <p th:text="|Email: *{email}|"><b>Email: </b> elizabeta@ebv.bg</p>
-            <p th:text="|Phone Number: *{phoneNumber}|"><b>Phone Number: </b> 012 12345678</p>
-            <p th:text="|Inquiry type: *{inquiry}|"><b>Inquiry type: </b> tuning</p>
-            <p th:text="|Vehicle type: *{vehicle}|"><b>Vehicle type: </b> motorcycle</p>
-            <p th:text="|Model: *{model}|"><b>Model: </b> motorcycle</p>
-            <p th:unless="*{service == null}" th:text="|Vehicle service type: *{service}|"><b>Vehicle service type:</b>
-                none</p>
-            <p th:text="|Description: *{description}|"><b>Description: </b>Lorem ipsum dolor sit amet, consectetur
-                adipiscing elit. Aliquam leo sem, ultricies ac
-                lacus nec, aliquam porta tortor. Praesent interdum posuere rutrum. Aenean tempor mattis tristique.
-                Mauris iaculis auctor nulla, in finibus massa feugiat rhoncus. Ut lacinia pellentesque libero ut
-                vehicula. Nulla nec laoreet augue. Nullam sit amet suscipit erat. Cras quis justo id orci elementum
-                pretium. Fusce in metus convallis, pharetra felis blandit, dignissim justo. Nam pharetra ut felis
-                nec finibus. Curabitur dapibus lorem nec molestie lobortis. Fusce dolor tortor, iaculis eu
-                consectetur eget, rutrum id lacus. Aliquam ut vehicula dolor, non scelerisque odio. Nunc scelerisque
-                pharetra pulvinar. Fusce eu ex quam.</p>
+            <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Email:&nbsp;</p> <p th:text="*{email}"> </p> </div>
+            <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Phone Number:&nbsp;</p> <p th:text="*{phoneNumber}"> </p> </div>
+            <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Inquiry type:&nbsp;</p> <p th:text="*{inquiry}"> </p> </div>
+            <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Vehicle type:&nbsp;</p> <p th:text="*{vehicle}"></p> </div>
+            <div class="row" style="margin-left: 1%"><p style="font-weight: bold">Model:&nbsp;</p> <p th:text="*{model}"> </p> </div>
+            <div th:unless="*{service == null}" class="row" style="margin-left: 1%"><p style="font-weight: bold">Vehicle service type:&nbsp;</p> <p th:text="*{service}"> </p> </div>
+            <div th:unless="*{description == ''}" class="row" style="margin-left: 1%"><p style="font-weight: bold">Description:&nbsp;</p> <p th:text="*{description}"> </p> </div>
+
 
         </ul>
 
@@ -38,12 +30,12 @@
             <div class="form-group" style="margin: auto;width: 90%; " th:object="${addResponseBindingModel}">
                 <div class="form-group" style="margin-top: 2%">
                     <div class="label-holder text-dark textCol d-flex justify-content-center">
-                        <label for="response">RESPONSE</label>
+                        <label for="response" style="font-weight: bold">RESPONSE</label>
                     </div>
                     <textarea
                             required minlength="10"
                             th:field="*{response}" th:errorclass=" border-danger" name="response" id="response"
-                              style="width: 100%" placeholder="Description"></textarea>
+                              style="width: 100%" placeholder="Should write response which should containing date for execution and price. "></textarea>
                     <div class="small" th:if="${#fields.hasErrors('response')}">
                         <div style="margin-left: 10px; ">
                             <small th:errors="*{response}"></small>

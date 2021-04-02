@@ -1,15 +1,11 @@
 package com.example.demo.services;
 
 import com.example.demo.model.entity.NewsEntity;
-import com.example.demo.model.entity.enums.InquiryTypeNameEnum;
-import com.example.demo.model.view.InquiryDetailsViewModel;
 import com.example.demo.model.view.NewsDetailsViewModel;
 import com.example.demo.model.view.NewsViewModel;
-import com.example.demo.repository.InquiryRepository;
 import com.example.demo.repository.NewsRepository;
 import com.example.demo.service.CloudinaryService;
-import com.example.demo.service.UserService;
-import com.example.demo.service.impl.InquiryServiceImpl;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.impl.NewsServiceImpl;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -35,6 +31,7 @@ public class NewsServiceTest {
     ModelMapper mockModelMapper ;
     @Mock
     CloudinaryService cloudinaryService;
+
 
     @BeforeEach
     public void setUp() {

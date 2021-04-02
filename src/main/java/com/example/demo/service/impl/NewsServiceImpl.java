@@ -6,17 +6,19 @@ import com.example.demo.model.view.NewsDetailsViewModel;
 import com.example.demo.model.view.NewsViewModel;
 import com.example.demo.repository.NewsRepository;
 import com.example.demo.service.CloudinaryService;
+import com.example.demo.service.CommentService;
 import com.example.demo.service.NewsService;
 import org.modelmapper.ModelMapper;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.EOFException;
 import java.io.IOException;
-import java.time.LocalDateTime;
+import java.security.Principal;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +69,8 @@ public class NewsServiceImpl implements NewsService {
         newsDetailsViewModel.setAddedOn(newsEntity.getAddedOn().format(formatter));
         return newsDetailsViewModel;
     }
+
+
 
 }
 
