@@ -22,7 +22,7 @@
                 <div>
                     <div class="col-sm-12 " style="margin-top: 2%">
                         <div class="label-holder text-dark textCol d-flex ">
-                            <label for="make">Make</label>
+                            <label style="font-weight: bold" for="make">Make</label>
                         </div>
                         <select style="width: 100%; height: 40px;" th:field="*{make}" th:errorclass = "border-danger" required id="make" name="make">
                             <option value="">- Select Make -</option>
@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-sm-12" style="margin-top: 2%">
                         <div class="label-holder text-dark textCol d-flex ">
-                            <label for="make">Year</label>
+                            <label style="font-weight: bold"  for="make">Year</label>
                         </div>
                         <select style="width: 100%; height: 40px;"  th:field="*{year}" th:errorclass = "border-danger" required id="year" name="year">
                             <option value="">- Select Year -</option>
@@ -51,7 +51,7 @@
                 </div>
                 <div class="col-sm-12" style="margin-top: 2%">
                     <div class="label-holder text-dark textCol d-flex ">
-                        <label for="model">Model</label>
+                        <label style="font-weight: bold"  for="model">Model</label>
                     </div>
                     <input  th:field="*{model}" th:errorclass = "border-danger" style="width: 100%; height: 40px" required minlength="2" name="model" id="model"
                            class="full-width" placeholder="Model" type="text">
@@ -62,10 +62,15 @@
                     </div>
                 </div>
                 <div class="form-group col-sm-12" style="margin-top: 2%">
-                    <div class="label-holder text-dark textCol d-flex justify-content-center">
-                        <label for="pdfUrl">Description</label>
+                    <div class="label-holder text-dark textCol d-flex ">
+                        <label style="font-weight: bold" for="pdfUrl">PDF link</label>
                     </div>
-                    <textarea th:field="*{pdfUrl}" name="pdfUrl" id="pdfUrl" style="width: 100%" placeholder="Description"></textarea>
+                    <input th:field="*{pdfUrl}" name="pdfUrl" id="pdfUrl" style="width: 100%" placeholder="Add link to PDF file">
+                    <div class="small" th:if="${#fields.hasErrors('pdfUrl')}" th:errors="*{pdfUrl}">
+                        <div style="margin-left: 10px; ">
+                            <small></small>
+                        </div>
+                    </div>
                 </div>
 
 

@@ -58,7 +58,6 @@ public class BlogController {
         if (this.userService.findByEmail(addBlogBindingModel.getEmail()) == null) {
             redirectAttributes.addFlashAttribute("userNotFound", true);
         }
-
         AddBlogServiceModel addBlogServiceModel = this.modelMapper.map(addBlogBindingModel, AddBlogServiceModel.class);
         addBlogServiceModel.setAuthor(this.userService.findByEmail(addBlogBindingModel.getEmail()));
         this.blogService.addBlog(addBlogServiceModel);

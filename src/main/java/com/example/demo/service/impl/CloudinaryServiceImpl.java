@@ -1,9 +1,7 @@
 package com.example.demo.service.impl;
 
 import com.cloudinary.Cloudinary;
-import com.cloudinary.Transformation;
 import com.example.demo.service.CloudinaryService;
-import org.apache.commons.lang.ObjectUtils;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -26,7 +24,6 @@ public class CloudinaryServiceImpl implements CloudinaryService {
     public String uploadImage(MultipartFile multipartFile) throws IOException {
         File file = File.createTempFile(TEMP_FILE, multipartFile.getOriginalFilename());
         multipartFile.transferTo(file);
-
         return this.cloudinary
                 .uploader()
                 .upload(file, Collections.emptyMap())

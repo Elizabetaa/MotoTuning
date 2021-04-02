@@ -4,6 +4,7 @@ import com.example.demo.model.entity.enums.MakeNameEnum;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.Year;
 
@@ -44,9 +45,9 @@ public class ServiceInformationBindingModel {
         this.year = year;
     }
 
-//
-//    @NotBlank
-//    @Size(min = 100,message = "Description should be at least 100 symbols")
+
+    @NotBlank
+    @Pattern(regexp = "^(https:|http:)(?!.*\\.pdf).*$",message = "Invalid PDF link")
     public String getPdfUrl() {
         return pdfUrl;
     }

@@ -14,11 +14,7 @@
     <hr th:unless="${tasks.isEmpty()}"  class="col-xl-12 col-lg-10 col-md-12 col-sm-12">
     <div>
     </div>
-    <div th:if="${tasks.isEmpty()}"style="margin: auto" >
-        <div class="col-12" style="text-align: center">
-            <h4 class="tm-block-title d-inline-block" style="font-weight: bold">Don't have tasks</h4>
-        </div>
-    </div>
+
     <div th:each="task : ${tasks}" th:object="${task}">
         <div style="margin: 4%">
             <div class="card" style="width: 70rem;border-top-left-radius: 10px;border-top-right-radius: 10px">

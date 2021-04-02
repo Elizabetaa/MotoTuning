@@ -34,7 +34,6 @@ public class ServiceInformationController {
 
     @GetMapping("/information")
     public String getInfo(Model model){
-        List<ServiceInfoViewModel> all = motorcyclesInformationService.getAll();
         model.addAttribute("manuals",motorcyclesInformationService.getAll());
         return "service_information";
     }
@@ -54,7 +53,6 @@ public class ServiceInformationController {
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.serviceInformationBindingModel",bindingResult);
             return "redirect:add";
         }
-
         ServiceInformationServiceModel serviceInformationServiceModel = this.modelMapper.map(serviceInformationBindingModel, ServiceInformationServiceModel.class);
         serviceInformationServiceModel.setAddedOn(LocalDateTime.now());
         motorcyclesInformationService.addManual(serviceInformationServiceModel);
@@ -64,7 +62,6 @@ public class ServiceInformationController {
 
     @GetMapping("/details/{id}")
     private String getInfoDetails(Model model, @PathVariable Long id){
-        ServiceInformationDetailsViewModel serviceInformationDetailsViewModel = this.motorcyclesInformationService.getById(id);
         model.addAttribute("info",this.motorcyclesInformationService.getById(id));
         return "information_details";
     }

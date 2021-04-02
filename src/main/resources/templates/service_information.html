@@ -1,7 +1,7 @@
+
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head th:replace="fragments/head::head"></head>
-
 <body>
 <nav th:replace="fragments/navbar::navbar"></nav>
 <a class="top-link hide" href="" id="js-top">
@@ -19,46 +19,45 @@
     <div style="margin-top: 20%">
         <button id="addPost" onclick="window.location.href='/service/information/add'">Add File</button>
 
-        <div style="width: 80%;height: 1000px;margin: 4% auto auto;">
-<!--            <form class="form-inline my-2 my-lg-0 " style="margin-left: 25%;width: 60%">-->
-<!--                <input class="form-control mr-sm-2 col-sm-9" type="search" placeholder="Search" id="searchInput" aria-label="Search">-->
-<!--                <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit">Search</button>-->
-<!--            </form>-->
-            <div class="form-inline my-2 my-lg-0" style="margin-left: 2%;width: 100%;">
-                <input id="searchInput" class="form-control mr-sm-2" style="width: 95%" type="search"
-                       placeholder="Enter make or model" aria-label="Search">
-            </div>
-            <div class="row"  >
-                <div id="serviceList" style="margin-top: 5%" th:each="m : ${manuals}" th:object="${m}" >
-                    <!--                <a th:href="@{/service/details/{id}(id = *{id})}" th:each="m : ${manuals}" th:object="${m}">-->
-                    <div style="margin-top: 5%">
-                        <div class="card m-5 border-dark" style="width: 18rem;border-radius: 0;">
-                            <div class="card-body">
-                                <img src="/images/ktm-logo.png" alt="make image" style="width: 100%; height: 60px">
-                                <h5 class="card-title" th:text="*{make}" style="text-align: center">KTM</h5>
-                                <br>
-                                <h6 class="card-subtitle mb-2 text-muted" th:text="|*{model} *{year}|">navod duke 390
-                                    2018</h6>
-                                <p class="card-text" th:text="*{addedOn}">2021-03-31 08:15</p>
-                            </div>
-                            <a th:href="*{prdFurl}" download   target="_blank">
-                                <img id="pdf" src="/images/download.png" alt="make image" width="80" height="50">
-                            </a>
-                        </div>
-                    </div>
-                    <!--                </a>-->
-                </div>
+        <div style="width: 80%;height: 1000px;margin: 5% auto auto;">
 
+            <div class="row">
+                <div style="width: 80%;height: 1000px;margin: 4% auto auto;">
+
+                    <div class="form-inline my-2 my-lg-0" style="margin-left: 2%;width: 100%;">
+                        <input id="searchInput" class="form-control mr-sm-2" style="width: 95%" type="search"
+                               placeholder="Enter make or model" aria-label="Search">
+                    </div>
+                    <div class="row" id="serviceList" style="margin-top: 5%">
+                            <div th:each="m : ${manuals}" th:object="${m}">
+
+                            <div style="margin-top: 5%">
+                                <div class="card m-5 border-dark" style="width: 18rem;border-radius: 0;">
+                                    <div class="card-body">
+                                        <img src="/images/ktm-logo.png" alt="make image" style="width: 100%; height: 60px">
+                                        <h5 class="card-title" th:text="|*{make} *{year}|" style="text-align: center;margin-top: 3%"></h5>
+                                        <div class="row" >
+                                            <h6 style="margin-top: 12px;margin-left: 5%;" class="card-subtitle mb-2 text-muted" th:text="*{model}"></h6>
+                                            <a th:href="*{prdFurl}"    target="_blank" >
+                                                <img id="pdf" src="/images/download.png" alt="make image" width="80" height="50">
+                                            </a>
+                                        </div>
+                                        <p class="card-text" th:text="*{addedOn}"></p>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+
+                    </div>
+                </div>
             </div>
         </div>
     </div>
-    </div>
-
 </main>
+
 <section class="" th:replace="fragments/footer::footer"></section>
 <script th:src="@{/js/scroll-button.js}"></script>
 <script th:src="@{/js/search-bar.js}"></script>
 </body>
 
 </html>
-

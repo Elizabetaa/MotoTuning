@@ -51,7 +51,6 @@ public class AdminController {
         if (inquiryService.findAllInquiriesForTuning().size() == 0) {
             model.addAttribute("emptyTuningInquiries", true);
         }
-
         model.addAttribute("allUsersEmails",userService.getAllEmails(principal.getName()));
 
         return "admin_actions";
@@ -61,26 +60,20 @@ public class AdminController {
     @PostMapping("/addNews")
     public String addNews(@Valid AddNewsBindingModel addNewsBindingModel,
                           BindingResult bindingResult, RedirectAttributes redirectAttributes) throws IOException {
-
         if (bindingResult.hasErrors()) {
             redirectAttributes.addFlashAttribute("addNewsBindingModel", addNewsBindingModel);
             redirectAttributes.addFlashAttribute("org.springframework.validation.BindingResult.addNewsBindingModel", bindingResult);
-
             return "redirect:actions#my-form1";
         }
         AddNewsServiceModel addNewsServiceModel = this.modelMapper.map(addNewsBindingModel, AddNewsServiceModel.class);
         addNewsServiceModel.setAddedOn(LocalDateTime.now());
-
-
         this.newsService.addNews(addNewsServiceModel);
-
         return "redirect:/news/all";
     }
 
     @PostMapping("/role/add")
     public String addRoleToUser(@RequestParam String email,
                                 @RequestParam String role){
-
         this.userService.changeRole(email,role);
         return "redirect:/admin/actions";
     }

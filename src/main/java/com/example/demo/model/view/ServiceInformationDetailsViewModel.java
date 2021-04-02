@@ -2,7 +2,6 @@ package com.example.demo.model.view;
 
 import com.example.demo.model.entity.enums.MakeNameEnum;
 
-import java.time.LocalDateTime;
 import java.time.Year;
 
 public class ServiceInformationDetailsViewModel {
@@ -11,7 +10,7 @@ public class ServiceInformationDetailsViewModel {
     private String model;
     private Year year;
     private String addedOn;
-    private String description;
+    private String pdfUrl;
 
     public ServiceInformationDetailsViewModel() {
     }
@@ -56,11 +55,11 @@ public class ServiceInformationDetailsViewModel {
         this.addedOn = addedOn;
     }
 
-    public String getDescription() {
-        return description;
+    public String getPdfUrl() {
+        return pdfUrl;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setPdfUrl(String pdfUrl) {
+        this.pdfUrl = pdfUrl;
     }
 }
