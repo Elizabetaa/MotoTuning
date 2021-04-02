@@ -1,5 +1,6 @@
 package com.example.demo.services;
 
+import com.example.demo.config.util.ValidationUtil;
 import com.example.demo.model.entity.RoleEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.RoleNameEnum;
@@ -10,7 +11,7 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.CloudinaryService;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.impl.UserServiceImpl;
-import org.assertj.core.util.Arrays;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -20,10 +21,8 @@ import org.mockito.Mockito;
 import org.mockito.junit.jupiter.MockitoExtension;
 import org.modelmapper.ModelMapper;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -40,6 +39,7 @@ public class UserServiceTest {
     PasswordEncoder passwordEncoder;
     @Mock
     CloudinaryService cloudinaryService;
+
 
     @BeforeEach
     public void setUp() {
@@ -128,15 +128,15 @@ public class UserServiceTest {
 
         userService.changeRole("test@", "admin");
         userService.changeRole("test@", "user");
-        Mockito.verify(userRepository,Mockito.times(2)).save(userEntity);
+        Mockito.verify(userRepository, Mockito.times(2)).save(userEntity);
     }
 
     @Test
-    void getAllEmailsTest(){
+    void getAllEmailsTest() {
         Mockito.when(userRepository.findAllEmails("test@abv.bg")).thenReturn(List.of("test1@abv.bg", "test2@abv.bg", "test3@abv.bg", "test4@abv.bg", "test5@abv.bg"));
 
         List<String> allEmails = userService.getAllEmails("test@abv.bg");
-        Assertions.assertEquals(5,allEmails.size());
+        Assertions.assertEquals(5, allEmails.size());
         Assertions.assertFalse(allEmails.contains("test@abv.bg"));
     }
 }

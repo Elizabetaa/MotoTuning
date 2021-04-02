@@ -1,12 +1,13 @@
 package com.example.demo.services;
 
+import com.example.demo.config.util.ValidationUtil;
 import com.example.demo.model.entity.NewsEntity;
 import com.example.demo.model.view.NewsDetailsViewModel;
 import com.example.demo.model.view.NewsViewModel;
 import com.example.demo.repository.NewsRepository;
 import com.example.demo.service.CloudinaryService;
-import com.example.demo.service.CommentService;
 import com.example.demo.service.impl.NewsServiceImpl;
+import com.google.gson.Gson;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -31,7 +32,6 @@ public class NewsServiceTest {
     ModelMapper mockModelMapper ;
     @Mock
     CloudinaryService cloudinaryService;
-
 
     @BeforeEach
     public void setUp() {

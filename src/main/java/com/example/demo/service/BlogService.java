@@ -16,4 +16,6 @@ public interface BlogService {
     List<BlogViewModel> findByCategory(BlogCategoryNameEnum motorcycle);
 
     BlogDetailsViewModel findById(Long id);
+
+    void initBlog() throws IOException;
 }

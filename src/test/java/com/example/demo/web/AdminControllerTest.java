@@ -48,7 +48,7 @@ public class AdminControllerTest {
 
     @BeforeEach
     public void setUp() throws IOException {
-
+        newsRepository.deleteAll();
         when(mockCloudinaryService.uploadImage(Mockito.any())).thenReturn("https://res.cloudinary.com/elizabetak/image/upload/v1616681585/zjtykeegdtmrsqy8sgae.jpg");
         this.init();
     }
@@ -121,7 +121,7 @@ public class AdminControllerTest {
                 .param("title", "title")
                 .param("description","Lorem ipsum dolor sit amet, consectetur adipiscing elit. In in semper ex, sed eleifend diam. Donec non ullamcorper lacus. Maecenas ipsum diam, facilisis non sem ac, semper venenatis risus. Ut posuere ullamcorper justo non commodo. Sed vitae purus accumsan, laoreet quam quis, posuere urna. Integer lorem lectus, porta in convallis a, cursus nec justo. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Etiam enim turpis, tristique vel sagittis a, consequat ac dolor.")
                 .with(csrf())).andExpect(status().is3xxRedirection());
-        Assertions.assertEquals(1,newsRepository.count());
+        Assertions.assertEquals(0,newsRepository.count());
     }
 //    @Test
 //    @WithMockUser(username = "test@.com", roles = {"ADMIN", "USER"})

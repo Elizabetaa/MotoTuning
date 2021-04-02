@@ -1,34 +1,41 @@
-package com.example.demo.model.entity;
+package com.example.demo.model.dto;
 
 import com.example.demo.model.entity.enums.MakeNameEnum;
+import com.google.gson.annotations.Expose;
 
-import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
 import java.time.LocalDateTime;
 import java.time.Year;
 
-@Entity
-@Table(name = "motorcycles_information")
-public class MotorcyclesInformationEntity extends BaseEntity{
+public class InformationDto {
+    @Expose
     private MakeNameEnum make;
+    @Expose
     private String model;
+    @Expose
     private Year year;
+    @Expose
     private String pdfUrl;
+    @Expose
     private LocalDateTime addedOn;
 
-
-    public MotorcyclesInformationEntity() {
+    public InformationDto() {
     }
 
-    @Column(nullable = false)
+    @NotNull(message = "Select make")
     public MakeNameEnum getMake() {
         return make;
     }
 
-    @Enumerated(value = EnumType.STRING)
     public void setMake(MakeNameEnum make) {
         this.make = make;
     }
 
+    @NotBlank
+    @Size(min = 2,message = "Model should be at least 2 symbols")
     public String getModel() {
         return model;
     }
@@ -37,7 +44,7 @@ public class MotorcyclesInformationEntity extends BaseEntity{
         this.model = model;
     }
 
-    @Column(nullable = false)
+    @NotNull(message = "Select year")
     public Year getYear() {
         return year;
     }
@@ -46,18 +53,17 @@ public class MotorcyclesInformationEntity extends BaseEntity{
         this.year = year;
     }
 
-    @Column(columnDefinition = "TEXT",nullable = false)
+
+    @NotBlank
+    @Pattern(regexp = "^(https:|http:)(?!.*\\.pdf).*$",message = "Invalid PDF link")
     public String getPdfUrl() {
         return pdfUrl;
     }
 
-    public void setPdfUrl(String description) {
-        this.pdfUrl = description;
+    public void setPdfUrl(String pdfUrl) {
+        this.pdfUrl = pdfUrl;
     }
 
-
-
-    @Column(nullable = false)
     public LocalDateTime getAddedOn() {
         return addedOn;
     }

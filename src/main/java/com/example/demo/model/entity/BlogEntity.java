@@ -33,7 +33,7 @@ public class BlogEntity extends BaseEntity {
         return this;
     }
 
-    @Column(nullable = false)
+    @Enumerated(value = EnumType.STRING)
     public BlogCategoryNameEnum getBlogCategory() {
         return blogCategory;
     }

@@ -1,0 +1,16 @@
+[
+  {
+    "firstName": "Admin",
+    "lastName": "Admin",
+    "email": "admin@mail.com",
+    "password": "111111",
+    "imageUrl": "https://res.cloudinary.com/elizabetak/image/upload/v1616930979/gxvlcvjpd1d8nlnq1fwb.png"
+  },
+  {
+    "firstName": "User",
+    "lastName": "User",
+    "email": "user@mail.com",
+    "password": "111111",
+    "imageUrl": "https://res.cloudinary.com/elizabetak/image/upload/v1616930979/gxvlcvjpd1d8nlnq1fwb.png"
+  }
+]

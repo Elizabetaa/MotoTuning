@@ -26,4 +26,6 @@ public interface UserService {
 
 
     void changeRole(String email, String role);
+
+    void initUsers() throws IOException;
 }

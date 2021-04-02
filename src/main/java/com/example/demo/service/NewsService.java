@@ -13,4 +13,6 @@ public interface NewsService {
     List<NewsViewModel> findAllNews();
 
     NewsDetailsViewModel findById(Long id);
+
+    void initNews() throws IOException;
 }

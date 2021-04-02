@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.config.util.ValidationUtil;
+import com.example.demo.model.dto.NewsImportDto;
 import com.example.demo.model.entity.NewsEntity;
 import com.example.demo.model.service.AddNewsServiceModel;
 import com.example.demo.model.view.NewsDetailsViewModel;
@@ -7,13 +9,17 @@ import com.example.demo.model.view.NewsViewModel;
 import com.example.demo.repository.NewsRepository;
 import com.example.demo.service.CloudinaryService;
 import com.example.demo.service.NewsService;
+import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.CacheEvict;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
@@ -25,6 +31,10 @@ public class NewsServiceImpl implements NewsService {
     private final NewsRepository newsRepository;
     private final CloudinaryService cloudinaryService;
     private final DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+    @Autowired
+    private  Gson gson;
+    @Autowired
+    private  ValidationUtil validationUtil;
 
     public NewsServiceImpl(ModelMapper modelMapper, NewsRepository newsRepository, CloudinaryService cloudinaryService) {
         this.modelMapper = modelMapper;
@@ -33,15 +43,14 @@ public class NewsServiceImpl implements NewsService {
     }
 
 
-
     @Override
     @CacheEvict(value = "news", allEntries = true)
     public void addNews(AddNewsServiceModel addNewsServiceModel) throws IOException {
         NewsEntity newsEntity = this.modelMapper.map(addNewsServiceModel, NewsEntity.class);
-            MultipartFile img = addNewsServiceModel.getImageUrl();
-            String url = cloudinaryService.uploadImage(img);
-            newsEntity.setImageUrl(url);
-            this.newsRepository.save(newsEntity);
+        MultipartFile img = addNewsServiceModel.getImageUrl();
+        String url = cloudinaryService.uploadImage(img);
+        newsEntity.setImageUrl(url);
+        this.newsRepository.save(newsEntity);
     }
 
     @Override
@@ -65,6 +74,22 @@ public class NewsServiceImpl implements NewsService {
         return newsDetailsViewModel;
     }
 
+    public String readPassengersFileContent() throws IOException {
+        return String.join("", Files.readAllLines(Path.of("src/main/resources/static/files/news.json")));
+    }
+
+    @Override
+    public void initNews() throws IOException {
+        if (newsRepository.count() == 0) {
+            NewsImportDto[] newsImportDto = this.gson.fromJson(readPassengersFileContent(), NewsImportDto[].class);
+            for (NewsImportDto importDto : newsImportDto) {
+                if (validationUtil.isValid(importDto)) {
+                    NewsEntity newsEntity = this.modelMapper.map(importDto, NewsEntity.class);
+                    this.newsRepository.save(newsEntity);
+                }
+            }
+        }
+    }
 
 
 }

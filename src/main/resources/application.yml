@@ -27,6 +27,7 @@ cloudinary:
     api-secret: ${CLOUDINARY_SECRET}
     cloud-name: elizabetak
 
+
 carousel:
     images: beforeAfter1.jpg, beforeAfter2.jpg, beforeAfter3.jpg
     refresh-cron: "0 */10 * * * *"

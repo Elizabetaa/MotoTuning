@@ -55,6 +55,7 @@ public class BlogControllerTest {
 
     @BeforeEach
     public void setUp() throws IOException {
+
         when(mockCloudinaryService.uploadImage(Mockito.any())).thenReturn("https://res.cloudinary.com/elizabetak/image/upload/v1616681585/zjtykeegdtmrsqy8sgae.jpg");
         init();
     }
@@ -124,6 +125,9 @@ public class BlogControllerTest {
                 MediaType.TEXT_PLAIN_VALUE,
                 "Hello, World!".getBytes()
         );
+        List<BlogEntity> all = blogRepository.findAll();
+        System.out.println();
+
         mockMvc.perform(
                 MockMvcRequestBuilders.multipart(BLOG_CONTROLLER_PREFIX + "/add")
                         .file(mockImgFile)

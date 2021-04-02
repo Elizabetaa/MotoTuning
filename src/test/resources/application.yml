@@ -1,15 +1,14 @@
-jpa:
-    #For H2 Database
-    database-platform: org.hibernate.dialect.H2Dialect
-    hibernate:
-        ddl-auto: create-drop
-    open-in-view: false
+
+spring:
+    jpa:
+        database-platform: org.hibernate.dialect.H2Dialect
+        hibernate:
+            ddl-auto: create-drop
+        open-in-view: false
     servlet:
         multipart:
             max-file-size: 1MB
             max-request-size: 5MB
-            blob:
-                max_allowed_packet: 128M
     mvc:
         hiddenmethod:
             filter:

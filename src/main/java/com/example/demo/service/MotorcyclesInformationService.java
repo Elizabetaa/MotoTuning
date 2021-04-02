@@ -14,4 +14,6 @@ public interface MotorcyclesInformationService {
     void addManual(ServiceInformationServiceModel map) throws IOException, SQLException;
 
     ServiceInformationDetailsViewModel getById(Long id);
+
+    void initInfo() throws IOException;
 }

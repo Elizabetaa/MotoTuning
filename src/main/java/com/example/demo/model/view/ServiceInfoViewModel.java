@@ -14,6 +14,7 @@ public class ServiceInfoViewModel {
     private Year year;
     private String  addedOn;
     private String prdFurl;
+    private String image;
 
     public String getPrdFurl() {
         return prdFurl;
@@ -64,5 +65,13 @@ public class ServiceInfoViewModel {
 
     public void setAddedOn(String  addedOn) {
         this.addedOn = addedOn;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

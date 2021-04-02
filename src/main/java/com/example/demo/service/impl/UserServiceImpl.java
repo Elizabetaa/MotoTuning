@@ -1,5 +1,8 @@
 package com.example.demo.service.impl;
 
+import com.example.demo.config.util.ValidationUtil;
+import com.example.demo.model.dto.UsersImportDto;
+import com.example.demo.model.entity.NewsEntity;
 import com.example.demo.model.entity.RoleEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.RoleNameEnum;
@@ -10,12 +13,16 @@ import com.example.demo.repository.UserRepository;
 import com.example.demo.service.CloudinaryService;
 import com.example.demo.service.RoleService;
 import com.example.demo.service.UserService;
+import com.google.gson.Gson;
 import org.modelmapper.ModelMapper;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.List;
 
 @Service
@@ -25,6 +32,10 @@ public class UserServiceImpl implements UserService {
     private final ModelMapper modelMapper;
     private final PasswordEncoder passwordEncoder;
     private final CloudinaryService cloudinaryService;
+    @Autowired
+    private  Gson gson;
+    @Autowired
+    private  ValidationUtil validationUtil;
 
     public UserServiceImpl(UserRepository userRepository, RoleService roleService, ModelMapper modelMapper, PasswordEncoder passwordEncoder,
                            CloudinaryService cloudinaryService) {
@@ -33,6 +44,7 @@ public class UserServiceImpl implements UserService {
         this.modelMapper = modelMapper;
         this.passwordEncoder = passwordEncoder;
         this.cloudinaryService = cloudinaryService;
+
     }
 
 
@@ -101,6 +113,29 @@ public class UserServiceImpl implements UserService {
         }
         System.out.println();
         this.userRepository.save(userEntity);
+    }
+    public String readPassengersFileContent() throws IOException {
+        return String.join("", Files.readAllLines(Path.of("src/main/resources/static/files/users.json")));
+    }
+
+
+    @Override
+    public void initUsers() throws IOException {
+        if (userRepository.count() == 0) {
+            UsersImportDto[] usersImportDto = this.gson.fromJson(readPassengersFileContent(), UsersImportDto[].class);
+            for (UsersImportDto importDto : usersImportDto) {
+                if (validationUtil.isValid(importDto)) {
+                    UserEntity userEntity = this.modelMapper.map(importDto, UserEntity.class);
+                    userEntity.setPassword(this.passwordEncoder.encode(importDto.getPassword()));
+                    if (userRepository.count()==0){
+                        userEntity.setRoles(List.of(roleService.findByName(RoleNameEnum.USER),roleService.findByName(RoleNameEnum.ADMIN)));
+                    }else {
+                        userEntity.setRoles(List.of(roleService.findByName(RoleNameEnum.USER)));
+                    }
+                    this.userRepository.save(userEntity);
+                }
+            }
+        }
     }
 
 
