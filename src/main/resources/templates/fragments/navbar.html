@@ -3,9 +3,10 @@
       xmlns:th="http://www.thymeleaf.org"
       xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
-<nav th:fragment="navbar">
+<nav th:fragment="navbar" style=" height: 70px;">
     <ul id="ulNavBar">
-        <li style="float:left"><a href="/">Home</a></li>
+        <li style="float:left;margin-top: 2px;"><a href="/" style="padding: 4px"><img src="/images/logo2.png" style="width: 65px;"></a></li>
+
         <li style="text-align:center; float: left;margin-left: 35%"><a  sec:authorize="isAuthenticated()"
                                                                         href="/users/account">Welcome, <u><span
                 sec:authentication="name"></span></u></a></li>
