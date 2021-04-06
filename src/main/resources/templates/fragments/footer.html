@@ -1,27 +1,30 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
 
-<section class="" id="footer" th:fragment="footer">
+<div th:fragment="footer" style="margin-top:5%;height: 70px">
+    <section class="" id="footer"  style=" position:absolute;
+  bottom:0;
+  width:100%; ">
+        <footer class="text-center text-white position-relative" style="background-color: rgb(60, 60, 60);height: 62px; ">
+            <div class="" >
+                <ul class="nav justify-content-center">
+                    <li class="nav-item">
+                        <a class="nav-link active text-white mr-5  " href="/tuning/aboutUs">About us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white mr-5 ml-5" href="/tuning/contacts">Contacts</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active text-white mr-5 ml-5" href="/">Home</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="text-center p-1" style="background-color: rgba(0, 0, 0, 0.2); font-size: x-small">
+                © 2021 Copyright: MotoTuning, Inc. All Rights Reserved.
+            </div>
+        </footer>
 
-    <footer class="text-center text-white position-relative" style="background-color: rgb(60, 60, 60);margin-top: 15%">
-        <div class="container p-4 pb-0" >
-            <ul class="nav justify-content-center">
-                <li class="nav-item">
-                    <a class="nav-link active text-white mr-5  " href="/tuning/aboutUs">About us</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active text-white mr-5 ml-5" href="/tuning/contacts">Contacts</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link active text-white mr-5 ml-5" href="/">Home</a>
-                </li>
-            </ul>
-        </div>
-        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-            © 2021 Copyright:
-            <a class="text-white" href="https://mdbootstrap.com/">MDBootstrap.com</a>
-        </div>
-    </footer>
+    </section>
+</div>
 
-</section>
 </html>

@@ -1,11 +1,13 @@
-
+html{ height:100%; }
+body{ min-height:100%; padding:0; margin:0; position:relative; }
 body {
     /*background-color: LightGray;*/
     background-image: url("/images/background.jpg");
     background-repeat: no-repeat;
     background-attachment: fixed;
     background-size: 100% 100%;
-
+    /*min-height: 945px;*/
+    /*margin: 0;*/
 }
 
 #ulNavBar {
@@ -47,6 +49,7 @@ li a:hover {
     border-style: none;
     background-color: #111;
 }
+
 
 #title {
     padding: 80px;
@@ -132,9 +135,10 @@ li a:hover {
     transition: all .2s ease;
 }
 
-#serviceContainerBG{
+#serviceContainerBG {
     width: 100%;
 }
+
 #makeOrder {
     margin-top: 4%;
     width: 30%;
@@ -377,22 +381,27 @@ li a:hover {
     height: 80px;
     background-color: #F8F8F8;
 }
+
 .top-link.show {
     visibility: visible;
     opacity: 1;
 }
+
 .top-link.hide {
     visibility: hidden;
     opacity: 0;
 }
+
 .top-link svg {
     fill: #000;
     width: 24px;
     height: 12px;
 }
+
 .top-link:hover {
     background-color: #E8E8E8;
 }
+
 .top-link:hover svg {
     fill: #000000;
 }
@@ -409,6 +418,7 @@ li a:hover {
     word-wrap: normal !important;
     clip: rect(1px, 1px, 1px, 1px);
 }
+
 .screen-reader-text:focus {
     display: block;
     top: 5px;
