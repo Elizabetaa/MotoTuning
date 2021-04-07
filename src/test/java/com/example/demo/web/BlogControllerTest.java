@@ -6,6 +6,7 @@ import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.BlogCategoryNameEnum;
 import com.example.demo.model.entity.enums.RoleNameEnum;
 import com.example.demo.repository.BlogRepository;
+import com.example.demo.repository.CommentRepository;
 import com.example.demo.repository.RoleRepository;
 import com.example.demo.repository.UserRepository;
 import com.example.demo.service.CloudinaryService;
@@ -51,11 +52,15 @@ public class BlogControllerTest {
     private RoleRepository roleRepository;
     @Autowired
     private UserRepository userRepository;
-
+    @Autowired
+    private CommentRepository commentRepository;
 
     @BeforeEach
     public void setUp() throws IOException {
-
+        this.commentRepository.deleteAll();
+        this.blogRepository.deleteAll();
+        this.userRepository.deleteAll();
+        this.roleRepository.deleteAll();
         when(mockCloudinaryService.uploadImage(Mockito.any())).thenReturn("https://res.cloudinary.com/elizabetak/image/upload/v1616681585/zjtykeegdtmrsqy8sgae.jpg");
         init();
     }
@@ -92,8 +97,9 @@ public class BlogControllerTest {
     @Test
     @WithMockUser(username = "test@mail.com", roles = "ADMIN")
     void testShouldReturnCorrectStatusAndViewForDetails() throws Exception {
+        List<BlogEntity> all = blogRepository.findAll();
         mockMvc.perform(MockMvcRequestBuilders.get(
-                BLOG_CONTROLLER_PREFIX + "/details/{id}", 1L
+                BLOG_CONTROLLER_PREFIX + "/details/{id}", currentId
         )).
                 andExpect(status().isOk()).
                 andExpect(view().name("blog_details")).

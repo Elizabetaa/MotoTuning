@@ -4,9 +4,7 @@ import com.example.demo.model.entity.InquiryEntity;
 import com.example.demo.model.entity.RoleEntity;
 import com.example.demo.model.entity.UserEntity;
 import com.example.demo.model.entity.enums.*;
-import com.example.demo.repository.InquiryRepository;
-import com.example.demo.repository.RoleRepository;
-import com.example.demo.repository.UserRepository;
+import com.example.demo.repository.*;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
@@ -37,10 +35,10 @@ public class InquiryControllerTest {
     private InquiryRepository inquiryRepository;
     @Autowired
     private UserRepository userRepository;
-
     @Autowired
     private RoleRepository roleRepository;
-
+    @Autowired
+    private BlogRepository blogRepository;
 
     @BeforeEach
     public void setUp() {
@@ -48,9 +46,10 @@ public class InquiryControllerTest {
     }
     @AfterEach
     public void clearDB(){
+        blogRepository.deleteAll();
         inquiryRepository.deleteAll();
         userRepository.deleteAll();
-        System.out.println(inquiryRepository.count());
+
     }
 
 
