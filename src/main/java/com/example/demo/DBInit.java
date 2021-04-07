@@ -22,7 +22,6 @@ public class DBInit implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        //ToDo for testing comment these methods
         roleService.initRoles();
         newsService.initNews();
         userService.initUsers();
