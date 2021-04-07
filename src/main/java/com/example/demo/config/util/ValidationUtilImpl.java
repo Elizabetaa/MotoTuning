@@ -5,7 +5,7 @@ import javax.validation.Validator;
 
 public class ValidationUtilImpl implements ValidationUtil {
 
-    private Validator validator;
+    private final Validator validator;
 
     public ValidationUtilImpl() {
         this.validator = Validation
