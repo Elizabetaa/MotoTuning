@@ -13,6 +13,7 @@ import java.security.Principal;
 public class NewsController {
     private final NewsService newsService;
     private final CommentService commentService;
+
     public NewsController(NewsService newsService, CommentService commentService) {
         this.newsService = newsService;
         this.commentService = commentService;
@@ -23,7 +24,6 @@ public class NewsController {
         model.addAttribute("news",this.newsService.findAllNews());
         return "news";
     }
-
     @GetMapping("/details/{id}")
     public String detailsNews (@PathVariable Long id, Model model){
         model.addAttribute("news", this.newsService.findById(id));

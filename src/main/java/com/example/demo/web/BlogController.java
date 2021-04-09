@@ -99,7 +99,6 @@ public class BlogController {
         model.addAttribute("emptyComment", false);
         return "blog_details";
     }
-
     @PostMapping("/details/comments/add/{id}")
     public String addComment(@PathVariable Long id, @RequestParam("comment") String comment, Principal principal) {
         if (!comment.trim().equals("")){
