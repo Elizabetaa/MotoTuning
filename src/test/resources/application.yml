@@ -16,7 +16,6 @@ spring:
 
 cloudinary:
     api-key: 561528376342884
-    api-secret: KGP037qFjovwOHMo7vJcw39BynM
     cloud-name: elizabetak
 
 carousel:
