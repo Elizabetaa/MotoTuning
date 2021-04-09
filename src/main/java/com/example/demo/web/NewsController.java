@@ -30,8 +30,10 @@ public class NewsController {
         return "news_details";
     }
     @PostMapping("/details/comments/add/{id}")
-    public String addComment(@PathVariable Long id, @RequestParam("comment") String comment, Principal principal) {
-        this.commentService.addCommentToNews(comment, principal.getName(), id);
+    public String addComment(@PathVariable Long id, @RequestParam("comment") String comment, Principal principal){
+        if (!comment.trim().equals("")) {
+            this.commentService.addCommentToNews(comment, principal.getName(), id);
+        }
         return "redirect:/news/details/{id}";
     }
 }

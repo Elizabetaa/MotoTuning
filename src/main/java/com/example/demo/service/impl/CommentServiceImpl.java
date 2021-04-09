@@ -30,7 +30,6 @@ public class CommentServiceImpl implements CommentService {
 
     @Override
     public CommentServiceModel addComment(String comment, String email, Long id) {
-
         CommentEntity commentEntity = new CommentEntity();
         commentEntity.setComment(comment);
         commentEntity.setUser(this.userService.findByEmail(email));

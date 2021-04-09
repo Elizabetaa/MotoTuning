@@ -13,8 +13,10 @@ import javax.servlet.http.HttpSession;
 
 @Component
 public class UserInterceptor implements HandlerInterceptor {
-    private static final long MAX_INACTIVE_SESSION_TIME = 10 * 600;
-//    private static final long MAX_INACTIVE_SESSION_TIME = 60 * 6000;
+    //test for 5 seconds
+    //private static final long MAX_INACTIVE_SESSION_TIME = 5 * 1000;
+    //for one hour
+    private static final long MAX_INACTIVE_SESSION_TIME = 60 * 60000;
     private HttpSession session;
     private ApplicationSecurityConfig applicationSecurityConfig;
 
@@ -40,7 +42,6 @@ public class UserInterceptor implements HandlerInterceptor {
         }
         return true;
     }
-
 
 
     private static boolean isUserLogged() {

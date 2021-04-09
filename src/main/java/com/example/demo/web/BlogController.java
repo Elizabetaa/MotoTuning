@@ -95,14 +95,16 @@ public class BlogController {
 
     @GetMapping("/details/{id}")
     public String details(@PathVariable Long id, Model model) {
-        BlogDetailsViewModel byId = this.blogService.findById(id);
         model.addAttribute("blog", this.blogService.findById(id));
+        model.addAttribute("emptyComment", false);
         return "blog_details";
     }
 
     @PostMapping("/details/comments/add/{id}")
     public String addComment(@PathVariable Long id, @RequestParam("comment") String comment, Principal principal) {
-        this.commentService.addComment(comment, principal.getName(), id);
+        if (!comment.trim().equals("")){
+            this.commentService.addComment(comment, principal.getName(), id);
+        }
         return "redirect:/blog/details/{id}";
     }
 }
